@@ -22,7 +22,7 @@ function Contact() {
   };
   return (
     <section id="contact" className="scroll-mt-24">
-      <div className="w-1/3 m-auto p-4">
+      <div className="lg:w-1/3 m-auto p-4">
         <Title title="Contact Us" />
         <form onSubmit={handleSubmit} className="">
           <div className="flex flex-col gap-4">
