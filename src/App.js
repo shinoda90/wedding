@@ -1,13 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Guide from './Components/Guide';
-import Home from './Components/Home';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import Guide from './pages/Guide';
+import Home from './pages/Home';
 import NavBar from './Components/NavBar';
-import RSVP from './Components/RSVP';
-import History from './Components/History';
-
-function Root() {
-  return <Home />;
-}
+import RSVP from './pages/RSVP';
+import History from './pages/History';
 
 function Feedback() {
   return <RSVP />;
@@ -19,6 +16,21 @@ function Us() {
 
 function Travelguide() {
   return <Guide />;
+}
+
+function Root() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
+  return <Home />;
 }
 
 function App() {

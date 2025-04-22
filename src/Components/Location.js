@@ -1,8 +1,10 @@
+import Title from './Title';
+
 function Location() {
   return (
-    <div className="">
-
-</div>
+    <section id="location" className="scroll-mt-24">
+      <Title title="Location" />
+    </section>
   );
 }
 

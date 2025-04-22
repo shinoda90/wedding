@@ -1,7 +1,7 @@
 import homeimage from '../image/intro-foto.jpg';
-import Contact from './Contact';
-import Location from './Location';
-import Timeline from './Timeline';
+import Contact from '../Components/Contact';
+import Location from '../Components/Location';
+import Timeline from '../Components/Timeline';
 
 function Home() {
   return (
