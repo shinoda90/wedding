@@ -1,0 +1,12 @@
+# node modules
+node_modules/
+
+# build output
+build/
+
+# dotenv environment variables
+.env
+.env.local
+
+# misc
+.DS_Store
