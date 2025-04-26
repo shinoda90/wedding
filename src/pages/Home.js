@@ -1,17 +1,29 @@
-import homeimage from '../image/intro-foto.jpg';
-import Contact from '../Components/Contact';
 import Location from '../Components/Location';
 import Timeline from '../Components/Timeline';
+import IntroBild from '../Components/IntroBild';
+import SectionWrapper from '../Components/SectionWrapper';
+import RSVP from '../Components/RSVP';
+import { useTranslation } from 'react-i18next';
 
-function Home() {
+export default function Home() {
+  const { t } = useTranslation();
+
   return (
-    <div className="">
-      <img src={homeimage} alt="Dani & Michel" />
-      <Location />
-      <Timeline />
-      <Contact />
+    <div className="bg-base">
+      <IntroBild />
+      <div className="w-full px-4 lg:w-[70%] lg:px-0 mx-auto">
+        <SectionWrapper id="location" title={t('navbar.location')}>
+          <Location />
+        </SectionWrapper>
+
+        <SectionWrapper id="timeline" title={t('navbar.timeline')}>
+          <Timeline />
+        </SectionWrapper>
+
+        <SectionWrapper id="rsvp" title="RSVP">
+          <RSVP />
+        </SectionWrapper>
+      </div>
     </div>
   );
 }
-
-export default Home;

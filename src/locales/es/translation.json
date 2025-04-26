@@ -1,0 +1,48 @@
+{
+  "countdown": { "days": "dias", "hours": "horas", "minutes": "minutos", "months": "meses" },
+  "navbar": {
+    "home": "Información",
+    "location": "Localización",
+    "contact": "Contactanos",
+    "timeline": "Horario",
+    "history": "Nuestra Historia",
+    "guide": "Guia"
+  },
+  "timeline": {
+    "time1": "4:00 PM - 4:30 PM",
+    "step1": "🕊️ Llegadas & Respirar Profundo",
+    "descr1": "El amor ya está aquí – ¡solo faltas tú!",
+    "time2": "4:30 PM - 5:00 PM",
+    "step2": "💍 Sí, quiero & Lágrimas de Felicidad",
+    "descr2": "¡Saca los pañuelos – se viene el momento romántico!",
+    "time3": "5:00 PM - 6:00 PM",
+    "step3": "🍰 Dulzura & Fotos Bonitas",
+    "descr3": "Pedacitos de pastel y miradas que enamoran",
+    "time4": "6:00 PM - 7:00 PM",
+    "step4": "🎲 Risas & Espíritu Competitivo",
+    "descr4": "¡Esto se pone bueno – ¿Team Novia o Team Novio?",
+    "time5": "7:00 PM - 8:30 PM",
+    "step5": "🍽️ Banquete del Amor",
+    "descr5": "¡A por la cuchara y directo al corazón!",
+    "time6": "8:30 PM - Hasta que el cuerpo aguante",
+    "step6": "🪩 Baile bajo las estrellas",
+    "descr6": "¡Mueve el esqueleto... y el corazón también!"
+  },
+  "contact": {
+    "name": "Nombre*",
+    "email": "E-Mail*",
+    "phone": "Numero de Telefono",
+    "message": "Mensaje*"
+  },
+  "rsvp": {
+    "person": "Persona",
+    "question1": "Vas a venir?*",
+    "question2": "¿Solicitudes de bebidas?*",
+    "question3": "Email (para Updates)*",
+    "question4": "¿Preferencias especiales o alergias?",
+    "answer11": "Si",
+    "answer12": "No",
+    "answer21": "Vino",
+    "answer22": "Cerveza"
+  }
+}

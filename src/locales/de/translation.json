@@ -1,0 +1,48 @@
+{
+  "countdown": { "days": "Tage", "hours": "Stunden", "minutes": "Minuten", "months": "Monate" },
+  "navbar": {
+    "home": "Infos",
+    "location": "Location",
+    "contact": "Kontakt",
+    "timeline": "Zeitplan",
+    "history": "Unsere Geschichte",
+    "guide": "Reisetipps"
+  },
+  "timeline": {
+    "time1": "16:00 - 16:30",
+    "step1": "🕊️ Ankommen & Durchatmen",
+    "descr1": "Die Liebe ist schon da – jetzt fehlt nur noch ihr!",
+    "time2": "16:30 - 17:00",
+    "step2": "💍 Ja-Wort & Freudentränen",
+    "descr2": "Taschentücher raus – es wird romantisch!",
+    "time3": "17:00 - 18:00",
+    "step3": "🍰 Sweet Moments & Schnappschüsse",
+    "descr3": "Tortenstücke & Herzensblicke",
+    "time4": "18:00 - 19:00",
+    "step4": "🎲 Lachflash & Wettkampfgeist",
+    "descr4": "Jetzt wird’s wild – Team Braut oder Team Bräutigam?",
+    "time5": "19:00 - 20:30",
+    "step5": "🍽️ Festmahl der Liebe",
+    "descr5": "Ran an die Löffel, ran ans Herz!",
+    "time6": "20:30 - Last man standing",
+    "step6": "🪩 Tanz in die Nacht",
+    "descr6": "Schüttel dein Speck und dein Herz gleich mit!"
+  },
+  "contact": {
+    "name": "Name*",
+    "email": "E-Mail*",
+    "phone": "Telefonnummer",
+    "message": "Nachricht*"
+  },
+  "rsvp": {
+    "person": "Person",
+    "question1": "Wirst du teilnehmen?*",
+    "question2": "Getränkewünsche?*",
+    "question3": "Email (für Updates)*",
+    "question4": "Besondere Wünsche oder Allergien?",
+    "answer11": "Ja",
+    "answer12": "Nein",
+    "answer21": "Wein",
+    "answer22": "Bier"
+  }
+}

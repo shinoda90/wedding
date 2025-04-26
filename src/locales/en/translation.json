@@ -1,0 +1,48 @@
+{
+  "countdown": { "days": "days", "hours": "hours", "minutes": "minutes", "months": "months" },
+  "navbar": {
+    "home": "Information",
+    "location": "Location",
+    "contact": "Contact",
+    "timeline": "Schedule",
+    "history": "Our History",
+    "guide": "Travel Guide"
+  },
+  "timeline": {
+    "time1": "4:00 PM - 4:30 PM",
+    "step1": "🕊️ Arrivals & Deep Breaths",
+    "descr1": "Love is already here – now we’re just waiting for you!",
+    "time2": "4:30 PM - 5:00 PM",
+    "step2": "💍 Vows & Happy Tears",
+    "descr2": "Get your tissues – it's about to get romantic!",
+    "time3": "5:00 PM - 6:00 PM",
+    "step3": "🍰 Sweet Moments & Snapshots",
+    "descr3": "Cake crumbs & heartwarming glances",
+    "time4": "6:00 PM - 7:00 PM",
+    "step4": "🎲 Laughter & Friendly Battles",
+    "descr4": "Things are about to get wild – Team Bride or Team Groom?",
+    "time5": "7:00 PM - 8:30 PM",
+    "step5": "🍽️ Feast of Love",
+    "descr5": "Spoons up, hearts open!",
+    "time6": "8:30 PM - Last man standing",
+    "step6": "🪩 Dance into the Night",
+    "descr6": "Shake what your mama gave you – and your heart too!"
+  },
+  "contact": {
+    "name": "Name*",
+    "email": "E-Mail*",
+    "phone": "Phone Number",
+    "message": "Message*"
+  },
+  "rsvp": {
+    "person": "Person",
+    "question1": "Will you come?*",
+    "question2": "Alcohol wishes?*",
+    "question3": "Email (for Updates)*",
+    "question4": "Special wishes or allergies?",
+    "answer11": "Yes",
+    "answer12": "No",
+    "answer21": "Wine",
+    "answer22": "Beer"
+  }
+}

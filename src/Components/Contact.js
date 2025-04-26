@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import Title from './Title';
+import InputField from './InputField';
+import emailjs from 'emailjs-com';
+import { useTranslation } from 'react-i18next';
 
-function Contact() {
+export default function Contact({ title }) {
+  const { t } = useTranslation();
   const [guest, setGuests] = useState({
     name: '',
     phone: '',
-    text: '',
+    message: '',
     email: '',
   });
 
@@ -17,53 +21,88 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('contact:', guest);
-    alert('Danke für eure Rückmeldung! 🎉');
+
+    const templateParams = {
+      from_name: guest.name,
+      from_email: guest.email,
+      from_phone: guest.phone,
+      from_message: guest.message,
+    };
+
+    // E-Mail an dich selbst
+    emailjs
+      .send(
+        'service_g50pzx6',
+        'template_erio50j', // dein Haupt-Template
+        templateParams,
+        'eDkRYc9jhwqq7CYgg'
+      )
+      .then(() => {
+        console.log('E-Mail an dich gesendet');
+      })
+      .catch((error) => {
+        console.error('Fehler beim Senden an dich:', error);
+      });
+
+    // Auto-Reply an den Gast
+    emailjs
+      .send(
+        'service_g50pzx6',
+        'template_rgs1l6h', // <<< Bitte durch deinen Auto-Reply-Template-Namen ersetzen
+        templateParams,
+        'eDkRYc9jhwqq7CYgg'
+      )
+      .then(() => {
+        console.log('Auto-Reply gesendet');
+        alert('Nachricht wurde gesendet!');
+      })
+      .catch((error) => {
+        console.error('Fehler beim Auto-Reply:', error);
+        alert('Fehler beim Auto-Reply.');
+      });
   };
+
   return (
-    <section id="contact" className="scroll-mt-24">
+    <section>
       <div className="lg:w-1/3 m-auto p-4">
-        <Title title="Contact Us" />
+        <Title title={title} />
         <form onSubmit={handleSubmit} className="">
           <div className="flex flex-col gap-4">
+            <InputField
+              title={t('contact.name')}
+              type="text"
+              placeholder="Your Full Name"
+              value={guest.name}
+              field="name"
+              onChange={handleChange}
+              required={true}
+            />
+            <InputField
+              title={t('contact.email')}
+              type="email"
+              placeholder="dani@michel.com"
+              value={guest.email}
+              field="email"
+              onChange={handleChange}
+              required={true}
+            />
+            <InputField
+              title={t('contact.phone')}
+              type="number"
+              placeholder="+41..."
+              value={guest.phone}
+              field="phone"
+              onChange={handleChange}
+              required={false}
+            />
             <div className="gap-2 lg:gap-6">
-              <div className="font-medium">Name*</div>
-              <input
-                type="text"
-                className="input input-bordered w-full"
-                placeholder="Your Full Name"
-                value={guest.name}
-                onChange={(e) => handleChange('name', e.target.value)}
-              />
-            </div>
-            <div className="gap-2 lg:gap-6">
-              <div className="font-medium">Your E-Mail*</div>
-              <input
-                type="email"
-                className="input input-bordered w-full"
-                placeholder="z.B. dani@michel.com"
-                value={guest.email}
-                onChange={(e) => handleChange('email', e.target.value)}
-              />
-            </div>
-            <div className="gap-2 lg:gap-6">
-              <div className="font-medium">Your Phone Number</div>
-              <input
-                type="number"
-                className="input input-bordered w-full"
-                placeholder="z.B. +41..."
-                value={guest.phone}
-                onChange={(e) => handleChange('phone', e.target.value)}
-              />
-            </div>
-            <div className="gap-2 lg:gap-6">
-              <div className="font-medium">Your Text*</div>
+              <div className="font-medium">{t('contact.message')}</div>
               <textarea
-                type="range"
-                className="input input-bordered w-full"
+                className="textarea textarea-bordered w-full min-h-[120px]"
                 placeholder="What would you like to share with us"
-                value={guest.text}
-                onChange={(e) => handleChange('text', e.target.value)}
+                value={guest.message}
+                onChange={(e) => handleChange('message', e.target.value)}
+                required
               />
             </div>
           </div>
@@ -77,5 +116,3 @@ function Contact() {
     </section>
   );
 }
-
-export default Contact;

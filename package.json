@@ -5,10 +5,17 @@
   "dependencies": {
     "autoprefixer": "^10.4.14",
     "daisyui": "^4.4.20",
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^12.7.4",
+    "i18next": "^21.6.16",
+    "i18next-browser-languagedetector": "^6.1.2",
+    "luxon": "^3.6.1",
+    "node-fetch": "^2.7.0",
     "postcss": "^8.4.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^11.18.3",
+    "react-intersection-observer": "^9.16.0",
     "react-router-dom": "^7.5.1",
     "react-scripts": "5.0.1",
     "tailwindcss": "^3.3.2",
@@ -18,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "fetch:translations": "node scripts/fetch-translations.js"
   },
   "browserslist": {
     "production": [
