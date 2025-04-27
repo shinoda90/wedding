@@ -9,7 +9,7 @@ export default function Home() {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-base">
+    <div className="bg-primary">
       <IntroBild />
       <div className="w-full px-4 lg:w-[70%] lg:px-0 mx-auto">
         <SectionWrapper id="location" title={t('navbar.location')}>

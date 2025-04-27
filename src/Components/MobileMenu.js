@@ -39,6 +39,7 @@ export default function MobileMenu({ isOpen, onClose }) {
         <img
           src={menuImage}
           alt="Background"
+          loading="lazy"
           className="w-full h-full object-cover opacity-50 pointer-events-none"
         />
       </div>

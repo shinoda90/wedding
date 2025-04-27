@@ -51,12 +51,12 @@ export default function InputSearch({ value, onChange, selectedGuests }) {
         onFocus={() => setShowOptions(true)}
       />
       {showOptions && filteredGuests.length > 0 && (
-        <ul className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-base-100 py-1 shadow-lg ring-1 ring-black ring-opacity-5">
+        <ul className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-primary py-1 shadow-lg ring-1 ring-black ring-opacity-5">
           {filteredGuests.map((guest, idx) => (
             <li
               key={idx}
               onClick={() => handleSelect(guest)}
-              className="cursor-pointer px-4 py-2 hover:bg-base-200"
+              className="cursor-pointer px-4 py-2 hover:bg-primary"
             >
               {guest}
             </li>

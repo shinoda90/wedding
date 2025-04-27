@@ -14,7 +14,7 @@ export default function IntroBild({ onLoad }) {
   }, [onLoad]);
 
   return (
-    <div className="relative h-screen w-full">
+    <div className="relative h-dvh w-full">
       <img
         src={homeimage2}
         onLoad={() => {
@@ -33,7 +33,7 @@ export default function IntroBild({ onLoad }) {
 
       {/* Textfeld zentriert im Bild */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white p-6 rounded-lg text-center z-10">
-        <h1 className="text-8xl font-bold fancy-text">Daniela & Michel</h1>
+        <h1 className="text-8xl oswald-header">Daniela & Michel</h1>
         <div className="text-2xl mt-8">27. December 2025 - 16:00 Uhr</div>
         <div className="text-xl mt-8">Cardedeu, Lago Coatepeque, El Salvador</div>
       </div>

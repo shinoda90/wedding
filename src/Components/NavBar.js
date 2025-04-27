@@ -41,7 +41,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="navbar h-16 shadow-sm fixed top-0 w-full z-50">
+    <div className="navbar bg-primary h-16 shadow-sm fixed top-0 w-full z-50">
       {/* Mobile Burger Button */}
       <div className="lg:hidden flex justify-between items-center px-4 w-full">
         {/* Burger Button rechts */}
@@ -91,7 +91,7 @@ export default function Navbar() {
       </div>
       <div className="absolute hidden right-6 lg:flex items-center space-x-4">
         <select
-          className="select select-sm border-base-300"
+          className="select select-sm border-primary"
           onChange={(e) => changeLanguage(e.target.value)}
           value={i18n.language}
           aria-label="Select Language"

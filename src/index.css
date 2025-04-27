@@ -7,6 +7,13 @@
   font-family: 'Corinthia', cursive;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Oswald:wght@200..700&display=swap');
+.oswald-header {
+  font-family: 'Oswald', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
 html {
   scroll-behavior: smooth;
 }

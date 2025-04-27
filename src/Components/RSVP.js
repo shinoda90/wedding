@@ -127,7 +127,7 @@ export default function RSVP() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="md:w-[48%] w-full bg-base-200 border-base-300 rounded-box border p-4 space-y-4 relative"
+                  className="md:w-[48%] w-full bg-primary border-primary rounded-box border p-4 space-y-4 relative"
                 >
                   <h3 className="text-lg font-semibold mb-2">
                     {t(`rsvp.person`)} {index + 1}
@@ -136,7 +136,7 @@ export default function RSVP() {
                   <div className="flex flex-col lg:flex-row lg:items-center lg:gap-6 gap-2">
                     <span className="font-medium">{t('contact.name')}</span>
                     <InputSearch
-                      key={`${index}-${guest.name}`}
+                      key={index}
                       value={guest.name}
                       onChange={(name) => handleChange(index, 'name', name)}
                       selectedGuests={[
