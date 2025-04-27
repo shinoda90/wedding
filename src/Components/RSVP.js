@@ -1,331 +1,138 @@
-import { useState, useMemo } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import InputSearch from './InputSearch'
-import { useTranslation } from 'react-i18next'
+import React, { useState, useEffect } from 'react'
 
 export default function RSVP() {
-  const guestStart = useMemo(
-    () => [
-      {
-        name: '',
-        email: '',
-        phone: '',
-        drinks: [],
-        participation: undefined,
-        requirements: '',
-      },
-    ],
-    []
-  )
+  const url = process.env.REACT_APP_SHEETBEST_URL
+  const [allGuests, setAllGuests] = useState([])
+  const [invitedGuests, setInvitedGuests] = useState([]) // Liste der eingeladenen Gäste
+  const [filteredGuests, setFilteredGuests] = useState([]) // Gefilterte Gäste, basierend auf der Eingabe
+  const [guestName, setGuestName] = useState('') // Name des eingegebenen Gastes
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false) // Steuert das Dropdown-Sichtbarkeit
 
-  const [guests, setGuests] = useState(guestStart)
-  const [showPopup, setShowPopup] = useState(false)
-  const [submittedGuests, setSubmittedGuests] = useState([])
-
-  const { t, i18n } = useTranslation()
-
-  const drinkOptions = useMemo(
-    () => [
-      'Whiskey',
-      'Vodka',
-      t('rsvp.answer21'),
-      t('rsvp.answer22'),
-      'Aperol',
-      'Gin',
-    ],
-    [i18n.language]
-  ) // neu berechnen, wenn sich die Sprache ändert
-
-  const handleChange = (index, field, value) => {
-    const updatedGuests = [...guests]
-    updatedGuests[index][field] = value
-    setGuests(updatedGuests)
-  }
-
-  const toggleDrink = (index, drink) => {
-    const updatedGuests = [...guests]
-    const selectedDrinks = updatedGuests[index].drinks
-    updatedGuests[index].drinks = selectedDrinks.includes(drink)
-      ? selectedDrinks.filter((d) => d !== drink)
-      : [...selectedDrinks, drink]
-    setGuests(updatedGuests)
-  }
-
-  const addGuest = () => {
-    setGuests([
-      ...guests,
-      {
-        name: '',
-        participation: undefined,
-        requirements: '',
-        email: '',
-        drinks: [],
-      },
-    ])
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    try {
-      const submitted = []
-
-      for (const guest of guests) {
-        const payload = {
-          Name: guest.name,
-          Participation: guest.participation ? 'Yes' : 'No',
-          Wishes: guest.participation ? guest.requirements : '',
-          Email: guest.participation ? guest.email : '',
-          Drinks: guest.participation ? guest.drinks.join(', ') : '',
-        }
-
-        const nameEncoded = encodeURIComponent(guest.name.trim())
-        const url = `https://api.sheetbest.com/sheets/07452e3b-a7d8-4af5-9113-f2aca7cf9b89/Name/${nameEncoded}`
-
+  useEffect(() => {
+    // Gäste von der API laden
+    const fetchGuests = async () => {
+      try {
         const response = await fetch(url, {
-          method: 'PUT',
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'X-API-KEY':
-              'mu6HRKCANaRrPPLgVZDKMs0Wd1NEc-ODrVxknrg-9HQNA7y1Z4x32OMxJe',
+            'X-API-KEY': process.env.REACT_APP_SHEETBEST_API_KEY,
           },
-          body: JSON.stringify(payload),
         })
+        const data = await response.json()
 
-        if (!response.ok) {
-          throw new Error(`Fehler bei ${guest.name}: ${response.status}`)
-        }
+        const allGuestsList = data.map((entry) => entry.Name).filter(Boolean)
 
-        submitted.push(guest)
+        const invited = allGuestsList.filter(
+          (name) =>
+            !data.some(
+              (entry) =>
+                entry.Name === name &&
+                (entry.Participation?.trim() === '' ||
+                  entry.Participation === undefined)
+            )
+        )
+        console.log('invited ' + invited)
+
+        setAllGuests(allGuestsList)
+        setInvitedGuests(invited)
+        setFilteredGuests(invited)
+      } catch (error) {
+        console.error('Fehler beim Laden der Gästeliste:', error)
       }
+    }
 
-      setSubmittedGuests(submitted) // für das Popup
-      setShowPopup(true)
-      setGuests([
-        {
-          name: '',
-          email: '',
-          phone: '',
-          drinks: [],
-          participation: undefined,
-          requirements: '',
-        },
-      ])
-    } catch (error) {
-      console.error('Fehler beim Senden:', error)
-      alert('Es gab ein Problem beim Senden 😕')
+    fetchGuests()
+  }, [url])
+
+  // Filtere die gefilterten Gäste basierend auf der Eingabe des Benutzers
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value
+    setGuestName(inputValue)
+
+    // Zeige Dropdown nur wenn es eine Eingabe gibt
+    if (inputValue) {
+      setIsDropdownVisible(true)
+    } else {
+      setIsDropdownVisible(false)
+    }
+
+    // Überprüfe, ob der Name im Input mit einem Namen aus der eingeladenen Liste übereinstimmt
+    if (invitedGuests.includes(inputValue)) {
+      // Entferne den übereinstimmenden Namen aus der eingeladenen Liste
+      const updatedInvitedGuests = invitedGuests.filter(
+        (guest) => guest !== inputValue
+      )
+      setInvitedGuests(updatedInvitedGuests)
+      setFilteredGuests(updatedInvitedGuests) // Optional: auch die gefilterte Liste aktualisieren
+    }
+
+    // Filtere die Gäste basierend auf dem Namen im Input
+    const filtered = invitedGuests.filter((guest) =>
+      guest.toLowerCase().includes(inputValue.toLowerCase())
+    )
+
+    setFilteredGuests(filtered)
+  }
+
+  // Setze den Namen basierend auf der Dropdown-Auswahl
+  const handleDropdownChange = (e) => {
+    const selectedGuest = e.target.textContent
+    setGuestName(selectedGuest)
+    setIsDropdownVisible(false) // Verstecke das Dropdown nach Auswahl
+
+    // Überprüfe, ob der ausgewählte Gast noch in der eingeladenen Liste vorhanden ist und entferne ihn
+    if (invitedGuests.includes(selectedGuest)) {
+      const updatedInvitedGuests = invitedGuests.filter(
+        (guest) => guest !== selectedGuest
+      )
+      setInvitedGuests(updatedInvitedGuests)
+      setFilteredGuests(updatedInvitedGuests) // Optional: auch die gefilterte Liste aktualisieren
     }
   }
 
-  const removeGuest = (indexToRemove) => {
-    setGuests((prevGuests) =>
-      prevGuests.map((guest, index) =>
-        index === indexToRemove ? { ...guest, removed: true } : guest
-      )
-    )
-
-    // optional vollständig aus dem Array löschen nach Delay:
-    setTimeout(() => {
-      setGuests((prev) => prev.filter((_, i) => i !== indexToRemove))
-    }, 200)
+  // Verhindere das Dropdown beim Verlassen des Eingabefelds
+  const handleBlur = () => {
+    // Verzögert das Verstecken, um die Auswahl zu ermöglichen
+    setTimeout(() => setIsDropdownVisible(false), 100)
   }
 
+  console.log('all Guests ' + allGuests)
+  console.log('filtered Guests ' + filteredGuests)
+  console.log('invited Guests ' + invitedGuests)
+
   return (
-    <>
-      <form onSubmit={handleSubmit} className="">
-        <div className="flex flex-col lg:flex-row lg:flex-wrap lg:gap-4 gap-6 ">
-          {guests.map((guest, index) => (
-            <AnimatePresence key={index}>
-              {!guest.removed && (
-                <motion.fieldset
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="md:w-[48%] w-full bg-secondary border-primary rounded-box border p-4 space-y-4 relative"
+    <div>
+      <form>
+        <div className="form-group">
+          <label htmlFor="guestName">Gast Name</label>
+          <input
+            type="text"
+            id="guestName"
+            value={guestName}
+            onChange={handleInputChange}
+            onFocus={() => setIsDropdownVisible(true)} // Dropdown anzeigen, wenn das Feld fokussiert wird
+            onBlur={handleBlur} // Dropdown verstecken, wenn das Feld den Fokus verliert
+            className="input"
+            placeholder="Gib den Namen ein..."
+          />
+
+          {/* Dropdown-Liste mit den gefilterten Gästen, nur wenn sichtbar */}
+          {isDropdownVisible && filteredGuests.length > 0 && (
+            <ul className="dropdown-list">
+              {filteredGuests.map((guest, index) => (
+                <li
+                  key={index}
+                  className="dropdown-item"
+                  onClick={handleDropdownChange}
                 >
-                  <h3 className="text-lg font-semibold mb-2">
-                    {t(`rsvp.person`)} {index + 1}
-                  </h3>
-
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:gap-6 gap-2">
-                    <span className="font-medium">{t('contact.name')}</span>
-                    <InputSearch
-                      key={index}
-                      value={guest.name}
-                      onChange={(name) => handleChange(index, 'name', name)}
-                      selectedGuests={[
-                        ...submittedGuests.map((g) => g.name),
-                        ...guests.map((g, i) => (i !== index ? g.name : null)),
-                      ].filter(Boolean)}
-                    />
-                  </div>
-
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:gap-6 gap-2">
-                    <label className="label cursor-pointer">
-                      <span className="font-medium ">
-                        {t('rsvp.question1')}
-                      </span>
-                    </label>
-
-                    <div className="flex items-center gap-2">
-                      <label className="flex items-center gap-1">
-                        <input
-                          type="radio"
-                          name={`participation-${index}`}
-                          value="yes"
-                          checked={guest.participation === true}
-                          onChange={() =>
-                            handleChange(index, 'participation', true)
-                          }
-                          className="radio"
-                        />
-                        <span>{t('rsvp.answer11')}</span>
-                      </label>
-
-                      <label className="flex items-center gap-1">
-                        <input
-                          type="radio"
-                          name={`participation-${index}`}
-                          value="no"
-                          checked={guest.participation === false}
-                          onChange={() =>
-                            handleChange(index, 'participation', false)
-                          }
-                          className="radio"
-                        />
-                        <span>{t('rsvp.answer12')}</span>
-                      </label>
-                    </div>
-                  </div>
-                  {guest.participation === true && (
-                    <>
-                      <div>
-                        <div className="font-medium mb-2">
-                          {t('rsvp.question2')}
-                        </div>
-                        <div className="flex flex-wrap gap-4">
-                          {drinkOptions.map((drink) => (
-                            <label
-                              key={drink}
-                              className="flex items-center gap-2 cursor-pointer"
-                            >
-                              <input
-                                type="checkbox"
-                                className="checkbox"
-                                checked={guest.drinks.includes(drink)}
-                                onChange={() => toggleDrink(index, drink)}
-                              />
-                              {drink}
-                            </label>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-6">
-                        <span className="font-medium whitespace-nowrap">
-                          {t('rsvp.question3')}
-                        </span>
-                        <input
-                          type="email"
-                          className="input input-bordered w-full"
-                          placeholder="z. B. max@example.com"
-                          value={guest.email}
-                          onChange={(e) =>
-                            handleChange(index, 'email', e.target.value)
-                          }
-                          required
-                        />
-                      </div>
-
-                      <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-6">
-                        <span className="font-medium whitespace-nowrap">
-                          {t('rsvp.question4')}
-                        </span>
-                        <input
-                          type="text"
-                          className="input input-bordered flex-1"
-                          placeholder="Gibt es etwas, das wir wissen sollten?"
-                          value={guest.requirements}
-                          onChange={(e) =>
-                            handleChange(index, 'requirements', e.target.value)
-                          }
-                        />
-                      </div>
-                    </>
-                  )}
-                  {index > 0 && (
-                    <button
-                      type="button"
-                      onClick={() => removeGuest(index)}
-                      className="absolute top-2 right-40 btn btn-xs btn-error"
-                    >
-                      ✖ Entfernen
-                    </button>
-                  )}
-
-                  {/* Add-Button nur beim letzten */}
-                  {index === guests.length - 1 && (
-                    <button
-                      type="button"
-                      onClick={addGuest}
-                      className="absolute top-2 right-2 btn btn-xs btn-outline"
-                    >
-                      ➕ Weitere Person
-                    </button>
-                  )}
-                </motion.fieldset>
-              )}
-            </AnimatePresence>
-          ))}
-
-          <div className="flex justify-between items-center pt-4">
-            <button type="submit" className="btn btn-primary">
-              ✅ Abschicken
-            </button>
-          </div>
+                  {guest}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </form>
-      {showPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full relative text-center">
-            <h2 className="text-2xl font-bold mb-4">{t('rsvp.feedback')}</h2>
-
-            {submittedGuests.map((guest, i) => (
-              <div key={i} className="mb-4 text-left">
-                <p>
-                  <strong>{t('contact.name')}:</strong> {guest.name}
-                </p>
-                <p>
-                  <strong>{t('rsvp.question1')}:</strong>{' '}
-                  {guest.participation ? 'Ja' : 'Nein'}
-                </p>
-                {guest.participation && (
-                  <>
-                    <p>
-                      <strong>{t('rsvp.question2')}:</strong>{' '}
-                      {guest.drinks.join(', ')}
-                    </p>
-                    <p>
-                      <strong>{t('contact.email')}:</strong> {guest.email}
-                    </p>
-                    <p>
-                      <strong>{t('rsvp.question4')}:</strong>{' '}
-                      {guest.requirements}
-                    </p>
-                  </>
-                )}
-              </div>
-            ))}
-
-            <button
-              onClick={() => setShowPopup(false)}
-              className="mt-4 px-6 py-2 bg-secondary text-white rounded hover:bg-primary-focus"
-            >
-              OK
-            </button>
-          </div>
-        </div>
-      )}
-    </>
+    </div>
   )
 }

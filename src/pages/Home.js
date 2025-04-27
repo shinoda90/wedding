@@ -1,12 +1,12 @@
-import Location from '../Components/Location';
-import Timeline from '../Components/Timeline';
-import IntroBild from '../Components/IntroBild';
-import SectionWrapper from '../Components/SectionWrapper';
-import RSVP from '../Components/RSVP';
-import { useTranslation } from 'react-i18next';
+import Location from '../Components/Location'
+import Timeline from '../Components/Timeline'
+import IntroBild from '../Components/IntroBild'
+import SectionWrapper from '../Components/SectionWrapper'
+import RSVP from '../Components/ARSVP'
+import { useTranslation } from 'react-i18next'
 
 export default function Home() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <div className="bg-primary">
@@ -25,5 +25,5 @@ export default function Home() {
         </SectionWrapper>
       </div>
     </div>
-  );
+  )
 }

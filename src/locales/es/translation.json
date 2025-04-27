@@ -1,6 +1,6 @@
 {
   "countdown": {
-    "days": "dias",
+    "days": "días",
     "hours": "horas",
     "minutes": "minutos",
     "months": "meses"
@@ -8,10 +8,10 @@
   "navbar": {
     "home": "Información",
     "location": "Localización",
-    "contact": "Contactanos",
+    "contact": "Contáctanos",
     "timeline": "Horario",
     "history": "Nuestra Historia",
-    "guide": "Guia"
+    "guide": "Guía"
   },
   "timeline": {
     "time1": "4:00 PM - 4:30 PM",
@@ -35,47 +35,56 @@
   },
   "contact": {
     "name": "Nombre*",
-    "email": "E-Mail*",
-    "phone": "Numero de Telefono",
-    "message": "Mensaje*"
+    "email": "Correo Electrónico*",
+    "phone": "Número de Teléfono",
+    "message": "Mensaje*",
+    "placeholder1": "Cuéntanos tu nombre",
+    "placeholder2": "p.ej. dani@michel.com",
+    "placeholder3": "p.ej. +41 78 ....",
+    "placeholder4": "Haz preguntas o cuéntanos lo que deberíamos saber :)"
   },
   "rsvp": {
     "person": "Persona",
-    "question1": "Vas a venir?*",
+    "question1": "¿Vas a venir?*",
     "question2": "¿Solicitudes de bebidas?*",
-    "question3": "Email (para Updates)*",
+    "question3": "Correo Electrónico (para actualizaciones)*",
     "question4": "¿Preferencias especiales o alergias?",
-    "answer11": "Si",
+    "answer11": "Sí",
     "answer12": "No",
     "answer21": "Vino",
     "answer22": "Cerveza",
-    "feedback": "¡Gracias por tus comentarios! 🎉"
+    "feedback": "¡Gracias por tu respuesta! 🎉",
+    "warning": "¡Nombre no encontrado en la lista de invitados!",
+    "placeholder1": "Buscar o seleccionar un nombre",
+    "placeholder3": "p.ej. dani@michel.com",
+    "placeholder4": "¡Cuéntanos lo que deberíamos saber!",
+    "add": "Agregar persona",
+    "delete": "Eliminar persona"
+  },
+  "home": {
+    "date": "27 de diciembre de 2025"
+  },
+  "button": {
+    "submit": "Enviar"
   },
   "history": {
-    "time1": "",
-    "title1": "",
-    "descr1": "",
-    "time2": "",
-    "title2": "",
-    "descr2": "",
-    "time3": "",
-    "title3": "",
-    "descr3": "",
-    "time4": "",
-    "title4": "",
-    "descr4": "",
-    "time5": "",
-    "title5": "",
-    "descr5": "",
-    "time6": "",
-    "title6": "",
-    "descr6": "",
-    "time7": "",
-    "title7": "",
-    "descr7": "",
-    "time8": "",
-    "title8": "",
-    "descr8": ""
-  },
-  "home": { "date": "Diciembre 27, 2025" }
+    "time1": "Diciembre 2018",
+    "title1": "Cuando dos caminos se cruzaron",
+    "descr1": "Era el invierno de 2018 en Hamburgo: afuera soplaban vientos fríos, pero dentro ya empezaba a encenderse algo cálido. Michel y Dani trabajaban en proyectos de Airbus cuando Dani, sentada tranquilamente en un autobús, vio a un extraño de rostro dulce. \"Oh, ese rubito es muy lindo\", pensó, sonriendo para sí misma. No sabía que ese simple momento lo cambiaría todo. Una semana después, el destino llamó, literalmente. En un día cualquiera en la oficina, Dani oyó tocar a su puerta. Al abrirla, ahí estaba: Michel. Su corazón dio un vuelco. Sorprendida y abrumada por una oleada de calidez, lo abrazó allí mismo – olvidando por completo que abrazar espontáneamente no es parte de la etiqueta de oficina alemana. Pocos días después, un evento de pos-trabajo en el mercado navideño los reunió a todos. Las luces brillaban, las risas flotaban en el aire entre copas de vino caliente, y algo mágico empezó a florecer. Así comenzó una historia de amor.",
+    "time2": "2019",
+    "title2": "Convirtiéndonos en Nosotros",
+    "descr2": "Fue un año lleno de amor, risas, viajes y aventuras sin fin. Descubrieron nuevos lugares y, lo que es más importante, se descubrieron mutuamente a un nivel más profundo con cada paso.",
+    "time3": "Septiembre 2021",
+    "title3": "Jamie nos encuentra",
+    "descr3": "El 12 de septiembre, durante un viaje por las impresionantes costas de Croacia, el universo les hizo un regalo inesperado. En medio de la nada, en un pequeño café al borde de la carretera, un perrito desaliñado se encontraba solo. Los miró con ojos llenos de esperanza. Sin dudarlo, lo tomaron en brazos – y en sus corazones. Lo llamaron Jamie. Desde ese día, su dúo se convirtió en un trío, y la vida se sintió aún más completa.",
+    "time4": "Enero 2022",
+    "title4": "Un salto de amor",
+    "descr4": "Cuando Michel encontró el trabajo de sus sueños – escondido en el tranquilo pueblo de Backnang – no hubo dudas. Ninguna vacilación. Dani lo miró con amor y simplemente dijo: “Vamos.” Empacaron sus vidas y se mudaron juntos, sabiendo que el hogar no es un lugar, sino estar juntos.",
+    "time5": "Julio 2023",
+    "title5": "Un nuevo capítulo en Suiza",
+    "descr5": "En julio de 2023, sus corazones ansiaban montañas, lagos y una conexión más profunda con la naturaleza. Ese sueño los llevó a Suiza, donde se sintieron en casa desde el primer momento. Un nuevo capítulo comenzó, lleno de aire alpino, mañanas pacíficas y la sensación de estar exactamente donde debían estar.",
+    "time6": "Diciembre 2024",
+    "title6": "Sí para siempre",
+    "descr6": "El 31 de diciembre de 2024, bajo la magia del último atardecer del año, Michel y Dani dijeron sí para siempre. Se comprometieron, rodeados de amor, recuerdos y sueños aún por escribir. Ahora quieren compartir esa alegría con ustedes, porque toda gran historia de amor merece ser celebrada, no solo por dos personas, sino por todos los corazones que la vieron crecer."
+  }
 }

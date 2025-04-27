@@ -37,7 +37,11 @@
     "name": "Name*",
     "email": "E-Mail*",
     "phone": "Phone Number",
-    "message": "Message*"
+    "message": "Message*",
+    "placeholder1": "Share your name with us",
+    "placeholder2": "e.g. dani@michel.com",
+    "placeholder3": "e.g. +41 78 ....",
+    "placeholder4": "Ask questions or tell us what we should know :)"
   },
   "rsvp": {
     "person": "Person",
@@ -49,33 +53,38 @@
     "answer12": "No",
     "answer21": "Wine",
     "answer22": "Beer",
-    "feedback": "Thanks for your feedback! 🎉"
+    "feedback": "Thanks for your feedback! 🎉",
+    "warning": "Name not on the guest list!",
+    "placeholder1": "Search or select a name",
+    "placeholder3": "e.g. dani@michel.com",
+    "placeholder4": "Tell us what we should know!",
+    "add": "Add person",
+    "delete": "Remove person"
+  },
+  "home": {
+    "date": "December 27, 2025"
+  },
+  "button": {
+    "submit": "Submit"
   },
   "history": {
-    "time1": "",
-    "title1": "",
-    "descr1": "",
-    "time2": "",
-    "title2": "",
-    "descr2": "",
-    "time3": "",
-    "title3": "",
-    "descr3": "",
-    "time4": "",
-    "title4": "",
-    "descr4": "",
-    "time5": "",
-    "title5": "",
-    "descr5": "",
-    "time6": "",
-    "title6": "",
-    "descr6": "",
-    "time7": "",
-    "title7": "",
-    "descr7": "",
-    "time8": "",
-    "title8": "",
-    "descr8": ""
-  },
-  "home": { "date": "December 27, 2025" }
+    "time1": "2018 December",
+    "title1": "When Two Paths Crossed",
+    "descr1": "It was the winter of 2018 in Hamburg, Germany—cold winds outside, but something warm was already beginning to stir. Michel and Dani were both working on Airbus projects when Dani, sitting quietly on a bus, caught sight of a sweet-faced stranger. “Oh, that rubito is very cute,” she thought, smiling to herself. She had no idea that this simple moment would change everything.\nJust one week later, fate knocked—quite literally. On a regular workday, Dani heard someone at her office door. When she opened it, there he was: Michel. Her heart skipped a beat. She was so taken by surprise, so overwhelmed by a sudden wave of warmth, that she hugged him right then and there—completely forgetting that spontaneous hugs aren't exactly part of German office etiquette.\nA few days later, a Christmas market after-work event brought everyone together. The lights were glowing, laughter echoed around mulled wine, and something magical began to bloom. And just like that, a love story began.",
+    "time2": "2019",
+    "title2": "Becoming Us",
+    "descr2": "This was the year of loving each other, laughter, travel, and countless adventures. They discovered new places and, more importantly, discovered each other in deeper ways with every step.",
+    "time3": "44440",
+    "title3": "Jamie Finds Us",
+    "descr3": "On September 12th, during a road trip through the breathtaking coastlines of Croatia, the universe gave them an unexpected gift. In the middle of nowhere, at a small roadside café, a scruffy little dog stood alone. He looked at them with eyes full of hope. Without hesitation, they scooped him into their arms—and into their hearts.\nThey named him Jamie. From that day on, their duo became a trio, and life felt even fuller.",
+    "time4": "2022 January",
+    "title4": "Taking a Leap for Love",
+    "descr4": "When Michel found the job of his dreams—tucked away in the quiet town of Backnang—there was no hesitation. No doubts. Dani looked at him with love and simply said, “Let’s go.”\nThey packed up their lives and moved together, knowing that home wasn’t a place—it was being together.",
+    "time5": "2023 July",
+    "title5": "A New Chapter in Switzerland",
+    "descr5": "By July 2023, their hearts were craving mountains, lakes, and a deeper connection with nature. That dream led them to Switzerland, where they felt at home the moment they arrived. A new chapter, filled with alpine air, peaceful mornings, and the sense that they were exactly where they were meant to be.",
+    "time6": "2024 December",
+    "title6": "Yes to Forever",
+    "descr6": "On December 31st, 2024, under the magic of the year’s final sunset, Michel and Dani said yes to forever. They got engaged, surrounded by love, memories, and dreams yet to be written.\nAnd now, they want to share that joy with you. Because every great love story deserves to be celebrated—not just by two people, but by the hearts who witnessed it grow"
+  }
 }
