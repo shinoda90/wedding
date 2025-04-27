@@ -1,6 +1,12 @@
-export default function Listitem({ link, text, onClick, activeSection, classType = '' }) {
-  const hash = link.split('#')[1];
-  const isActive = hash && activeSection === hash;
+export default function Listitem({
+  link,
+  text,
+  onClick,
+  activeSection,
+  classType = '',
+}) {
+  const hash = link.split('#')[1]
+  const isActive = hash && activeSection === hash
 
   return (
     <li>
@@ -17,5 +23,5 @@ export default function Listitem({ link, text, onClick, activeSection, classType
         {text}
       </a>
     </li>
-  );
+  )
 }

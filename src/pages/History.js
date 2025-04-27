@@ -1,8 +1,13 @@
-import TimelineSymbol from '../Components/TimelineSymbol';
+import TimelineSymbol from '../Components/TimelineSymbol'
+import Title from '../Components/Title'
+import { useTranslation } from 'react-i18next'
 
 function History() {
+  const { t } = useTranslation()
   return (
-    <div className="pt-20">
+    <div className="pt-10">
+      <Title title={t('navbar.history')} />
+
       <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
         <li>
           <TimelineSymbol />
@@ -19,7 +24,13 @@ function History() {
           <div className="timeline-end md:mb-10">
             <time className="font-mono italic">2021 September</time>
             <div className="text-lg font-black">New Family Member</div>
-            We found on our roadtrip in croatia our new family member Jamie.
+            We found on our roadtrip in croatia our new family member Jamie. We
+            found on our roadtrip in croatia our new family member Jamie. We
+            found on our roadtrip in croatia our new family member Jamie. We
+            found on our roadtrip in croatia our new family member Jamie. We
+            found on our roadtrip in croatia our new family member Jamie. We
+            found on our roadtrip in croatia our new family member Jamie. We
+            found on our roadtrip in croatia our new family member Jamie.
           </div>
           <hr />
         </li>
@@ -54,7 +65,7 @@ function History() {
         </li>
       </ul>
     </div>
-  );
+  )
 }
 
-export default History;
+export default History

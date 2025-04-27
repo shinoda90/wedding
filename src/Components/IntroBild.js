@@ -1,42 +1,68 @@
-import homeimage from '../image/intro-foto.webp';
-import homeimage2 from '../image/background_mobile_menu.webp';
-import Countdown from './Countdown';
-import { useEffect } from 'react';
+import homeimage from '../image/intro-foto.webp'
+import homeimage2 from '../image/intro-foto2.webp'
+import Countdown from './Countdown'
+import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function IntroBild({ onLoad }) {
+  const { t, i18n } = useTranslation()
   useEffect(() => {
-    const img = document.getElementById('hero-img'); // oder passendes img
+    const img = document.getElementById('hero-img') // oder passendes img
     if (img && !img.complete) {
-      img.onload = () => onLoad?.();
+      img.onload = () => onLoad?.()
     } else {
-      onLoad?.();
+      onLoad?.()
     }
-  }, [onLoad]);
+  }, [onLoad])
 
   return (
     <div className="relative h-dvh w-full">
+      {/* Hintergrundbild */}
       <img
         src={homeimage2}
         onLoad={() => {
-          setTimeout(onLoad, 100); // Verzögertes "Fertig"-Signal
+          setTimeout(onLoad, 100)
         }}
         alt="Dani & Michel"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover "
       />
 
-      {/* Countdown zentriert unten */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white p-4 rounded-lg z-10">
+      {/* Schwarzes Overlay */}
+      <div className="absolute inset-0 bg-gray-700 bg-opacity-60"></div>
+
+      {/* Obere Texte (Datum und Ort) */}
+      <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-center z-10 px-4">
+        <div className="text-3xl whitespace-nowrap font-slogan">
+          {t('home.date')}
+        </div>
+        <div className="text-l whitespace-nowrap font-location">
+          Cardedeu, Lago Coatepeque, El Salvador
+        </div>
+      </div>
+
+      {/* Hauptüberschrift (keine Zeilenumbrüche auf Mobile) */}
+      <div className="absolute bottom-28 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-10 px-4 py-0">
+        <div className="font-names2 whitespace-nowrap text-[12vw] sm:text-8xl">
+          Daniela & Michel
+        </div>
+        <div className="font-slogan whitespace-nowrap text-[6vw] sm:text-8xl -mt-4 mb-4">
+          Going to Forever
+        </div>
+      </div>
+
+      {/* RSVP Button und Countdown unten */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center gap-4 px-4">
+        <a
+          href="#rsvp"
+          className="btn bg-secondary hover:bg-secondary/80 text-lg h-10 min-h-10 px-4 flex items-center justify-center font-rsvp1"
+        >
+          RSVP
+        </a>
+
         <div className="flex justify-center items-center gap-4">
           <Countdown />
         </div>
       </div>
-
-      {/* Textfeld zentriert im Bild */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white p-6 rounded-lg text-center z-10">
-        <h1 className="text-8xl oswald-header">Daniela & Michel</h1>
-        <div className="text-2xl mt-8">27. December 2025 - 16:00 Uhr</div>
-        <div className="text-xl mt-8">Cardedeu, Lago Coatepeque, El Salvador</div>
-      </div>
     </div>
-  );
+  )
 }

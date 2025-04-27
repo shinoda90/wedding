@@ -1,5 +1,10 @@
 {
-  "countdown": { "days": "Tage", "hours": "Stunden", "minutes": "Minuten", "months": "Monate" },
+  "countdown": {
+    "days": "Tage",
+    "hours": "Stunden",
+    "minutes": "Minuten",
+    "months": "Monate"
+  },
   "navbar": {
     "home": "Infos",
     "location": "Location",
@@ -43,6 +48,34 @@
     "answer11": "Ja",
     "answer12": "Nein",
     "answer21": "Wein",
-    "answer22": "Bier"
-  }
+    "answer22": "Bier",
+    "feedback": "Danke für eure Rückmeldung! 🎉"
+  },
+  "history": {
+    "time1": "",
+    "title1": "",
+    "descr1": "",
+    "time2": "",
+    "title2": "",
+    "descr2": "",
+    "time3": "",
+    "title3": "",
+    "descr3": "",
+    "time4": "",
+    "title4": "",
+    "descr4": "",
+    "time5": "",
+    "title5": "",
+    "descr5": "",
+    "time6": "",
+    "title6": "",
+    "descr6": "",
+    "time7": "",
+    "title7": "",
+    "descr7": "",
+    "time8": "",
+    "title8": "",
+    "descr8": ""
+  },
+  "home": { "date": "27. December 2025" }
 }

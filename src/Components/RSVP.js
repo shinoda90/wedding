@@ -1,41 +1,55 @@
-import { useState, useMemo } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import InputSearch from './InputSearch';
-import { useTranslation } from 'react-i18next';
+import { useState, useMemo } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import InputSearch from './InputSearch'
+import { useTranslation } from 'react-i18next'
 
 export default function RSVP() {
   const guestStart = useMemo(
     () => [
-      { name: '', email: '', phone: '', drinks: [], participation: undefined, requirements: '' },
+      {
+        name: '',
+        email: '',
+        phone: '',
+        drinks: [],
+        participation: undefined,
+        requirements: '',
+      },
     ],
     []
-  );
+  )
 
-  const [guests, setGuests] = useState(guestStart);
-  const [showPopup, setShowPopup] = useState(false);
-  const [submittedGuests, setSubmittedGuests] = useState([]);
+  const [guests, setGuests] = useState(guestStart)
+  const [showPopup, setShowPopup] = useState(false)
+  const [submittedGuests, setSubmittedGuests] = useState([])
 
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation()
 
   const drinkOptions = useMemo(
-    () => ['Whiskey', 'Vodka', t('rsvp.answer21'), t('rsvp.answer22'), 'Aperol', 'Gin'],
+    () => [
+      'Whiskey',
+      'Vodka',
+      t('rsvp.answer21'),
+      t('rsvp.answer22'),
+      'Aperol',
+      'Gin',
+    ],
     [i18n.language]
-  ); // neu berechnen, wenn sich die Sprache ändert
+  ) // neu berechnen, wenn sich die Sprache ändert
 
   const handleChange = (index, field, value) => {
-    const updatedGuests = [...guests];
-    updatedGuests[index][field] = value;
-    setGuests(updatedGuests);
-  };
+    const updatedGuests = [...guests]
+    updatedGuests[index][field] = value
+    setGuests(updatedGuests)
+  }
 
   const toggleDrink = (index, drink) => {
-    const updatedGuests = [...guests];
-    const selectedDrinks = updatedGuests[index].drinks;
+    const updatedGuests = [...guests]
+    const selectedDrinks = updatedGuests[index].drinks
     updatedGuests[index].drinks = selectedDrinks.includes(drink)
       ? selectedDrinks.filter((d) => d !== drink)
-      : [...selectedDrinks, drink];
-    setGuests(updatedGuests);
-  };
+      : [...selectedDrinks, drink]
+    setGuests(updatedGuests)
+  }
 
   const addGuest = () => {
     setGuests([
@@ -47,14 +61,14 @@ export default function RSVP() {
         email: '',
         drinks: [],
       },
-    ]);
-  };
+    ])
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
-      const submitted = [];
+      const submitted = []
 
       for (const guest of guests) {
         const payload = {
@@ -63,29 +77,30 @@ export default function RSVP() {
           Wishes: guest.participation ? guest.requirements : '',
           Email: guest.participation ? guest.email : '',
           Drinks: guest.participation ? guest.drinks.join(', ') : '',
-        };
+        }
 
-        const nameEncoded = encodeURIComponent(guest.name.trim());
-        const url = `https://api.sheetbest.com/sheets/07452e3b-a7d8-4af5-9113-f2aca7cf9b89/Name/${nameEncoded}`;
+        const nameEncoded = encodeURIComponent(guest.name.trim())
+        const url = `https://api.sheetbest.com/sheets/07452e3b-a7d8-4af5-9113-f2aca7cf9b89/Name/${nameEncoded}`
 
         const response = await fetch(url, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            'X-API-KEY': 'mu6HRKCANaRrPPLgVZDKMs0Wd1NEc-ODrVxknrg-9HQNA7y1Z4x32OMxJe',
+            'X-API-KEY':
+              'mu6HRKCANaRrPPLgVZDKMs0Wd1NEc-ODrVxknrg-9HQNA7y1Z4x32OMxJe',
           },
           body: JSON.stringify(payload),
-        });
+        })
 
         if (!response.ok) {
-          throw new Error(`Fehler bei ${guest.name}: ${response.status}`);
+          throw new Error(`Fehler bei ${guest.name}: ${response.status}`)
         }
 
-        submitted.push(guest);
+        submitted.push(guest)
       }
 
-      setSubmittedGuests(submitted); // für das Popup
-      setShowPopup(true);
+      setSubmittedGuests(submitted) // für das Popup
+      setShowPopup(true)
       setGuests([
         {
           name: '',
@@ -95,30 +110,30 @@ export default function RSVP() {
           participation: undefined,
           requirements: '',
         },
-      ]);
+      ])
     } catch (error) {
-      console.error('Fehler beim Senden:', error);
-      alert('Es gab ein Problem beim Senden 😕');
+      console.error('Fehler beim Senden:', error)
+      alert('Es gab ein Problem beim Senden 😕')
     }
-  };
+  }
 
   const removeGuest = (indexToRemove) => {
     setGuests((prevGuests) =>
       prevGuests.map((guest, index) =>
         index === indexToRemove ? { ...guest, removed: true } : guest
       )
-    );
+    )
 
     // optional vollständig aus dem Array löschen nach Delay:
     setTimeout(() => {
-      setGuests((prev) => prev.filter((_, i) => i !== indexToRemove));
-    }, 200);
-  };
+      setGuests((prev) => prev.filter((_, i) => i !== indexToRemove))
+    }, 200)
+  }
 
   return (
     <>
       <form onSubmit={handleSubmit} className="">
-        <div className="flex flex-col lg:flex-row lg:flex-wrap lg:gap-4 gap-6">
+        <div className="flex flex-col lg:flex-row lg:flex-wrap lg:gap-4 gap-6 ">
           {guests.map((guest, index) => (
             <AnimatePresence key={index}>
               {!guest.removed && (
@@ -127,7 +142,7 @@ export default function RSVP() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="md:w-[48%] w-full bg-primary border-primary rounded-box border p-4 space-y-4 relative"
+                  className="md:w-[48%] w-full bg-secondary border-primary rounded-box border p-4 space-y-4 relative"
                 >
                   <h3 className="text-lg font-semibold mb-2">
                     {t(`rsvp.person`)} {index + 1}
@@ -148,7 +163,9 @@ export default function RSVP() {
 
                   <div className="flex flex-col lg:flex-row lg:items-center lg:gap-6 gap-2">
                     <label className="label cursor-pointer">
-                      <span className="font-medium ">{t('rsvp.question1')}</span>
+                      <span className="font-medium ">
+                        {t('rsvp.question1')}
+                      </span>
                     </label>
 
                     <div className="flex items-center gap-2">
@@ -158,7 +175,9 @@ export default function RSVP() {
                           name={`participation-${index}`}
                           value="yes"
                           checked={guest.participation === true}
-                          onChange={() => handleChange(index, 'participation', true)}
+                          onChange={() =>
+                            handleChange(index, 'participation', true)
+                          }
                           className="radio"
                         />
                         <span>{t('rsvp.answer11')}</span>
@@ -170,7 +189,9 @@ export default function RSVP() {
                           name={`participation-${index}`}
                           value="no"
                           checked={guest.participation === false}
-                          onChange={() => handleChange(index, 'participation', false)}
+                          onChange={() =>
+                            handleChange(index, 'participation', false)
+                          }
                           className="radio"
                         />
                         <span>{t('rsvp.answer12')}</span>
@@ -180,10 +201,15 @@ export default function RSVP() {
                   {guest.participation === true && (
                     <>
                       <div>
-                        <div className="font-medium mb-2">{t('rsvp.question2')}</div>
+                        <div className="font-medium mb-2">
+                          {t('rsvp.question2')}
+                        </div>
                         <div className="flex flex-wrap gap-4">
                           {drinkOptions.map((drink) => (
-                            <label key={drink} className="flex items-center gap-2 cursor-pointer">
+                            <label
+                              key={drink}
+                              className="flex items-center gap-2 cursor-pointer"
+                            >
                               <input
                                 type="checkbox"
                                 className="checkbox"
@@ -196,25 +222,33 @@ export default function RSVP() {
                         </div>
                       </div>
                       <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-6">
-                        <span className="font-medium whitespace-nowrap">{t('rsvp.question3')}</span>
+                        <span className="font-medium whitespace-nowrap">
+                          {t('rsvp.question3')}
+                        </span>
                         <input
                           type="email"
                           className="input input-bordered w-full"
                           placeholder="z. B. max@example.com"
                           value={guest.email}
-                          onChange={(e) => handleChange(index, 'email', e.target.value)}
+                          onChange={(e) =>
+                            handleChange(index, 'email', e.target.value)
+                          }
                           required
                         />
                       </div>
 
                       <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-6">
-                        <span className="font-medium whitespace-nowrap">{t('rsvp.question4')}</span>
+                        <span className="font-medium whitespace-nowrap">
+                          {t('rsvp.question4')}
+                        </span>
                         <input
                           type="text"
                           className="input input-bordered flex-1"
                           placeholder="Gibt es etwas, das wir wissen sollten?"
                           value={guest.requirements}
-                          onChange={(e) => handleChange(index, 'requirements', e.target.value)}
+                          onChange={(e) =>
+                            handleChange(index, 'requirements', e.target.value)
+                          }
                         />
                       </div>
                     </>
@@ -262,18 +296,21 @@ export default function RSVP() {
                   <strong>{t('contact.name')}:</strong> {guest.name}
                 </p>
                 <p>
-                  <strong>{t('rsvp.question1')}:</strong> {guest.participation ? 'Ja' : 'Nein'}
+                  <strong>{t('rsvp.question1')}:</strong>{' '}
+                  {guest.participation ? 'Ja' : 'Nein'}
                 </p>
                 {guest.participation && (
                   <>
                     <p>
-                      <strong>{t('rsvp.question2')}:</strong> {guest.drinks.join(', ')}
+                      <strong>{t('rsvp.question2')}:</strong>{' '}
+                      {guest.drinks.join(', ')}
                     </p>
                     <p>
                       <strong>{t('contact.email')}:</strong> {guest.email}
                     </p>
                     <p>
-                      <strong>{t('rsvp.question4')}:</strong> {guest.requirements}
+                      <strong>{t('rsvp.question4')}:</strong>{' '}
+                      {guest.requirements}
                     </p>
                   </>
                 )}
@@ -282,7 +319,7 @@ export default function RSVP() {
 
             <button
               onClick={() => setShowPopup(false)}
-              className="mt-4 px-6 py-2 bg-primary text-white rounded hover:bg-primary-focus"
+              className="mt-4 px-6 py-2 bg-secondary text-white rounded hover:bg-primary-focus"
             >
               OK
             </button>
@@ -290,5 +327,5 @@ export default function RSVP() {
         </div>
       )}
     </>
-  );
+  )
 }

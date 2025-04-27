@@ -2,18 +2,111 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&display=swap');
-.fancy-text {
-  font-family: 'Corinthia', cursive;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Parisienne&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Style+Script&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+.font-names2 {
+  font-family: 'Dancing Script', cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  color: #f5be89;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Oswald:wght@200..700&display=swap');
-.oswald-header {
-  font-family: 'Oswald', sans-serif;
+.font-slogan {
+  font-family: 'Playfair Display', serif;
   font-optical-sizing: auto;
-  font-weight: 200;
+  font-weight: 400;
   font-style: normal;
+  color: #f5be89;
 }
+
+.font-location {
+  font-family: 'Playfair Display', serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #ffffff;
+}
+
+.font-rsvp1 {
+  font-family: 'Work Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #708195;
+}
+
+.font-cd-number {
+  font-family: 'Montserrat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #f3dbb9;
+}
+
+.font-cd-text {
+  font-family: 'Montserrat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  color: #f3dbb9;
+}
+
+.font-navbar {
+  font-family: 'Work Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #708195;
+}
+
+.font-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  color: #708195;
+}
+
+.font-info {
+  font-family: 'Work Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  color: #708195;
+}
+
+.font-tl-title {
+  font-family: 'Work Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  color: #5b6878;
+}
+
+.font-tl-text {
+  font-family: 'Work Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #708195;
+}
+
+.font-tl-time {
+  font-family: 'Work Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+  color: #5b6878;
+}
+
+.font-titles {
+  font-family: 'Dancing Script', cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  color: #f5be89;
+}
+
 html {
   scroll-behavior: smooth;
 }

@@ -32,11 +32,10 @@ module.exports = {
         mytheme: {
           // Optional noch mehr anpassen:
           // Definiert die Farbwerte für das DaisyUI Theme
-          primary: '#e7a07b',
-          secondary: '#f6d860',
+          primary: '#e7dfd8',
+          secondary: '#f5be89',
           accent: '#37cdbe',
           neutral: '#3d4451',
-
           info: '#3abff8',
           success: '#36d399',
           warning: '#fbbd23',
@@ -45,4 +44,4 @@ module.exports = {
       },
     ],
   },
-};
+}

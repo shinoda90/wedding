@@ -1,41 +1,48 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Guide from './pages/Guide';
-import Home from './pages/Home';
-import NavBar from './Components/NavBar';
-import History from './pages/History';
-import { useEffect } from 'react';
-import menuImage from './image/background_mobile_menu.webp'; // richtig importieren!
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from 'react-router-dom'
+import Guide from './pages/Guide'
+import Home from './pages/Home'
+import NavBar from './Components/NavBar'
+import History from './pages/History'
+import { useEffect } from 'react'
+import menuImage from './image/background_mobile_menu.webp' // richtig importieren!
 
 function ScrollToHash() {
-  const location = useLocation();
+  const location = useLocation()
 
   useEffect(() => {
     if (location.hash) {
-      const element = document.querySelector(location.hash);
+      const element = document.querySelector(location.hash)
       if (element) {
-        element.scrollIntoView({ behavior: 'auto', block: 'start' });
+        element.scrollIntoView({ behavior: 'auto', block: 'start' })
       }
     }
-  }, [location]);
+  }, [location])
 
-  return null;
+  return null
 }
 
 function App() {
   return (
-    <Router>
-      {/* Bild unsichtbar laden */}
-      <img src={menuImage} alt="" style={{ display: 'none' }} />
+    <div className="bg-primary">
+      <Router>
+        {/* Bild unsichtbar laden */}
+        <img src={menuImage} alt="" style={{ display: 'none' }} />
 
-      <NavBar />
-      <ScrollToHash />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/guide" element={<Guide />} />
-        <Route path="/ourhistory" element={<History />} />
-      </Routes>
-    </Router>
-  );
+        <NavBar />
+        <ScrollToHash />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/guide" element={<Guide />} />
+          <Route path="/ourhistory" element={<History />} />
+        </Routes>
+      </Router>
+    </div>
+  )
 }
 
-export default App;
+export default App
