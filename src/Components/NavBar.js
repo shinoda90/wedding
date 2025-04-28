@@ -5,7 +5,7 @@ import i18n from 'i18next'
 import { useTranslation } from 'react-i18next'
 import SlideDown from './SlideDown'
 import { ReactComponent as MailIcon } from '../icons/mail_icon.svg'
-import MobileMenu from './MobileMenu' // anpassen
+import MobileMenu from './MobileMenu'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)

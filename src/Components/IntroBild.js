@@ -45,7 +45,7 @@ export default function IntroBild({ onLoad }) {
         <div className="font-names2 whitespace-nowrap text-[12vw] sm:text-8xl">
           Daniela & Michel
         </div>
-        <div className="font-slogan whitespace-nowrap text-[6vw] sm:text-8xl -mt-4 mb-4 lg:text-5xl lg:p-2">
+        <div className="font-slogan whitespace-nowrap text-[6vw] sm:text-8xl -mt-4 mb-4 lg:text-5xl lg:p-5">
           Going to Forever
         </div>
       </div>

@@ -215,8 +215,6 @@ export default function RSVP() {
       alert('Es gab ein Problem beim Senden 😕')
     }
   }
-  console.log('Submitted ')
-  console.log(submittedGuests)
 
   return (
     <>

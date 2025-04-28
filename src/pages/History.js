@@ -1,71 +1,41 @@
-import TimelineSymbol from '../Components/TimelineSymbol'
-import Title from '../Components/Title'
+import TimelineStep from '../Components/TimelineStep'
 import { useTranslation } from 'react-i18next'
+import { ReactComponent as ArriveIcon } from '../icons/pigeon.svg'
+import { ReactComponent as ChurchIcon } from '../icons/church.svg'
+import { ReactComponent as CakeIcon } from '../icons/cup_cake.svg'
+import { ReactComponent as GamesIcon } from '../icons/crown.svg'
+import { ReactComponent as FoodIcon } from '../icons/plate.svg'
+import { ReactComponent as PartyIcon } from '../icons/party.svg'
 
-function History() {
+export default function History({ title }) {
   const { t } = useTranslation()
-  return (
-    <div className="pt-10">
-      <Title title={t('navbar.history')} />
 
-      <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
-        <li>
-          <TimelineSymbol />
-          <div className="timeline-start mb-10 md:text-end">
-            <time className="font-mono italic">2019 April</time>
-            <div className="text-lg font-black">Let the journey begin</div>
-            We meet in Hamburg and became a couple.
-          </div>
-          <hr />
-        </li>
-        <li>
-          <hr />
-          <TimelineSymbol />
-          <div className="timeline-end md:mb-10">
-            <time className="font-mono italic">2021 September</time>
-            <div className="text-lg font-black">New Family Member</div>
-            We found on our roadtrip in croatia our new family member Jamie. We
-            found on our roadtrip in croatia our new family member Jamie. We
-            found on our roadtrip in croatia our new family member Jamie. We
-            found on our roadtrip in croatia our new family member Jamie. We
-            found on our roadtrip in croatia our new family member Jamie. We
-            found on our roadtrip in croatia our new family member Jamie. We
-            found on our roadtrip in croatia our new family member Jamie.
-          </div>
-          <hr />
-        </li>
-        <li>
-          <hr />
-          <TimelineSymbol />
-          <div className="timeline-start mb-10 md:text-end">
-            <time className="font-mono italic">2022 January</time>
-            <div className="text-lg font-black">Lets go South</div>
-            We moved from Hamburg to Stuttgart.
-          </div>
-          <hr />
-        </li>
-        <li>
-          <hr />
-          <TimelineSymbol />
-          <div className="timeline-end md:mb-10">
-            <time className="font-mono italic">2023 July</time>
-            <div className="text-lg font-black">Prepare for climbing</div>
-            We moved to Zurich and found pure nature.
-          </div>
-          <hr />
-        </li>
-        <li>
-          <hr />
-          <TimelineSymbol />
-          <div className="timeline-start mb-10 md:text-end">
-            <time className="font-mono italic">2024 December</time>
-            <div className="text-lg font-black">Yes!</div>
-            Michel finally proposed to Dani at Costa del Sol in El Salvador.
-          </div>
-        </li>
+  const icons = [
+    ArriveIcon,
+    ChurchIcon,
+    CakeIcon,
+    GamesIcon,
+    FoodIcon,
+    PartyIcon,
+  ]
+
+  return (
+    <>
+      <ul className="timeline max-md:timeline-compact timeline-vertical mt-10 snap-none scroll-smooth">
+        {icons.map((Icon, index) => (
+          <TimelineStep
+            key={index}
+            Icon={Icon}
+            containerClass={
+              index % 2 === 0 ? 'timeline-start md:text-end' : 'timeline-end'
+            }
+            time={t(`history.time${index + 1}`)}
+            step={t(`history.title${index + 1}`)}
+            descr={t(`history.descr${index + 1}`)}
+            isLast={index === icons.length - 1} // Flag für letztes Element
+          />
+        ))}
       </ul>
-    </div>
+    </>
   )
 }
-
-export default History
