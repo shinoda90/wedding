@@ -5,9 +5,11 @@ import { useTranslation } from 'react-i18next'
 import { createPortal } from 'react-dom'
 import { ReactComponent as AddPersonIcon } from '../icons/person_add_icon.svg'
 import { ReactComponent as DeletePersonIcon } from '../icons/person_remove_icon.svg'
+import { useRef } from 'react'
 
 export default function RSVP() {
   const { t, i18n } = useTranslation()
+  const guestRefs = useRef([])
   const url = process.env.REACT_APP_SHEETBEST_URL
   const [allPossibleGuests, setAllPossibleGuests] = useState([]) // Alle geladenen Gäste
   const [chosenGuests, setChosenGuests] = useState([]) // Alle geladenen Gäste
@@ -104,6 +106,15 @@ export default function RSVP() {
     const updatedGuests = [...guests]
     updatedGuests[index][field] = value
     setGuests(updatedGuests)
+
+    if (field === 'participation' && value === true) {
+      setTimeout(() => {
+        const guestRef = guestRefs.current[index]
+        if (guestRef) {
+          guestRef.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100) // kleines Timeout, damit sich das DOM aktualisiert
+    }
   }
 
   const toggleDrink = (index, drinkId) => {
@@ -116,17 +127,28 @@ export default function RSVP() {
   }
 
   const addGuest = () => {
-    setGuests([
-      ...guests,
-      {
-        name: '',
-        email: '',
-        phone: '',
-        drinks: [],
-        participation: undefined,
-        requirements: '',
-      },
-    ])
+    setGuests((prevGuests) => {
+      const updatedGuests = [
+        ...prevGuests,
+        {
+          name: '',
+          email: '',
+          phone: '',
+          drinks: [],
+          participation: undefined,
+          requirements: '',
+        },
+      ]
+
+      setTimeout(() => {
+        const lastGuestRef = guestRefs.current[updatedGuests.length - 1]
+        if (lastGuestRef) {
+          lastGuestRef.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100) // kleines Timeout, damit der neue Fieldset im DOM existiert
+
+      return updatedGuests
+    })
   }
 
   const removeGuest = (index) => {
@@ -154,6 +176,24 @@ export default function RSVP() {
 
     return isNameValid && isNotSubmitted && hasParticipationInfo
   })
+
+  useEffect(() => {
+    if (allValid) {
+      setTimeout(() => {
+        const submitButton = document.getElementById('submit-button')
+        if (submitButton) {
+          const rect = submitButton.getBoundingClientRect()
+          const offset = 120 // z.B. 120px Abstand vom Rand
+          const absoluteElementTop = rect.top + window.scrollY
+          const scrollTarget =
+            absoluteElementTop - window.innerHeight + rect.height + offset
+
+          window.scrollTo({ top: scrollTarget, behavior: 'smooth' })
+        }
+      }, 100) // kurze Pause für DOM-Sicherheit
+    }
+  }, [allValid])
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -227,6 +267,7 @@ export default function RSVP() {
           {guests.map((guest, index) => (
             <AnimatePresence key={index}>
               <motion.fieldset
+                ref={(el) => (guestRefs.current[index] = el)}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -369,6 +410,7 @@ export default function RSVP() {
         <div className="w-full flex justify-center pt-8 pb-20">
           <button
             type="submit"
+            id="submit-button"
             className="btn btn-accent w-full max-w-xs md:max-w-md"
             disabled={!allValid || isSubmitting}
           >
