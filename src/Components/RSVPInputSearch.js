@@ -4,9 +4,10 @@ import { useTranslation } from 'react-i18next'
 export default function RSVPInputSearch({
   value,
   onChange,
-  availableGuests,
-  alreadyResponded,
-  selectedGuests,
+  // alreadyResponded,
+  submittedNames,
+  chosenGuests,
+  allPossibleGuests,
 }) {
   const [showOptions, setShowOptions] = useState(false)
   const wrapperRef = useRef(null)
@@ -29,17 +30,18 @@ export default function RSVPInputSearch({
     }
   }, [])
 
-  // Überprüfung, ob der Name ein gültiger Gästename ist
+  const alreadySubmitted = submittedNames.includes(value.trim())
+
   const isValid =
-    value.trim() === '' ||
-    availableGuests.includes(value.trim()) ||
-    selectedGuests.includes(value.trim())
+    (value.trim() === '' || allPossibleGuests.includes(value.trim())) &&
+    !alreadySubmitted
 
   // Gefilterte Gäste: Gäste, die im Dropdown angezeigt werden sollen
-  const filteredGuests = availableGuests
+  const filteredGuests = allPossibleGuests
     .filter((guest) => guest.toLowerCase().includes(value?.toLowerCase() || ''))
-    .filter((guest) => !selectedGuests.includes(guest)) // Nicht aus der Auswahl
-    .filter((guest) => !alreadyResponded.includes(guest)) // Gäste, die bereits geantwortet haben, ausschließen
+    .filter((guest) => !chosenGuests.includes(guest))
+    .filter((guest) => !submittedNames.includes(guest))
+  //.filter((guest) => !alreadyResponded.includes(guest)) // Gäste, die bereits geantwortet haben, ausschließen
 
   return (
     <div className="relative w-full" ref={wrapperRef}>
@@ -60,22 +62,24 @@ export default function RSVPInputSearch({
           {t('rsvp.warning')}
         </div>
       )}
-      {showOptions && (
-        <ul className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-primary -mt-2 py-1 shadow-lg ring-1 ring-black ring-opacity-5">
-          {filteredGuests.map((guest, idx) => (
-            <li
-              key={idx}
-              onClick={() => handleSelect(guest)} // Auswahl eines Gastnamens
-              className="cursor-pointer px-4 py-2 hover:bg-primary"
-            >
-              {guest}
-            </li>
-          ))}
-          {filteredGuests.length === 0 && (
-            <div className="text-center text-red-400 p-2">
-              {t('rsvp.warning')}
-            </div>
-          )}
+      {showOptions && (!isValid || filteredGuests.length > 0) && (
+        <ul className="absolute z-10 max-h-60 w-full overflow-auto rounded-md bg-primary py-1 shadow-lg ring-1 ring-black ring-opacity-5">
+          {filteredGuests.length > 0
+            ? filteredGuests.map((guest, idx) => (
+                <li
+                  key={idx}
+                  onClick={() => handleSelect(guest)}
+                  className="cursor-pointer px-4 py-2 hover:bg-primary"
+                >
+                  {guest}
+                </li>
+              ))
+            : !isValid &&
+              value.trim() !== '' && (
+                <div className="text-center text-red-400 p-2">
+                  {t('rsvp.warning')}
+                </div>
+              )}
         </ul>
       )}
     </div>

@@ -2,7 +2,7 @@ import Location from '../Components/Location'
 import Timeline from '../Components/Timeline'
 import IntroBild from '../Components/IntroBild'
 import SectionWrapper from '../Components/SectionWrapper'
-import RSVP from '../Components/ARSVP'
+import RSVP from '../Components/RSVP'
 import { useTranslation } from 'react-i18next'
 
 export default function Home() {
