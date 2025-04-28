@@ -7,10 +7,10 @@ export default function TimelineStep({
   isLast,
 }) {
   return (
-    <li className="timeline-item mt-4 mb-4">
+    <li className="timeline-item ">
       {/* Icon in der Mitte */}
       <div className="timeline-middle relative lg:mr-0 mr-2">
-        <div className="bg-gray-200 p-2 rounded-full shadow-md -mt-4">
+        <div className="bg-gray-200 p-2 rounded-full shadow-md">
           <Icon className="w-8 h-8 text-secondary" />
         </div>
 

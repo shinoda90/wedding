@@ -1,9 +1,19 @@
 import { useEffect } from 'react'
 import menuImage from '../image/background_mobile_menu.webp'
 import { useTranslation } from 'react-i18next'
+import MobileMenuEntry from './MobileMenuEntry'
 
 export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
   const { t, i18n } = useTranslation()
+  const firstMenuItems = [
+    { href: '/#info', text: t('navbar.info') },
+    { href: '/#location', text: t('navbar.location') },
+    { href: '/#timeline', text: t('navbar.timeline') },
+  ]
+  const secondMenuItems = [
+    { href: '/ourhistory', text: t('navbar.history') },
+    { href: '/guide', text: t('navbar.guide') },
+  ]
 
   // useEffect, um das Scrollen im Hintergrund zu verhindern, wenn das Menü geöffnet ist
   useEffect(() => {
@@ -35,7 +45,7 @@ export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
       </button>
       <div className="absolute top-4 left-4 z-50">
         <select
-          className="select select-sm border-primary w-16 md:w-40 bg-gray-300"
+          className="select select-sm border-primary w-16 md:w-40 bg-black/40"
           onChange={(e) => i18n.changeLanguage(e.target.value)}
           value={i18n.language}
           aria-label="Select Language"
@@ -55,32 +65,21 @@ export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
           className="w-full h-full object-cover pointer-events-none"
         />
         {/* Orange Overlay */}
-        <div className="absolute inset-0 bg-orange-600 opacity-70"></div>
+        <div className="absolute inset-0 bg-orange-400 opacity-70"></div>
       </div>
 
       {/* Menüeinträge */}
       <nav className="flex flex-col gap-7 text-xl relative z-40">
-        <a
-          href="/"
-          onClick={onClose}
-          className="bg-white/30 px-6 py-2 rounded-md inline-block"
-        >
-          {t('navbar.info')}
-        </a>
-        <a
-          href="/#location"
-          onClick={onClose}
-          className="bg-white/30 px-6 py-2 rounded-md inline-block"
-        >
-          {t('navbar.location')}
-        </a>
-        <a
-          href="/#timeline"
-          onClick={onClose}
-          className="bg-white/30 px-6 py-2 rounded-md inline-block"
-        >
-          {t('navbar.timeline')}
-        </a>
+        {firstMenuItems.map((item, index) => (
+          <MobileMenuEntry
+            key={index}
+            href={item.href}
+            text={item.text}
+            onClick={onClose}
+          />
+        ))}
+
+        {/* RSVP-Button extra */}
         <a
           href="/#rsvp"
           className="btn bg-secondary text-xl px-6 py-2 rounded font-rsvp1 inline-block"
@@ -88,26 +87,22 @@ export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
         >
           RSVP
         </a>
-        <a
-          href="/ourhistory"
-          onClick={onClose}
-          className="bg-black/40 px-6 py-2 rounded-md inline-block"
-        >
-          {t('navbar.history')}
-        </a>
-        <a
-          href="/guide"
-          onClick={onClose}
-          className="bg-white/30 px-6 py-2 rounded-md inline-block"
-        >
-          {t('navbar.guide')}
-        </a>
+
+        {/* Rechte Seite */}
+        {secondMenuItems.map((item, index) => (
+          <MobileMenuEntry
+            key={`second-${index}`}
+            href={item.href}
+            text={item.text}
+            onClick={onClose}
+          />
+        ))}
         <button
           onClick={() => {
             setIsContactOpen(true)
             onClose()
           }}
-          className="bg-white/30 px-6 py-2 rounded-md inline-block uppercase"
+          className="bg-black/40 px-6 py-2 rounded-md inline-block uppercase"
         >
           {t('navbar.contact')}
         </button>
