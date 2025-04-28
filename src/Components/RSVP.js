@@ -2,6 +2,9 @@ import { useState, useEffect, useMemo } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import InputSearch from './RSVPInputSearch'
 import { useTranslation } from 'react-i18next'
+import { createPortal } from 'react-dom'
+import { ReactComponent as AddPersonIcon } from '../icons/person_add_icon.svg'
+import { ReactComponent as DeletePersonIcon } from '../icons/person_remove_icon.svg'
 
 export default function RSVP() {
   const { t, i18n } = useTranslation()
@@ -35,6 +38,19 @@ export default function RSVP() {
     ],
     [i18n.language]
   )
+
+  useEffect(() => {
+    if (showPopup) {
+      document.body.style.overflow = 'hidden' // Scrollen deaktivieren
+    } else {
+      document.body.style.overflow = 'auto' // Scrollen wieder erlauben
+    }
+
+    // Cleanup für Sicherheit, falls sich etwas komisch verhält
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [showPopup])
 
   useEffect(() => {
     const fetchGuests = async () => {
@@ -227,10 +243,10 @@ export default function RSVP() {
                   submittedNames={submittedGuests.map((g) => g.name)}
                 />
 
-                <div>
+                <div className="pt-2">
                   <label>{t('rsvp.question1')}</label>
                   <div className="flex gap-4">
-                    <label className="flex items-center gap-1">
+                    <label className="flex items-center gap-2">
                       <input
                         type="radio"
                         name={`participation-${index}`}
@@ -239,11 +255,12 @@ export default function RSVP() {
                         onChange={() =>
                           handleGuestChange(index, 'participation', true)
                         }
-                        className="radio"
+                        className="radio radio-accent bg-white"
                       />
                       <span>{t('rsvp.answer11')}</span>
                     </label>
-                    <label className="flex items-center gap-1">
+
+                    <label className="flex items-center gap-2">
                       <input
                         type="radio"
                         name={`participation-${index}`}
@@ -252,7 +269,7 @@ export default function RSVP() {
                         onChange={() =>
                           handleGuestChange(index, 'participation', false)
                         }
-                        className="radio"
+                        className="radio radio-accent bg-white"
                       />
                       <span>{t('rsvp.answer12')}</span>
                     </label>
@@ -323,76 +340,87 @@ export default function RSVP() {
                   </>
                 )}
 
-                {index > 0 && (
-                  <button
-                    type="button"
-                    onClick={() => removeGuest(index)}
-                    className="absolute top-2 right-20 btn btn-xs btn-error"
-                  >
-                    {t('rsvp.delete')}
-                  </button>
-                )}
-                {index === guests.length - 1 && (
-                  <button
-                    type="button"
-                    onClick={addGuest}
-                    className="absolute top-2 right-2 btn btn-xs btn-outline"
-                  >
-                    {t('rsvp.add')}
-                  </button>
-                )}
+                <div className="absolute top-2 right-5 flex gap-5">
+                  {index === guests.length - 1 && (
+                    <button
+                      type="button"
+                      onClick={addGuest}
+                      className="btn btn-xs bg-accent"
+                    >
+                      <AddPersonIcon />
+                    </button>
+                  )}
+                  {index > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => removeGuest(index)}
+                      className="btn btn-xs bg-warning"
+                    >
+                      <DeletePersonIcon />
+                    </button>
+                  )}
+                </div>
               </motion.fieldset>
             </AnimatePresence>
           ))}
         </div>
-        <div className="w-full flex justify-center pt-8">
-          <button type="submit" className="btn btn-accent" disabled={!allValid}>
-            {t('button.submit')}
+        <div className="w-full flex justify-center pt-8 pb-20">
+          <button
+            type="submit"
+            className="btn btn-accent w-full max-w-xs md:max-w-md"
+            disabled={!allValid}
+          >
+            {allValid ? t('button.submit') : t('button.warning')}
           </button>
         </div>
       </form>
 
-      {showPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full relative text-center">
-            <h2 className="text-2xl font-bold mb-4">{t('rsvp.feedback')}</h2>
-
-            {submittedGuests.map((guest, i) => (
-              <div key={i} className="mb-4 text-left">
-                <p>
-                  <strong>{t('contact.name')}:</strong> {guest.name}
-                </p>
-                <p>
-                  <strong>{t('rsvp.question1')}:</strong>{' '}
-                  {guest.participation ? 'Yes' : 'No'}
-                </p>
-                {guest.participation && (
-                  <>
-                    <p>
-                      <strong>{t('rsvp.question2')}:</strong>{' '}
-                      {guest.drinks.join(', ')}
-                    </p>
-                    <p>
-                      <strong>{t('contact.email')}:</strong> {guest.email}
-                    </p>
-                    <p>
-                      <strong>{t('rsvp.question4')}:</strong>{' '}
-                      {guest.requirements}
-                    </p>
-                  </>
-                )}
-              </div>
-            ))}
-
-            <button
-              onClick={() => setShowPopup(false)}
-              className="mt-4 px-6 py-2 bg-secondary text-white rounded hover:bg-primary-focus"
+      {showPopup &&
+        createPortal(
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div
+              className="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full mx-4 relative text-center
+                    transform scale-95 opacity-0 animate-popup"
             >
-              OK
-            </button>
-          </div>
-        </div>
-      )}
+              <h2 className="text-2xl font-bold mb-4">{t('rsvp.feedback')}</h2>
+
+              {submittedGuests.map((guest, i) => (
+                <div key={i} className="mb-4 text-left">
+                  <p>
+                    <strong>{t('contact.name')}:</strong> {guest.name}
+                  </p>
+                  <p>
+                    <strong>{t('rsvp.question1')}:</strong>{' '}
+                    {guest.participation ? 'Yes' : 'No'}
+                  </p>
+                  {guest.participation && (
+                    <>
+                      <p>
+                        <strong>{t('rsvp.question2')}:</strong>{' '}
+                        {guest.drinks.join(', ')}
+                      </p>
+                      <p>
+                        <strong>{t('contact.email')}:</strong> {guest.email}
+                      </p>
+                      <p>
+                        <strong>{t('rsvp.question4')}:</strong>{' '}
+                        {guest.requirements}
+                      </p>
+                    </>
+                  )}
+                </div>
+              ))}
+
+              <button
+                onClick={() => setShowPopup(false)}
+                className="mt-4 px-6 py-2 bg-secondary text-white rounded hover:bg-primary-focus"
+              >
+                OK
+              </button>
+            </div>
+          </div>,
+          document.getElementById('popup-root') // << hier wird es außerhalb des Layouts gerendert!
+        )}
     </>
   )
 }

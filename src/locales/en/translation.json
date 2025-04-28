@@ -6,7 +6,7 @@
     "months": "months"
   },
   "navbar": {
-    "home": "Information",
+    "info": "Information",
     "location": "Location",
     "contact": "Contact",
     "timeline": "Schedule",
@@ -41,7 +41,9 @@
     "placeholder1": "Share your name with us",
     "placeholder2": "e.g. dani@michel.com",
     "placeholder3": "e.g. +41 78 ....",
-    "placeholder4": "Ask questions or tell us what we should know :)"
+    "placeholder4": "Ask questions or tell us what we should know :)",
+    "whatsapp": "Shoot us a WhatsApp",
+    "formular": "Type it, ship it!"
   },
   "rsvp": {
     "person": "Person",
@@ -61,11 +63,10 @@
     "add": "Add person",
     "delete": "Remove person"
   },
-  "home": {
-    "date": "December 27, 2025"
-  },
+  "home": { "date": "December 27, 2025" },
   "button": {
-    "submit": "Submit"
+    "submit": "Submit",
+    "warning": "Missing some info – please fill in!"
   },
   "history": {
     "time1": "2018 December",

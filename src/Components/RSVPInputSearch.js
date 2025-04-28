@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { ReactComponent as CheckIcon } from '../icons/check_circle.svg'
+import { ReactComponent as CloseIcon } from '../icons/close_icon.svg'
 
 export default function RSVPInputSearch({
   value,
@@ -45,20 +47,33 @@ export default function RSVPInputSearch({
 
   return (
     <div className="relative w-full" ref={wrapperRef}>
+      {isValid && value.trim() !== '' && (
+        <CheckIcon className="w-6 h-6 fill-current text-accent absolute left-2 top-1/2 transform -translate-y-1/2 flex items-center pointer-events-none" />
+      )}
       <input
         type="text"
-        className="input input-bordered w-full mb-2"
+        className="input input-bordered w-full pl-10" // Mehr padding links!
         placeholder={t('rsvp.placeholder1')}
         value={value}
         onChange={(e) => {
-          onChange(e.target.value) // Aktualisieren des Werts
-          setShowOptions(true) // Dropdown anzeigen
+          onChange(e.target.value)
+          setShowOptions(true)
         }}
-        onFocus={() => setShowOptions(true)} // Dropdown beim Fokus öffnen
+        onFocus={() => setShowOptions(true)}
       />
+
+      {value.trim() !== '' && (
+        <button
+          type="button"
+          onClick={() => onChange('')}
+          className="absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+        >
+          <CloseIcon />
+        </button>
+      )}
       {/* Warnhinweis nur anzeigen, wenn der Name nicht in der Liste der verfügbaren Gäste ist */}
       {!isValid && value.trim() !== '' && (
-        <div className="absolute left-0 top-full -mt-1 w-full h-5 text-left text-red-500 text-sm">
+        <div className="absolute left-0 top-full w-full h-5 text-left text-red-500 text-sm">
           {t('rsvp.warning')}
         </div>
       )}

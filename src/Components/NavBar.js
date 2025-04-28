@@ -58,15 +58,15 @@ export default function Navbar() {
           ☰
         </button>
       </div>
-      <div className="navbar lg:fixed bg-secondary h-16 shadow-sm hidden lg:flex top-0 w-full z-50 uppercase font-navbar">
+      <div className="navbar lg:fixed bg-neutral h-16 shadow-sm hidden lg:flex top-0 w-full z-50 uppercase font-navbar">
         {/* Desktop Navbar (mit Logo in der Mitte) */}
         <div className="hidden lg:flex items-center justify-between space-x-8 w-full">
           {/* Box 1 (nimmt den linken Platz ein) */}
           <div className="flex-1 flex justify-end pl-6">
             <ul className="flex items-center space-x-6">
               <Listitem
-                link="/"
-                text={t('navbar.home')}
+                link="/#home"
+                text={t('navbar.info')}
                 activeSection={activeSection}
               />
               <Listitem
@@ -115,7 +115,7 @@ export default function Navbar() {
         </div>
         <div className="absolute hidden right-6 lg:flex items-center space-x-4">
           <select
-            className="select select-sm border-primary"
+            className="select select-sm border-primary bg-primary"
             onChange={(e) => changeLanguage(e.target.value)}
             value={i18n.language}
             aria-label="Select Language"
@@ -127,15 +127,19 @@ export default function Navbar() {
           <button
             onClick={() => setIsContactOpen(true)}
             aria-label="Open Contact Form"
-            className="group bg-transparent border-none p-2 rounded-md hover:bg-green-600 transition-colors"
+            className="group bg-transparent border-none p-2 rounded-md hover:bg-primary transition-colors"
           >
-            <MailIcon className="w-6 h-6 fill-current text-gray-700 group-hover:text-white" />
+            <MailIcon className="w-6 h-6 fill-current text-primary group-hover:text-secondary" />
           </button>
         </div>
       </div>
 
       {/* Mobile Menü */}
-      <MobileMenu isOpen={isOpen} onClose={handleClose} />
+      <MobileMenu
+        isOpen={isOpen}
+        onClose={handleClose}
+        setIsContactOpen={setIsContactOpen}
+      />
 
       {/* Kontakt Formular */}
       <SlideDown

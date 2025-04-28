@@ -10,7 +10,10 @@ export default function Home() {
 
   return (
     <div className="bg-primary">
-      <IntroBild />
+      <SectionWrapper id="home" title="">
+        <IntroBild />
+      </SectionWrapper>
+
       <div className="w-full px-4 lg:w-[70%] lg:px-0 mx-auto">
         <SectionWrapper id="location" title={t('navbar.location')}>
           <Location />

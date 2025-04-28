@@ -1,5 +1,7 @@
 export default function Title({ title }) {
   return (
-    <div className="text-center text-6xl m-5 font-titles mt-12">{title}</div>
+    <div className="text-center lg:text-6xl text-5xl m-5 font-titles mt-12">
+      {title}
+    </div>
   )
 }

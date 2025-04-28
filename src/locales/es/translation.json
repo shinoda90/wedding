@@ -1,17 +1,17 @@
 {
   "countdown": {
-    "days": "días",
+    "days": "dias",
     "hours": "horas",
     "minutes": "minutos",
     "months": "meses"
   },
   "navbar": {
-    "home": "Información",
+    "info": "Información",
     "location": "Localización",
-    "contact": "Contáctanos",
+    "contact": "Contactanos",
     "timeline": "Horario",
     "history": "Nuestra Historia",
-    "guide": "Guía"
+    "guide": "Guia"
   },
   "timeline": {
     "time1": "4:00 PM - 4:30 PM",
@@ -35,37 +35,38 @@
   },
   "contact": {
     "name": "Nombre*",
-    "email": "Correo Electrónico*",
-    "phone": "Número de Teléfono",
+    "email": "E-Mail*",
+    "phone": "Numero de Telefono",
     "message": "Mensaje*",
     "placeholder1": "Cuéntanos tu nombre",
     "placeholder2": "p.ej. dani@michel.com",
     "placeholder3": "p.ej. +41 78 ....",
-    "placeholder4": "Haz preguntas o cuéntanos lo que deberíamos saber :)"
+    "placeholder4": "Haz preguntas o cuéntanos lo que deberíamos saber :)",
+    "whatsapp": "Tíranos un WhatsApp",
+    "formular": "¡Suelta la sopa!"
   },
   "rsvp": {
     "person": "Persona",
-    "question1": "¿Vas a venir?*",
+    "question1": "Vas a venir?*",
     "question2": "¿Solicitudes de bebidas?*",
-    "question3": "Correo Electrónico (para actualizaciones)*",
+    "question3": "Email (para Updates)*",
     "question4": "¿Preferencias especiales o alergias?",
-    "answer11": "Sí",
+    "answer11": "Si",
     "answer12": "No",
     "answer21": "Vino",
     "answer22": "Cerveza",
-    "feedback": "¡Gracias por tu respuesta! 🎉",
-    "warning": "¡Nombre no encontrado en la lista de invitados!",
+    "feedback": "¡Gracias por tus comentarios! 🎉",
+    "warning": "¡Nombre no en la lista de invitados!",
     "placeholder1": "Buscar o seleccionar un nombre",
     "placeholder3": "p.ej. dani@michel.com",
     "placeholder4": "¡Cuéntanos lo que deberíamos saber!",
     "add": "Agregar persona",
     "delete": "Eliminar persona"
   },
-  "home": {
-    "date": "27 de diciembre de 2025"
-  },
+  "home": { "date": "Diciembre 27, 2025" },
   "button": {
-    "submit": "Enviar"
+    "submit": "Enviar",
+    "warning": "¡Faltan datos! Por favor completa."
   },
   "history": {
     "time1": "Diciembre 2018",

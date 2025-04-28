@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import menuImage from '../image/background_mobile_menu.webp'
 import { useTranslation } from 'react-i18next'
 
-export default function MobileMenu({ isOpen, onClose }) {
-  const { t } = useTranslation()
+export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
+  const { t, i18n } = useTranslation()
 
   // useEffect, um das Scrollen im Hintergrund zu verhindern, wenn das Menü geöffnet ist
   useEffect(() => {
@@ -29,10 +29,22 @@ export default function MobileMenu({ isOpen, onClose }) {
       <button
         onClick={onClose}
         aria-label="Close Menu"
-        className="absolute top-6 right-6 text-3xl z-50"
+        className="absolute top-4 right-4 text-3xl z-50"
       >
         ✕
       </button>
+      <div className="absolute top-4 left-4 z-50">
+        <select
+          className="select select-sm border-primary w-16 md:w-40 bg-gray-300"
+          onChange={(e) => i18n.changeLanguage(e.target.value)}
+          value={i18n.language}
+          aria-label="Select Language"
+        >
+          <option value="en">EN</option>
+          <option value="de">DE</option>
+          <option value="es">ES</option>
+        </select>
+      </div>
 
       {/* Hintergrundbild */}
       <div className="absolute inset-0">
@@ -47,13 +59,13 @@ export default function MobileMenu({ isOpen, onClose }) {
       </div>
 
       {/* Menüeinträge */}
-      <nav className="flex flex-col gap-8 text-xl relative z-40">
+      <nav className="flex flex-col gap-7 text-xl relative z-40">
         <a
           href="/"
           onClick={onClose}
           className="bg-white/30 px-6 py-2 rounded-md inline-block"
         >
-          {t('navbar.home')}
+          {t('navbar.info')}
         </a>
         <a
           href="/#location"
@@ -90,13 +102,15 @@ export default function MobileMenu({ isOpen, onClose }) {
         >
           {t('navbar.guide')}
         </a>
-        <a
-          href="/#contact"
-          onClick={onClose}
+        <button
+          onClick={() => {
+            setIsContactOpen(true)
+            onClose()
+          }}
           className="bg-white/30 px-6 py-2 rounded-md inline-block"
         >
-          Contact Us
-        </a>
+          {t('navbar.contact')}
+        </button>
       </nav>
     </div>
   )

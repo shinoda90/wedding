@@ -8,14 +8,21 @@ export default function SectionWrapper({ id, title, children }) {
   })
 
   return (
-    <section id={id} className="scroll-mt-24 lg:min-h-[calc(100vh-4rem)]">
+    <section
+      id={id}
+      className="min-h-[100dvh] scroll-mt-6 lg:scroll-mt-24 lg:min-h-[calc(100dvh-4rem)]"
+    >
       <div
         ref={ref}
         className={`transition-all duration-700 ${
-          inView ? 'translate-y-0 opacity-100' : 'translate-y-1/4 opacity-0'
+          title && inView
+            ? 'translate-y-0 opacity-100'
+            : title
+              ? 'translate-y-1/4 opacity-0'
+              : ''
         }`}
       >
-        <Title title={title} />
+        {title && <Title title={title} />}
         {children}
       </div>
     </section>

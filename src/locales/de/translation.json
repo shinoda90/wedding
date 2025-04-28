@@ -6,7 +6,7 @@
     "months": "Monate"
   },
   "navbar": {
-    "home": "Infos",
+    "info": "Infos",
     "location": "Location",
     "contact": "Kontakt",
     "timeline": "Zeitplan",
@@ -38,10 +38,12 @@
     "email": "E-Mail*",
     "phone": "Telefonnummer",
     "message": "Nachricht*",
-    "placeholder1": "Verrat mit deinen Namen",
+    "placeholder1": "Verrat mir deinen Namen",
     "placeholder2": "z.b. dani@michel.com",
     "placeholder3": "z.b. +41 78 ....",
-    "placeholder4": "Stelle Fragen oder teile uns mit was wir wissen sollten :)"
+    "placeholder4": "Stelle Fragen oder teile uns mit was wir wissen sollten :)",
+    "whatsapp": "Einfach WhatsApp",
+    "formular": "Spuck's aus!"
   },
   "rsvp": {
     "person": "Person",
@@ -62,7 +64,10 @@
     "delete": "Person entfernen"
   },
   "home": { "date": "27. Dezember 2025" },
-  "button": { "submit": "Absenden" },
+  "button": {
+    "submit": "Absenden",
+    "warning": "Bitte fehlende Infos eintragen!"
+  },
   "history": {
     "time1": "43435",
     "title1": "Als sich zwei Wege kreuzten",
