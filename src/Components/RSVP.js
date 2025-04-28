@@ -158,7 +158,7 @@ export default function RSVP() {
     e.preventDefault()
 
     if (isSubmitting) return // Sicherheitsnetz: Doppelklick-Blocker
-
+    setShowPopup(true)
     setIsSubmitting(true)
 
     try {
@@ -201,7 +201,7 @@ export default function RSVP() {
 
       setSubmittedGuests((prev) => [...prev, ...submitted])
       setChosenGuests([])
-      setShowPopup(true)
+
       setGuests([
         {
           name: '',
@@ -386,54 +386,72 @@ export default function RSVP() {
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div
               className="bg-primary rounded-lg shadow-lg p-6 max-w-lg w-full mx-4 relative text-center
-              transform scale-95 opacity-0 animate-popup
-              max-h-[90vh] overflow-y-auto"
+          transform scale-95 opacity-0 animate-popup
+          h-[90vh] flex flex-col"
             >
-              <h2 className="text-2xl font-bold mb-6">{t('rsvp.feedback')}</h2>
+              {!isSubmitting && (
+                <h2 className="text-2xl font-bold mb-6">
+                  {t('rsvp.feedback')}
+                </h2>
+              )}
 
-              <div className="space-y-6">
-                {submittedGuests.map((guest, i) => (
-                  <div
-                    key={i}
-                    className="border border-gray-300 rounded-lg p-4 text-left bg-gray-50"
-                  >
-                    <h3 className="text-lg font-semibold mb-4">
-                      {t('rsvp.person')} {i + 1}
-                    </h3>
-
-                    <p className="mb-2">
-                      <strong>{t('contact.name')}:</strong> {guest.name}
+              {/* Scrollbarer Bereich */}
+              <div className="flex-1 overflow-y-auto w-full space-y-6">
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center h-full">
+                    <p className="text-lg font-semibold">
+                      {t('button.loading')}
                     </p>
-                    <p className="mb-2">
-                      <strong>{t('rsvp.question1')}:</strong>{' '}
-                      {guest.participation ? 'Yes' : 'No'}
-                    </p>
-
-                    {guest.participation && (
-                      <>
-                        <p className="mb-2">
-                          <strong>{t('rsvp.question2')}:</strong>{' '}
-                          {guest.drinks.join(', ')}
-                        </p>
-                        <p className="mb-2">
-                          <strong>{t('contact.email')}:</strong> {guest.email}
-                        </p>
-                        <p className="mb-2">
-                          <strong>{t('rsvp.question4')}:</strong>{' '}
-                          {guest.requirements}
-                        </p>
-                      </>
-                    )}
                   </div>
-                ))}
+                ) : (
+                  submittedGuests.map((guest, i) => (
+                    <div
+                      key={i}
+                      className="border border-gray-300 rounded-lg p-4 text-left bg-gray-50"
+                    >
+                      <h3 className="text-lg font-semibold mb-4">
+                        {t('rsvp.person')} {i + 1}
+                      </h3>
+
+                      <p className="mb-2">
+                        <strong>{t('contact.name')}:</strong> {guest.name}
+                      </p>
+                      <p className="mb-2">
+                        <strong>{t('rsvp.question1')}:</strong>{' '}
+                        {guest.participation ? 'Yes' : 'No'}
+                      </p>
+
+                      {guest.participation && (
+                        <>
+                          <p className="mb-2">
+                            <strong>{t('rsvp.question2')}:</strong>{' '}
+                            {guest.drinks.join(', ')}
+                          </p>
+                          <p className="mb-2">
+                            <strong>{t('contact.email')}:</strong> {guest.email}
+                          </p>
+                          <p className="mb-2">
+                            <strong>{t('rsvp.question4')}:</strong>{' '}
+                            {guest.requirements}
+                          </p>
+                        </>
+                      )}
+                    </div>
+                  ))
+                )}
               </div>
 
-              <button
-                onClick={() => setShowPopup(false)}
-                className="mt-8 px-6 py-2 bg-secondary text-white rounded hover:bg-primary-focus"
-              >
-                OK
-              </button>
+              {/* OK-Button nur wenn nicht am Laden */}
+              {!isSubmitting && (
+                <div className="mt-6">
+                  <button
+                    onClick={() => setShowPopup(false)}
+                    className="px-6 py-2 bg-secondary text-white rounded hover:bg-primary-focus"
+                  >
+                    OK
+                  </button>
+                </div>
+              )}
             </div>
           </div>,
           document.getElementById('popup-root')
