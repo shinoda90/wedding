@@ -10,7 +10,7 @@ export default function SectionWrapper({ id, title, children }) {
   return (
     <section
       id={id}
-      className="min-h-[100dvh] scroll-mt-6 lg:scroll-mt-24 lg:min-h-[calc(100dvh-4rem)]"
+      className="min-h-screen scroll-mt-6 lg:scroll-mt-24 lg:min-h-[calc(100vh-4rem)]"
     >
       <div
         ref={ref}

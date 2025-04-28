@@ -16,10 +16,12 @@ function ScrollToHash() {
 
   useEffect(() => {
     if (location.hash) {
-      const element = document.querySelector(location.hash)
-      if (element) {
-        element.scrollIntoView({ behavior: 'auto', block: 'start' })
-      }
+      setTimeout(() => {
+        const element = document.querySelector(location.hash)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100) // 100ms Delay
     }
   }, [location])
 

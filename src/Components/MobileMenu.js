@@ -91,7 +91,7 @@ export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
         <a
           href="/ourhistory"
           onClick={onClose}
-          className="bg-white/30 px-6 py-2 rounded-md inline-block"
+          className="bg-black/40 px-6 py-2 rounded-md inline-block"
         >
           {t('navbar.history')}
         </a>
@@ -107,7 +107,7 @@ export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
             setIsContactOpen(true)
             onClose()
           }}
-          className="bg-white/30 px-6 py-2 rounded-md inline-block"
+          className="bg-white/30 px-6 py-2 rounded-md inline-block uppercase"
         >
           {t('navbar.contact')}
         </button>
