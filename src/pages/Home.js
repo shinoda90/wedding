@@ -4,6 +4,7 @@ import IntroBild from '../Components/IntroBild'
 import SectionWrapper from '../Components/SectionWrapper'
 import RSVP from '../Components/RSVP'
 import { useTranslation } from 'react-i18next'
+import Info from '../Components/Info'
 
 export default function Home() {
   const { t } = useTranslation()
@@ -15,6 +16,10 @@ export default function Home() {
       </SectionWrapper>
 
       <div className="w-full px-4 lg:w-[70%] lg:px-0 mx-auto">
+        <SectionWrapper id="info" title={t('navbar.info')}>
+          <Info />
+        </SectionWrapper>
+
         <SectionWrapper id="location" title={t('navbar.location')}>
           <Location />
         </SectionWrapper>

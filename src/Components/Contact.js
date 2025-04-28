@@ -70,7 +70,7 @@ export default function Contact({ title }) {
 
         <div className="flex flex-col gap-4 text-sm">
           <div className="flex flex-col lg:flex-row lg:gap-4">
-            <div className="w-full lg:w-1/2">
+            <div className="w-full lg:w-1/2 mb-4 lg:mb-0">
               <InputField
                 title={t('contact.name')}
                 type="text"

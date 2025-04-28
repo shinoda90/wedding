@@ -21,14 +21,21 @@ export default function Timeline() {
   return (
     <>
       {/* Mobile Version */}
-      <div className="block md:hidden">
+      <div className="block md:hidden pl-2 pr-4 mt-8 ">
         <ul className="flex flex-col gap-8">
           {icons.map((Icon, index) => (
-            <li key={index} className="flex items-start gap-4">
+            <li key={index} className="flex items-start gap-4 relative">
+              {/* Vertikale Linie */}
+              {index !== icons.length - 1 && ( // nicht beim letzten Eintrag
+                <div className="absolute left-5 top-0 bottom-[-2rem] flex justify-center">
+                  <div className="w-0.5 bg-secondary h-full"></div>
+                </div>
+              )}
+
               {/* Icon linke Spalte */}
-              <div className="w-12 flex-shrink-0 flex justify-center relative">
-                <div className="bg-gray-200 p-2 rounded-full shadow-md -mt-3">
-                  <Icon className="w-8 h-8 text-secondary" />
+              <div className="w-10 flex-shrink-0 flex justify-center relative z-10">
+                <div className="bg-gray-200 p-2 rounded-full shadow-md -mt-2">
+                  <Icon className="w-6 h-6 text-secondary" />
                 </div>
               </div>
 
@@ -40,9 +47,9 @@ export default function Timeline() {
                 <div className="text-lg font-tl-title">
                   {t(`timeline.step${index + 1}`)}
                 </div>
-                <i className="font-tl-text">
+                <p className="font-tl-text text-justify">
                   {t(`timeline.descr${index + 1}`)}
-                </i>
+                </p>
               </div>
             </li>
           ))}
@@ -50,8 +57,8 @@ export default function Timeline() {
       </div>
 
       {/* Desktop Version */}
-      <div className="hidden md:block">
-        <ul className="grid grid-cols-[1fr_auto_1fr] gap-x-2 gap-y-4">
+      <div className="hidden md:block mt-12">
+        <ul className="grid grid-cols-[1fr_auto_1fr] gap-x-2 gap-y-6">
           {icons.map((Icon, index) => (
             <li key={index} className="contents">
               {/* Linker Text oder leer */}
@@ -64,30 +71,20 @@ export default function Timeline() {
                     <div className="text-lg font-tl-title">
                       {t(`timeline.step${index + 1}`)}
                     </div>
-                    <i className="font-tl-text">
+                    <p className="font-tl-text text-justify">
                       {t(`timeline.descr${index + 1}`)}
-                    </i>
+                    </p>
                   </div>
                 </div>
               ) : (
                 <div></div>
               )}
 
-              {/* Icon Mitte (nur so breit wie Icon nötig) */}
               <div className="w-10 relative flex justify-center">
                 {/* Vertikale Linie */}
-                <div
-                  className={`absolute left-1/2 -translate-x-1/2 w-0.5 bg-secondary
-      ${index === 0 ? 'top-1/2' : 'top-0'}
-      ${index === icons.length - 1 ? 'bottom-1/2' : 'bottom-0'}
-    `}
-                  style={{
-                    top: index === 0 ? '50%' : '20',
-                    bottom: index === icons.length - 1 ? '50%' : '10',
-                  }}
-                ></div>
+                <div className="absolute top-0 -bottom-4 left-1/2 -translate-x-1/2 w-0.5 bg-secondary"></div>
 
-                {/* Icon Container */}
+                {/* Icon */}
                 <div className="absolute top-0 bg-gray-200 p-2 rounded-full shadow-md -mt-3">
                   <Icon className="w-8 h-8 text-secondary" />
                 </div>
@@ -103,9 +100,9 @@ export default function Timeline() {
                     <div className="text-lg font-tl-title">
                       {t(`timeline.step${index + 1}`)}
                     </div>
-                    <i className="font-tl-text">
+                    <p className="font-tl-text text-justify">
                       {t(`timeline.descr${index + 1}`)}
-                    </i>
+                    </p>
                   </div>
                 </div>
               ) : (

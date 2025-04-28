@@ -48,7 +48,7 @@ export default function Countdown() {
           <span className="countdown font-mono text-2xl sm:text-4xl font-cd-number">
             <span style={{ '--value': `${item.value}` }}>{item.value}</span>
           </span>
-          <span className="text-[10px] sm:text-xs mt-1 font-cd-text">
+          <span className="text-xs md:text-md mt-1 font-cd-text">
             {item.label}
           </span>
         </div>

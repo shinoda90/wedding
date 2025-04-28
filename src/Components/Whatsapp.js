@@ -6,7 +6,7 @@ export default function Whatsapp() {
   return (
     <div className="flex flex-col lg:flex-row lg:items-center lg:gap-6 gap-4">
       {/* Text */}
-      <div className="font-semibold text-lg text-center lg:text-left whitespace-nowrap">
+      <div className="font-semibold text-xl text-center lg:text-left whitespace-nowrap">
         {t('contact.whatsapp')}
       </div>
 

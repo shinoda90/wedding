@@ -18,7 +18,7 @@ export default function Navbar() {
   const changeLanguage = (lng) => i18n.changeLanguage(lng)
 
   useEffect(() => {
-    const sectionIds = ['home', 'location', 'timeline', 'rsvp']
+    const sectionIds = ['home', 'info', 'location', 'timeline', 'rsvp']
     const observers = []
 
     sectionIds.forEach((id) => {
@@ -65,7 +65,7 @@ export default function Navbar() {
           <div className="flex-1 flex justify-end pl-6">
             <ul className="flex items-center space-x-6">
               <Listitem
-                link="/#home"
+                link="/#info"
                 text={t('navbar.info')}
                 activeSection={activeSection}
               />
@@ -90,10 +90,16 @@ export default function Navbar() {
 
           {/* Box 2 (zentriert in der Navbar) */}
           <div className="flex justify-center items-center">
-            <img
-              src={Logo}
-              alt="Logo"
-              className="h-[80%] max-h-[48px] object-contain"
+            <Listitem
+              link="/#home"
+              activeSection={activeSection}
+              icon={
+                <img
+                  src={Logo}
+                  alt="Logo"
+                  className="h-[40px] object-contain" // z.B. kleinere Höhe für Logo
+                />
+              }
             />
           </div>
 

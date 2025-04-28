@@ -6,6 +6,7 @@ import MobileMenuEntry from './MobileMenuEntry'
 export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
   const { t, i18n } = useTranslation()
   const firstMenuItems = [
+    { href: '/#home', text: 'home' },
     { href: '/#info', text: t('navbar.info') },
     { href: '/#location', text: t('navbar.location') },
     { href: '/#timeline', text: t('navbar.timeline') },
