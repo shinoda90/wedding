@@ -11,7 +11,7 @@ export default function RSVP() {
   const url = process.env.REACT_APP_SHEETBEST_URL
   const [allPossibleGuests, setAllPossibleGuests] = useState([]) // Alle geladenen Gäste
   const [chosenGuests, setChosenGuests] = useState([]) // Alle geladenen Gäste
-  //const [alreadyResponded, setAlreadyResponded] = useState([]) // Gäste mit Antwort
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const [guests, setGuests] = useState([
     {
@@ -73,8 +73,6 @@ export default function RSVP() {
             (entry) => entry.Participation && entry.Participation.trim() !== ''
           )
           .map((entry) => entry.Name)
-
-        // setAlreadyResponded(respondedNames)
 
         // Nur Gäste, die noch NICHT geantwortet haben, verfügbar machen
         const available = allNames.filter(
@@ -158,6 +156,11 @@ export default function RSVP() {
   })
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    if (isSubmitting) return // Sicherheitsnetz: Doppelklick-Blocker
+
+    setIsSubmitting(true)
+
     try {
       const submitted = []
 
@@ -198,7 +201,6 @@ export default function RSVP() {
 
       setSubmittedGuests((prev) => [...prev, ...submitted])
       setChosenGuests([])
-
       setShowPopup(true)
       setGuests([
         {
@@ -213,6 +215,8 @@ export default function RSVP() {
     } catch (error) {
       console.error('Fehler beim Senden:', error)
       alert('Es gab ein Problem beim Senden 😕')
+    } finally {
+      setIsSubmitting(false) // GANZ WICHTIG: egal ob Fehler oder Erfolg → Entsperren
     }
   }
 
@@ -366,9 +370,13 @@ export default function RSVP() {
           <button
             type="submit"
             className="btn btn-accent w-full max-w-xs md:max-w-md"
-            disabled={!allValid}
+            disabled={!allValid || isSubmitting}
           >
-            {allValid ? t('button.submit') : t('button.warning')}
+            {isSubmitting
+              ? t('button.loading')
+              : allValid
+                ? t('button.submit')
+                : t('button.warning')}
           </button>
         </div>
       </form>
@@ -377,47 +385,58 @@ export default function RSVP() {
         createPortal(
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div
-              className="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full mx-4 relative text-center
-                    transform scale-95 opacity-0 animate-popup"
+              className="bg-primary rounded-lg shadow-lg p-6 max-w-lg w-full mx-4 relative text-center
+              transform scale-95 opacity-0 animate-popup
+              max-h-[90vh] overflow-y-auto"
             >
-              <h2 className="text-2xl font-bold mb-4">{t('rsvp.feedback')}</h2>
+              <h2 className="text-2xl font-bold mb-6">{t('rsvp.feedback')}</h2>
 
-              {submittedGuests.map((guest, i) => (
-                <div key={i} className="mb-4 text-left">
-                  <p>
-                    <strong>{t('contact.name')}:</strong> {guest.name}
-                  </p>
-                  <p>
-                    <strong>{t('rsvp.question1')}:</strong>{' '}
-                    {guest.participation ? 'Yes' : 'No'}
-                  </p>
-                  {guest.participation && (
-                    <>
-                      <p>
-                        <strong>{t('rsvp.question2')}:</strong>{' '}
-                        {guest.drinks.join(', ')}
-                      </p>
-                      <p>
-                        <strong>{t('contact.email')}:</strong> {guest.email}
-                      </p>
-                      <p>
-                        <strong>{t('rsvp.question4')}:</strong>{' '}
-                        {guest.requirements}
-                      </p>
-                    </>
-                  )}
-                </div>
-              ))}
+              <div className="space-y-6">
+                {submittedGuests.map((guest, i) => (
+                  <div
+                    key={i}
+                    className="border border-gray-300 rounded-lg p-4 text-left bg-gray-50"
+                  >
+                    <h3 className="text-lg font-semibold mb-4">
+                      {t('rsvp.person')} {i + 1}
+                    </h3>
+
+                    <p className="mb-2">
+                      <strong>{t('contact.name')}:</strong> {guest.name}
+                    </p>
+                    <p className="mb-2">
+                      <strong>{t('rsvp.question1')}:</strong>{' '}
+                      {guest.participation ? 'Yes' : 'No'}
+                    </p>
+
+                    {guest.participation && (
+                      <>
+                        <p className="mb-2">
+                          <strong>{t('rsvp.question2')}:</strong>{' '}
+                          {guest.drinks.join(', ')}
+                        </p>
+                        <p className="mb-2">
+                          <strong>{t('contact.email')}:</strong> {guest.email}
+                        </p>
+                        <p className="mb-2">
+                          <strong>{t('rsvp.question4')}:</strong>{' '}
+                          {guest.requirements}
+                        </p>
+                      </>
+                    )}
+                  </div>
+                ))}
+              </div>
 
               <button
                 onClick={() => setShowPopup(false)}
-                className="mt-4 px-6 py-2 bg-secondary text-white rounded hover:bg-primary-focus"
+                className="mt-8 px-6 py-2 bg-secondary text-white rounded hover:bg-primary-focus"
               >
                 OK
               </button>
             </div>
           </div>,
-          document.getElementById('popup-root') // << hier wird es außerhalb des Layouts gerendert!
+          document.getElementById('popup-root')
         )}
     </>
   )

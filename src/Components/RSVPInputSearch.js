@@ -6,7 +6,6 @@ import { ReactComponent as CloseIcon } from '../icons/close_icon.svg'
 export default function RSVPInputSearch({
   value,
   onChange,
-  // alreadyResponded,
   submittedNames,
   chosenGuests,
   allPossibleGuests,
@@ -43,7 +42,6 @@ export default function RSVPInputSearch({
     .filter((guest) => guest.toLowerCase().includes(value?.toLowerCase() || ''))
     .filter((guest) => !chosenGuests.includes(guest))
     .filter((guest) => !submittedNames.includes(guest))
-  //.filter((guest) => !alreadyResponded.includes(guest)) // Gäste, die bereits geantwortet haben, ausschließen
 
   return (
     <div className="relative w-full" ref={wrapperRef}>
