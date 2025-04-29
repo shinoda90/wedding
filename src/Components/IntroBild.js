@@ -1,7 +1,7 @@
 import homeimage from '../image/intro-foto.webp'
 import homeimage2 from '../image/intro-foto2.webp'
 import Countdown from './Countdown'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 export default function IntroBild({ onLoad }) {

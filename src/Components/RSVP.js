@@ -368,7 +368,7 @@ export default function RSVP() {
                             <input
                               type="checkbox"
                               className="h-5 w-5 cursor-pointer rounded-md border-2 border-gray-300 bg-white 
-        checked:bg-neutral checked:border-neutral checked:text-white 
+        checked:bg-acccent checked:border-neutral checked:text-white 
         focus:outline-none transition-all duration-200 
         appearance-none relative
         after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 
@@ -485,7 +485,7 @@ export default function RSVP() {
                   submittedGuests.map((guest, i) => (
                     <div
                       key={i}
-                      className="border border-gray-300 rounded-lg p-4 text-left bg-gray-50"
+                      className="border border-neutral rounded-lg p-4 text-left bg-secondary"
                     >
                       <h3 className="text-lg font-semibold mb-4">
                         {t('rsvp.person')} {i + 1}
