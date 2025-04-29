@@ -6,18 +6,20 @@ import { useTranslation } from 'react-i18next'
 
 export default function IntroBild({ onLoad }) {
   const { t, i18n } = useTranslation()
+  const [fixedHeight, setFixedHeight] = useState(null)
+
   useEffect(() => {
-    const img = document.getElementById('hero-img') // oder passendes img
-    if (img && !img.complete) {
-      img.onload = () => onLoad?.()
-    } else {
-      onLoad?.()
+    if (typeof window !== 'undefined' && fixedHeight === null) {
+      const vh = window.innerHeight
+      setFixedHeight(vh)
     }
-  }, [onLoad])
+  }, [])
 
   return (
-    <div className="relative h-screen max-h-dvh w-full overflow-hidden">
-      {/* Hintergrundbild */}
+    <div
+      className="relative w-full overflow-hidden"
+      style={{ height: fixedHeight ? `${fixedHeight}px` : '100vh' }}
+    >
       <img
         src={homeimage2}
         onLoad={() => {
@@ -26,7 +28,6 @@ export default function IntroBild({ onLoad }) {
         alt="Dani & Michel"
         className="absolute inset-0 w-full h-full object-cover opacity-50"
       />
-
       {/* Schwarzes Overlay */}
       <div className="absolute inset-0 bg-gray-700 bg-opacity-60"></div>
 
