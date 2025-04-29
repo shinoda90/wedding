@@ -30,24 +30,6 @@ export default function RSVPInputSearch({
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [])
-  useEffect(() => {
-    if (showOptions && wrapperRef.current) {
-      const rect = wrapperRef.current.getBoundingClientRect()
-      const dropdownHeight = 240 // etwa deine max-h-60 (60*4px)
-
-      const viewportHeight = window.innerHeight
-      const spaceBelow = viewportHeight - rect.bottom
-
-      if (spaceBelow < dropdownHeight) {
-        const scrollY = dropdownHeight - spaceBelow + 20 // +20 für etwas Abstand
-
-        window.scrollBy({
-          top: scrollY,
-          behavior: 'smooth',
-        })
-      }
-    }
-  }, [showOptions])
 
   const alreadySubmitted = submittedNames.includes(value.trim())
 

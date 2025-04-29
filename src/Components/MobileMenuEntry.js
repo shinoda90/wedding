@@ -3,7 +3,7 @@ export default function MobileMenuEntry({ href, onClick, text }) {
     <a
       href={href}
       onClick={onClick}
-      className="bg-black/40 px-6 py-2 rounded-md inline-block"
+      className="px-6 py-2 rounded-md inline-block"
     >
       {text}
     </a>

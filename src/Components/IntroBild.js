@@ -16,7 +16,7 @@ export default function IntroBild({ onLoad }) {
   }, [onLoad])
 
   return (
-    <div className="relative h-screen w-full">
+    <div className="relative h-screen max-[100dvh] w-full">
       {/* Hintergrundbild */}
       <img
         src={homeimage2}

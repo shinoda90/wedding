@@ -107,13 +107,8 @@ export default function RSVP() {
     updatedGuests[index][field] = value
     setGuests(updatedGuests)
 
-    if (field === 'participation' && value === true) {
-      setTimeout(() => {
-        const guestRef = guestRefs.current[index]
-        if (guestRef) {
-          guestRef.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        }
-      }, 100) // kleines Timeout, damit sich das DOM aktualisiert
+    if (field === 'participation') {
+      lastChangedParticipationIndexRef.current = index
     }
   }
 
@@ -141,11 +136,19 @@ export default function RSVP() {
       ]
 
       setTimeout(() => {
-        const lastGuestRef = guestRefs.current[updatedGuests.length - 1]
+        const lastIndex = updatedGuests.length - 1
+        const lastGuestRef = guestRefs.current[lastIndex]
         if (lastGuestRef) {
-          lastGuestRef.scrollIntoView({ behavior: 'smooth', block: 'center' })
+          const offsetTop =
+            lastGuestRef.getBoundingClientRect().top + window.scrollY
+          const isDesktop = window.innerWidth >= 768
+          const scrollOffset = isDesktop ? 80 : 10
+          window.scrollTo({
+            top: offsetTop - scrollOffset,
+            behavior: 'smooth',
+          })
         }
-      }, 100) // kleines Timeout, damit der neue Fieldset im DOM existiert
+      }, 100)
 
       return updatedGuests
     })
@@ -163,6 +166,21 @@ export default function RSVP() {
     setGuests(updatedGuests)
   }
 
+  const scrollGuestIntoView = (index) => {
+    setTimeout(() => {
+      const guestRef = guestRefs.current[index]
+      if (guestRef) {
+        const isDesktop = window.innerWidth >= 768
+        const scrollOffset = isDesktop ? 80 : 10
+        const offsetTop = guestRef.getBoundingClientRect().top + window.scrollY
+        window.scrollTo({
+          top: offsetTop - scrollOffset,
+          behavior: 'smooth',
+        })
+      }
+    }, 50) // kleiner Delay reicht
+  }
+
   const allValid = guests.every((g) => {
     const isNameValid = g.name && allPossibleGuests.includes(g.name)
     const isNotSubmitted = !submittedGuests.some(
@@ -176,23 +194,6 @@ export default function RSVP() {
 
     return isNameValid && isNotSubmitted && hasParticipationInfo
   })
-
-  useEffect(() => {
-    if (allValid) {
-      setTimeout(() => {
-        const submitButton = document.getElementById('submit-button')
-        if (submitButton) {
-          const rect = submitButton.getBoundingClientRect()
-          const offset = 120 // z.B. 120px Abstand vom Rand
-          const absoluteElementTop = rect.top + window.scrollY
-          const scrollTarget =
-            absoluteElementTop - window.innerHeight + rect.height + offset
-
-          window.scrollTo({ top: scrollTarget, behavior: 'smooth' })
-        }
-      }, 100) // kurze Pause für DOM-Sicherheit
-    }
-  }, [allValid])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -260,8 +261,38 @@ export default function RSVP() {
     }
   }
 
+  const lastChangedParticipationIndexRef = useRef(null)
+
+  useEffect(() => {
+    if (lastChangedParticipationIndexRef.current !== null) {
+      const index = lastChangedParticipationIndexRef.current
+
+      // ✅ Nur scrollen, wenn Teilnahme "true"
+      if (guests[index]?.participation !== true) {
+        lastChangedParticipationIndexRef.current = null
+        return
+      }
+
+      const guestRef = guestRefs.current[index]
+
+      const timeout = setTimeout(() => {
+        if (guestRef) {
+          const offsetTop =
+            guestRef.getBoundingClientRect().top + window.scrollY
+          window.scrollTo({
+            top: offsetTop - 10,
+            behavior: 'smooth',
+          })
+        }
+        lastChangedParticipationIndexRef.current = null // zurücksetzen
+      }, 300)
+
+      return () => clearTimeout(timeout)
+    }
+  }, [guests.map((g) => g.participation).join(',')])
+
   return (
-    <>
+    <div className="pb-20">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-wrap justify-center gap-6">
           {guests.map((guest, index) => (
@@ -295,6 +326,7 @@ export default function RSVP() {
                         name={`participation-${index}`}
                         value="yes"
                         checked={guest.participation === true}
+                        onFocus={() => scrollGuestIntoView(index)} // << HIER
                         onChange={() =>
                           handleGuestChange(index, 'participation', true)
                         }
@@ -309,6 +341,7 @@ export default function RSVP() {
                         name={`participation-${index}`}
                         value="no"
                         checked={guest.participation === false}
+                        onFocus={() => scrollGuestIntoView(index)} // << HIER
                         onChange={() =>
                           handleGuestChange(index, 'participation', false)
                         }
@@ -339,6 +372,7 @@ export default function RSVP() {
                  after:text-white after:text-sm
                  checked:after:content-['✓']"
                               checked={guest.drinks.includes(drink.id)}
+                              onFocus={() => scrollGuestIntoView(index)} // << HIER
                               onChange={() => toggleDrink(index, drink.id)}
                             />
                             <span className="text-base mr-4">
@@ -358,10 +392,10 @@ export default function RSVP() {
                         className="input input-bordered w-full"
                         placeholder={t('rsvp.placeholder3')}
                         value={guest.email}
+                        onFocus={() => scrollGuestIntoView(index)} // << HIER
                         onChange={(e) =>
                           handleGuestChange(index, 'email', e.target.value)
                         }
-                        required
                       />
                     </div>
                     <div className="flex flex-col gap-2">
@@ -371,6 +405,7 @@ export default function RSVP() {
                         className="input input-bordered"
                         placeholder={t('rsvp.placeholder4')}
                         value={guest.requirements}
+                        onFocus={() => scrollGuestIntoView(index)} // << HIER
                         onChange={(e) =>
                           handleGuestChange(
                             index,
@@ -407,11 +442,11 @@ export default function RSVP() {
             </AnimatePresence>
           ))}
         </div>
-        <div className="w-full flex justify-center pt-8 pb-20">
+        <div className="z-50 flex justify-center pointer-events-none mt-5">
           <button
             type="submit"
             id="submit-button"
-            className="btn btn-accent w-full max-w-xs md:max-w-md"
+            className="btn btn-accent  pointer-events-auto w-[90%] md:w-[48%]"
             disabled={!allValid || isSubmitting}
           >
             {isSubmitting
@@ -498,6 +533,6 @@ export default function RSVP() {
           </div>,
           document.getElementById('popup-root')
         )}
-    </>
+    </div>
   )
 }

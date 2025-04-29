@@ -38,7 +38,7 @@ module.exports = {
           neutral: '#708195',
           info: '#3abff8',
           navbar: '#708195',
-          success: '#36d399',
+          success: '#f3dbb9',
           warning: '#D84040',
           error: '#f87272',
         },

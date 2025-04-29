@@ -46,7 +46,7 @@ export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
       </button>
       <div className="absolute top-4 left-4 z-50">
         <select
-          className="select select-sm border-primary w-16 md:w-40 bg-black/40"
+          className="select select-sm border-primary w-16 md:w-40 bg-primary"
           onChange={(e) => i18n.changeLanguage(e.target.value)}
           value={i18n.language}
           aria-label="Select Language"
@@ -66,7 +66,7 @@ export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
           className="w-full h-full object-cover pointer-events-none"
         />
         {/* Orange Overlay */}
-        <div className="absolute inset-0 bg-orange-400 opacity-70"></div>
+        <div className="absolute inset-0 bg-secondary opacity-80"></div>
       </div>
 
       {/* Menüeinträge */}
@@ -83,7 +83,7 @@ export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
         {/* RSVP-Button extra */}
         <a
           href="/#rsvp"
-          className="btn bg-secondary text-xl px-6 py-2 rounded font-rsvp1 inline-block"
+          className="btn bg-secondary text-xl mx-16 py-2 rounded font-rsvp1 inline-block border-4 border-success"
           onClick={onClose}
         >
           RSVP
@@ -103,7 +103,7 @@ export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
             setIsContactOpen(true)
             onClose()
           }}
-          className="bg-black/40 px-6 py-2 rounded-md inline-block uppercase"
+          className=" px-6 py-2 rounded-md inline-block uppercase"
         >
           {t('navbar.contact')}
         </button>
