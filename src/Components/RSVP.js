@@ -342,7 +342,7 @@ export default function RSVP() {
                         name={`participation-${index}`}
                         value="no"
                         checked={guest.participation === false}
-                        onFocus={() => scrollGuestIntoView(index)} // << HIER
+                        onFocus={() => scrollGuestIntoView(index)}
                         onChange={() =>
                           handleGuestChange(index, 'participation', false)
                         }
@@ -367,12 +367,12 @@ export default function RSVP() {
                           >
                             <input
                               type="checkbox"
-                              className="h-5 w-5 cursor-pointer rounded-md border-2 border-gray-300 bg-white 
-        checked:bg-acccent checked:border-neutral checked:text-white 
+                              className="h-5 w-5 cursor-pointer rounded-md border-2 border-neutral bg-white 
+        checked:bg-accent checked:border-neutral checked:text-primary 
         focus:outline-none transition-all duration-200 
         appearance-none relative
         after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 
-        after:text-white after:text-sm
+        after:text-primary after:text-sm
         checked:after:content-['✓']"
                               checked={guest.drinks.includes(drink.id)}
                               onFocus={() => scrollGuestIntoView(index)}
@@ -461,7 +461,7 @@ export default function RSVP() {
 
       {showPopup &&
         createPortal(
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 text-neutral">
             <div
               className="bg-primary rounded-lg shadow-lg p-6 max-w-lg w-full mx-4 relative text-center
           transform scale-95 opacity-0 animate-popup
@@ -524,7 +524,7 @@ export default function RSVP() {
                 <div className="mt-6">
                   <button
                     onClick={() => setShowPopup(false)}
-                    className="px-6 py-2 bg-secondary text-white rounded hover:bg-primary-focus"
+                    className="px-6 py-2 bg-secondary rounded hover:bg-primary-focus"
                   >
                     OK
                   </button>
