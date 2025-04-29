@@ -4,7 +4,7 @@ import Title from './Title'
 export default function SectionWrapper({ id, title, children }) {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.2,
+    threshold: 0.05,
   })
 
   return (

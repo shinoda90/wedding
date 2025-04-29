@@ -6,7 +6,7 @@ export default function Info() {
   const infoSections = [1, 2, 3, 4] // Abschnittsnummern
 
   return (
-    <div className="text-center px-4 py-8 space-y-6 max-w-[800px] mx-auto">
+    <div className="text-center px-4 py-0 space-y-6 max-w-[800px] mx-auto">
       {/* Intro 1 */}
       <p className="text-lg">{t('info.intro1')}</p>
 

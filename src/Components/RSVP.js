@@ -292,7 +292,7 @@ export default function RSVP() {
   }, [guests.map((g) => g.participation).join(',')])
 
   return (
-    <div className="pb-20 max-w-[800px] mx-auto">
+    <div className="pb-10 max-w-[800px] mx-auto min-h-screen md:min-h-0">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-wrap justify-center gap-6">
           {guests.map((guest, index) => (
@@ -524,7 +524,7 @@ export default function RSVP() {
                 <div className="mt-6">
                   <button
                     onClick={() => setShowPopup(false)}
-                    className="px-6 py-2 bg-secondary rounded hover:bg-primary-focus"
+                    className="px-6 py-2 bg-secondary rounded hover:bg-neutral-focus text-white transition duration-300 ease-in-out"
                   >
                     OK
                   </button>

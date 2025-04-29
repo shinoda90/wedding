@@ -21,7 +21,7 @@ export default function Timeline() {
   return (
     <>
       {/* Mobile Version */}
-      <div className="block md:hidden pl-2 pr-4 mt-8 ">
+      <div className="block md:hidden pl-2 pr-4 mt-8 mb-8">
         <ul className="flex flex-col gap-8">
           {icons.map((Icon, index) => (
             <li key={index} className="flex items-start gap-4 relative">
@@ -34,7 +34,7 @@ export default function Timeline() {
 
               {/* Icon linke Spalte */}
               <div className="w-10 flex-shrink-0 flex justify-center relative z-10">
-                <div className="bg-gray-200 p-2 rounded-full shadow-md -mt-2">
+                <div className="bg-neutral p-2 rounded-full shadow-md -mt-2">
                   <Icon className="w-6 h-6 text-secondary" />
                 </div>
               </div>
@@ -57,7 +57,7 @@ export default function Timeline() {
       </div>
 
       {/* Desktop Version */}
-      <div className="hidden md:block mt-12 max-w-[1000px] mx-auto">
+      <div className="hidden md:block mt-12 max-w-[1000px] mx-auto mb-12">
         <ul className="grid grid-cols-[1fr_auto_1fr] gap-x-2 gap-y-6">
           {icons.map((Icon, index) => (
             <li key={index} className="contents">
@@ -85,7 +85,7 @@ export default function Timeline() {
                 <div className="absolute top-0 -bottom-4 left-1/2 -translate-x-1/2 w-0.5 bg-secondary"></div>
 
                 {/* Icon */}
-                <div className="absolute top-0 bg-gray-200 p-2 rounded-full shadow-md -mt-3">
+                <div className="absolute top-0 bg-neutral p-2 rounded-full shadow-md -mt-3">
                   <Icon className="w-8 h-8 text-secondary" />
                 </div>
               </div>

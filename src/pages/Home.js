@@ -5,6 +5,7 @@ import SectionWrapper from '../Components/SectionWrapper'
 import RSVP from '../Components/RSVP'
 import { useTranslation } from 'react-i18next'
 import Info from '../Components/Info'
+import SectionDivider from '../Components/SectionDivider'
 
 export default function Home() {
   const { t } = useTranslation()
@@ -19,17 +20,17 @@ export default function Home() {
         <SectionWrapper id="info" title={t('navbar.info')}>
           <Info />
         </SectionWrapper>
-
+        <SectionDivider />
         <SectionWrapper id="location" title={t('navbar.location')}>
           <div className="md:overflow-x-hidden">
             <Location />
           </div>
         </SectionWrapper>
-
+        <SectionDivider />
         <SectionWrapper id="timeline" title={t('navbar.timeline')}>
           <Timeline />
         </SectionWrapper>
-
+        <SectionDivider />
         <SectionWrapper id="rsvp" title="RSVP">
           <RSVP />
         </SectionWrapper>

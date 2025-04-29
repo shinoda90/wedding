@@ -10,6 +10,7 @@ import NavBar from './Components/NavBar'
 import History from './pages/History'
 import { useEffect } from 'react'
 import menuImage from './image/background_mobile_menu.webp' // richtig importieren!
+import Footer from './Components/Footer'
 
 function ScrollToHash() {
   const location = useLocation()
@@ -42,6 +43,7 @@ function App() {
           <Route path="/guide" element={<Guide />} />
           <Route path="/ourhistory" element={<History />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   )

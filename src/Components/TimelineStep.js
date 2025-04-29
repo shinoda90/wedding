@@ -10,7 +10,7 @@ export default function TimelineStep({
     <li className="timeline-item ">
       {/* Icon in der Mitte */}
       <div className="timeline-middle relative lg:mr-0 mr-2">
-        <div className="bg-gray-200 p-2 rounded-full shadow-md">
+        <div className="bg-neutral p-2 rounded-full shadow-md">
           <Icon className="w-8 h-8 text-secondary" />
         </div>
 
