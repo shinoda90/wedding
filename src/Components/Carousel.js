@@ -7,7 +7,7 @@ const images = [Carousel1, Carousel2, Carousel3, Carousel4]
 
 export default function Carousel() {
   return (
-    <div className="w-full overflow-x-auto scroll-smooth snap-x snap-mandatory mb-10 px-2">
+    <div className="w-full overflow-x-auto scroll-smooth snap-x snap-mandatory mb-10 px-2 md:overflow-x-hidden">
       <div className="flex gap-4">
         {images.map((img, index) => (
           <div key={index} className="flex-shrink-0 w-60 sm:w-64 snap-center">

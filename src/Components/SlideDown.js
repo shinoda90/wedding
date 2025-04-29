@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Title from './Title'
 import Whatsapp from './Whatsapp'
 import { useTranslation } from 'react-i18next'
+import CloseButton from './CloseButton'
 
 export default function SlideDown({ isContactOpen, setIsContactOpen }) {
   const { t } = useTranslation()
@@ -37,12 +38,7 @@ export default function SlideDown({ isContactOpen, setIsContactOpen }) {
     ${animateOut ? 'animate-slideUp' : 'animate-slideDown'}`}
       >
         {/* X-Button zum Schließen des Fensters */}
-        <button
-          onClick={handleClose}
-          className="fixed top-4 right-6 text-3xl font-bold text-gray-700 hover:text-red-500 z-50"
-        >
-          ×
-        </button>
+        <CloseButton onClick={handleClose} />
         <div className="-mt-10">
           <Title title={t('navbar.contact')} />
         </div>

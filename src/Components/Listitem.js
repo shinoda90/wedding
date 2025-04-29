@@ -29,7 +29,7 @@ export default function Listitem({
           ${isActive ? 'text-secondary font-semibold' : 'text-primary'}
           after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px]
           after:w-full after:scale-x-0 after:transition-transform after:duration-300
-          after:bg-accent hover:after:scale-x-100 ${classType}
+          after:bg-neutral hover:after:scale-x-100 ${classType}
         `}
       >
         {/* Wenn icon vorhanden ist, zeige icon, sonst text */}

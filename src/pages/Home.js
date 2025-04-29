@@ -21,7 +21,9 @@ export default function Home() {
         </SectionWrapper>
 
         <SectionWrapper id="location" title={t('navbar.location')}>
-          <Location />
+          <div className="md:overflow-x-hidden">
+            <Location />
+          </div>
         </SectionWrapper>
 
         <SectionWrapper id="timeline" title={t('navbar.timeline')}>

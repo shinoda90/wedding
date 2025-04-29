@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import menuImage from '../image/background_mobile_menu.webp'
 import { useTranslation } from 'react-i18next'
 import MobileMenuEntry from './MobileMenuEntry'
+import CloseButton from './CloseButton'
 
 export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
   const { t, i18n } = useTranslation()
@@ -36,14 +37,7 @@ export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
 
   return (
     <div className="fixed inset-0 backdrop-blur-md z-50 flex flex-col items-center text-center justify-center uppercase font-navbar">
-      {/* Close Button */}
-      <button
-        onClick={onClose}
-        aria-label="Close Menu"
-        className="absolute top-4 right-4 text-3xl z-50"
-      >
-        ✕
-      </button>
+      <CloseButton onClick={onClose} />
       <div className="absolute top-4 left-4 z-50">
         <select
           className="select select-sm border-primary w-16 md:w-40 bg-primary"

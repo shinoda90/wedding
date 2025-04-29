@@ -318,8 +318,8 @@ export default function RSVP() {
                 />
 
                 <div className="pt-2">
-                  <label>{t('rsvp.question1')}</label>
-                  <div className="flex gap-4">
+                  <label className="font-medium">{t('rsvp.question1')}</label>
+                  <div className="flex gap-4 mt-1">
                     <label className="flex items-center gap-2">
                       <input
                         type="radio"
@@ -330,7 +330,7 @@ export default function RSVP() {
                         onChange={() =>
                           handleGuestChange(index, 'participation', true)
                         }
-                        className="radio radio-accent bg-white"
+                        className="radio radio-neutral bg-white"
                       />
                       <span>{t('rsvp.answer11')}</span>
                     </label>
@@ -345,7 +345,7 @@ export default function RSVP() {
                         onChange={() =>
                           handleGuestChange(index, 'participation', false)
                         }
-                        className="radio radio-accent bg-white"
+                        className="radio radio-neutral bg-white"
                       />
                       <span>{t('rsvp.answer12')}</span>
                     </label>
@@ -355,8 +355,10 @@ export default function RSVP() {
                 {guest.participation === true && (
                   <>
                     <div>
-                      <label>{t('rsvp.question2')}</label>
-                      <div className="flex flex-wrap gap-2">
+                      <label className="font-medium">
+                        {t('rsvp.question2')}
+                      </label>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 gap-y-6 mt-2">
                         {drinkOptions.map((drink) => (
                           <label
                             key={drink.id}
@@ -365,19 +367,17 @@ export default function RSVP() {
                             <input
                               type="checkbox"
                               className="h-5 w-5 cursor-pointer rounded-md border-2 border-gray-300 bg-white 
-                 checked:bg-accent checked:border-accent checked:text-white 
-                 focus:outline-none transition-all duration-200 
-                 appearance-none relative
-                 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 
-                 after:text-white after:text-sm
-                 checked:after:content-['✓']"
+        checked:bg-neutral checked:border-neutral checked:text-white 
+        focus:outline-none transition-all duration-200 
+        appearance-none relative
+        after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 
+        after:text-white after:text-sm
+        checked:after:content-['✓']"
                               checked={guest.drinks.includes(drink.id)}
-                              onFocus={() => scrollGuestIntoView(index)} // << HIER
+                              onFocus={() => scrollGuestIntoView(index)}
                               onChange={() => toggleDrink(index, drink.id)}
                             />
-                            <span className="text-base mr-4">
-                              {drink.label}
-                            </span>
+                            <span className="text-base">{drink.label}</span>
                           </label>
                         ))}
                       </div>
@@ -418,7 +418,7 @@ export default function RSVP() {
                   </>
                 )}
 
-                <div className="absolute top-2 right-5 flex gap-5">
+                <div className="absolute top-0 right-5 flex gap-5">
                   {index === guests.length - 1 && (
                     <button
                       type="button"
@@ -446,7 +446,7 @@ export default function RSVP() {
           <button
             type="submit"
             id="submit-button"
-            className="btn btn-accent  pointer-events-auto w-[90%] md:w-[48%]"
+            className="btn btn-neutral  pointer-events-auto w-[90%] md:w-[48%]"
             disabled={!allValid || isSubmitting}
           >
             {isSubmitting

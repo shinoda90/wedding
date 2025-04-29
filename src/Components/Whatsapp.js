@@ -16,7 +16,7 @@ export default function Whatsapp() {
           href="https://wa.me/41782486757"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-accent flex items-center justify-center gap-2 w-36"
+          className="btn btn-neutral flex items-center justify-center gap-2 w-36 text-primary"
         >
           <FaWhatsapp className="w-5 h-5" />
           Dani
@@ -25,7 +25,7 @@ export default function Whatsapp() {
           href="https://wa.me/41783069667"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-accent flex items-center justify-center gap-2 w-36"
+          className="btn btn-neutral flex items-center justify-center gap-2 w-36 text-primary"
         >
           <FaWhatsapp className="w-5 h-5" />
           Michel

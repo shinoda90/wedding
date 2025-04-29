@@ -105,7 +105,7 @@ export default function Contact({ title }) {
           <div className="gap-2 lg:gap-6">
             <div className="font-medium">{t('contact.message')}</div>
             <textarea
-              className="textarea textarea-bordered w-full min-h-[100px]"
+              className="textarea textarea-bordered w-full min-h-[90px]"
               placeholder={t('contact.placeholder4')}
               value={guest.message}
               onChange={(e) => handleChange('message', e.target.value)}
@@ -113,8 +113,11 @@ export default function Contact({ title }) {
             />
           </div>
         </div>
-        <div className="flex justify-between items-center pt-4 pb-10">
-          <button type="submit" className="btn btn-secondary w-full bg-accent">
+        <div className="flex justify-between items-center pt-4 pb-5">
+          <button
+            type="submit"
+            className="btn btn-secondary w-full bg-neutral text-primary"
+          >
             {t('button.submit')}
           </button>
         </div>

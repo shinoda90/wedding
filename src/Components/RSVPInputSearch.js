@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ReactComponent as CheckIcon } from '../icons/check_circle.svg'
-import { ReactComponent as CloseIcon } from '../icons/close_icon.svg'
+import { ReactComponent as CloseIcon } from '../icons/close_button.svg'
 
 export default function RSVPInputSearch({
   value,
@@ -64,14 +64,14 @@ export default function RSVPInputSearch({
         <button
           type="button"
           onClick={() => onChange('')}
-          className="absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+          className="absolute right-3 top-1/2 transform -translate-y-1/2"
         >
-          <CloseIcon />
+          <CloseIcon className="fill-neutral hover:fill-warning " />
         </button>
       )}
       {/* Warnhinweis nur anzeigen, wenn der Name nicht in der Liste der verfügbaren Gäste ist */}
       {!isValid && value.trim() !== '' && (
-        <div className="absolute left-0 top-full w-full h-5 text-left text-red-500 text-sm">
+        <div className="absolute left-0 top-full w-full h-5 text-left text-warning text-sm">
           {t('rsvp.warning')}
         </div>
       )}
@@ -89,7 +89,7 @@ export default function RSVPInputSearch({
               ))
             : !isValid &&
               value.trim() !== '' && (
-                <div className="text-center text-red-400 p-2">
+                <div className="text-center text-warning p-2">
                   {t('rsvp.warning')}
                 </div>
               )}

@@ -1,6 +1,6 @@
-import Carousel from './Carousel';
+import Carousel from './Carousel'
 
-export default function Location({ title }) {
+export default function Location() {
   return (
     <>
       <Carousel />
@@ -14,5 +14,5 @@ export default function Location({ title }) {
         referrerPolicy="no-referrer-when-downgrade"
       ></iframe>
     </>
-  );
+  )
 }

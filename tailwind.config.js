@@ -23,6 +23,9 @@ module.exports = {
           100: '#3d4451',
         },
       },
+      maxHeight: {
+        dvh: '100dvh',
+      },
     },
   },
   plugins: [require('daisyui')],
