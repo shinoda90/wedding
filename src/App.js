@@ -30,7 +30,7 @@ function ScrollToHash() {
 
 function App() {
   return (
-    <div className="bg-primary">
+    <div className="bg-primary text-neutral">
       <Router>
         {/* Bild unsichtbar laden */}
         <img src={menuImage} alt="" style={{ display: 'none' }} />

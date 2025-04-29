@@ -23,19 +23,19 @@ export default function History({ title }) {
     <div className="pt-10 max-w-6xl m-auto pb-20">
       <Title title={t('navbar.history')} />
       {/* Mobile Version */}
-      <div className="block md:hidden pl-2 pr-4 mt-8">
+      <div className="block md:hidden pl-2 pr-8 mt-8">
         <ul className="flex flex-col gap-8">
           {icons.map((Icon, index) => (
-            <li key={index} className="flex items-start gap-4 relative">
+            <li key={index} className="flex items-start gap-2 relative">
               {/* Vertikale Linie */}
               {index !== icons.length - 1 && ( // nicht beim letzten Eintrag
-                <div className="absolute left-5 top-0 bottom-[-2rem] flex justify-center">
+                <div className="absolute left-4 top-0 bottom-[-2rem] flex justify-center">
                   <div className="w-0.5 bg-secondary h-full"></div>
                 </div>
               )}
 
               {/* Icon linke Spalte */}
-              <div className="w-10 flex-shrink-0 flex justify-center relative z-10">
+              <div className="w-8 flex-shrink-0 flex justify-center relative z-10">
                 <div className="bg-gray-200 p-2 rounded-full shadow-md -mt-2">
                   <Icon className="w-6 h-6 text-secondary" />
                 </div>

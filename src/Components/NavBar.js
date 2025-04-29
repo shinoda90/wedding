@@ -5,6 +5,7 @@ import i18n from 'i18next'
 import { useTranslation } from 'react-i18next'
 import SlideDown from './SlideDown'
 import { ReactComponent as MailIcon } from '../icons/mail_icon.svg'
+import { ReactComponent as BurgerIcon } from '../icons/burger.svg'
 import MobileMenu from './MobileMenu'
 
 export default function Navbar() {
@@ -50,13 +51,10 @@ export default function Navbar() {
         </div>
 
         {/* Burger Button rechts */}
-        <button
+        <BurgerIcon
           onClick={handleToggle}
-          aria-label="Toggle Menu"
-          className="fixed top-4 right-6 bg-white/20 backdrop-blur-sm p-2 rounded-xl text-2xl text-orange-400 shadow-md z-50"
-        >
-          ☰
-        </button>
+          className="fixed top-4 right-4 bg-neutral/60 backdrop-blur-sm p-2 rounded-xl w-12 h-12 fill-secondary shadow-md z-50"
+        />
       </div>
       <div className="navbar lg:fixed bg-neutral h-16 shadow-sm hidden lg:flex top-0 w-full z-50 uppercase font-navbar">
         {/* Desktop Navbar (mit Logo in der Mitte) */}

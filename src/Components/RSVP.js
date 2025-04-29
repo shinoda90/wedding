@@ -292,7 +292,7 @@ export default function RSVP() {
   }, [guests.map((g) => g.participation).join(',')])
 
   return (
-    <div className="pb-20">
+    <div className="pb-20 max-w-[800px] mx-auto">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-wrap justify-center gap-6">
           {guests.map((guest, index) => (
@@ -315,6 +315,7 @@ export default function RSVP() {
                   allPossibleGuests={allPossibleGuests}
                   chosenGuests={chosenGuests}
                   submittedNames={submittedGuests.map((g) => g.name)}
+                  onFocus={() => scrollGuestIntoView(index)}
                 />
 
                 <div className="pt-2">

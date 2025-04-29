@@ -40,7 +40,7 @@ export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
       <CloseButton onClick={onClose} />
       <div className="absolute top-4 left-4 z-50">
         <select
-          className="select select-sm border-primary w-16 md:w-40 bg-primary"
+          className="select select-sm border-primary w-16 md:w-40 bg-neutral text-primary"
           onChange={(e) => i18n.changeLanguage(e.target.value)}
           value={i18n.language}
           aria-label="Select Language"
@@ -64,7 +64,7 @@ export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
       </div>
 
       {/* Menüeinträge */}
-      <nav className="flex flex-col gap-7 text-xl relative z-40">
+      <nav className="flex flex-col gap-5 text-xl relative z-40 font-bold">
         {firstMenuItems.map((item, index) => (
           <MobileMenuEntry
             key={index}
@@ -74,10 +74,9 @@ export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
           />
         ))}
 
-        {/* RSVP-Button extra */}
         <a
           href="/#rsvp"
-          className="btn bg-secondary text-xl mx-16 py-2 rounded font-rsvp1 inline-block border-4 border-success"
+          className="mx-16 px-6 h-14 text-xl font-bold rounded font-rsvp1 border-4 border-success bg-secondary text-white flex items-center justify-center leading-none"
           onClick={onClose}
         >
           RSVP

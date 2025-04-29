@@ -57,7 +57,7 @@ export default function Timeline() {
       </div>
 
       {/* Desktop Version */}
-      <div className="hidden md:block mt-12">
+      <div className="hidden md:block mt-12 max-w-[1000px] mx-auto">
         <ul className="grid grid-cols-[1fr_auto_1fr] gap-x-2 gap-y-6">
           {icons.map((Icon, index) => (
             <li key={index} className="contents">

@@ -69,6 +69,19 @@
     "warning": "¡Faltan datos! Por favor completa.",
     "loading": "¡No huyas!"
   },
+  "info": {
+    "intro1": "Tenemos la gran suerte de haber encontrado este amor tan profundo, y queremos seguir escribiendo nuestra historia con ustedes en ella. Estamos muy emocionados de celebrar este capítulo especial con las personas que más amamos.",
+    "intro2": "„El amor es lo más cercano que tenemos a la magia.“ – Anónimo",
+    "title1": "¿Cuándo?",
+    "descr1": "27 de diciembre de 2025 a las 04:30",
+    "title2": "¿Dónde?",
+    "descr2": "Cardedeu, Lago de Coatepeque, El Salvador",
+    "title3": "¿Código de vestimenta?",
+    "descr3": "Vengan vestidos como si fueran a colarse en los Oscars…",
+    "title4": "¿Regalos?",
+    "descr4": "Vivimos en Suiza, nos casamos en El Salvador y, lamentablemente, nuestras maletas son alérgicas a las licuadoras. Su amor y su risa son más que suficientes. Pero si insisten, ¡ayúdennos a llenar nuestro fondo para la luna de miel!",
+    "end": "Por favor confirmen su asistencia antes del 31 de julio de 2025."
+  },
   "history": {
     "time1": "Diciembre 2018",
     "title1": "Cuando dos caminos se cruzaron",

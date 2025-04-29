@@ -9,6 +9,7 @@ export default function RSVPInputSearch({
   submittedNames,
   chosenGuests,
   allPossibleGuests,
+  onFocus,
 }) {
   const [showOptions, setShowOptions] = useState(false)
   const wrapperRef = useRef(null)
@@ -57,7 +58,8 @@ export default function RSVPInputSearch({
           onChange(e.target.value)
           setShowOptions(true)
         }}
-        onFocus={() => setShowOptions(true)}
+        onFocus={onFocus}
+        onClick={() => setShowOptions(true)}
       />
 
       {value.trim() !== '' && (

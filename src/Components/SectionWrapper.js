@@ -8,10 +8,7 @@ export default function SectionWrapper({ id, title, children }) {
   })
 
   return (
-    <section
-      id={id}
-      className="min-h-screen scroll-mt-6 lg:scroll-mt-24 lg:min-h-[calc(100vh-4rem)]"
-    >
+    <section id={id} className="scroll-mt-6 lg:scroll-mt-24 mx-auto">
       <div
         ref={ref}
         className={`transition-all duration-700 ${
