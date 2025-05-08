@@ -2,7 +2,7 @@ import Logo from '../image/logo_peach.png'
 
 export default function SectionDivider() {
   return (
-    <div className="relative my-6 flex items-center justify-center">
+    <div className="relative my-12 flex items-center justify-center">
       {/* Kürzere Linie links */}
       <div className="w-1/5 border-t border-neutral" />
 

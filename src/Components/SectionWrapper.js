@@ -1,11 +1,16 @@
 import { useInView } from 'react-intersection-observer'
 import Title from './Title'
+import { useEffect } from 'react'
 
 export default function SectionWrapper({ id, title, children }) {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.05,
+    threshold: 0.4,
   })
+
+  useEffect(() => {
+    console.log(`Section ${id} inView:`, inView)
+  }, [inView])
 
   return (
     <section id={id} className="scroll-mt-6 lg:scroll-mt-24 mx-auto">

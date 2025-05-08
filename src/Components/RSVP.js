@@ -10,7 +10,6 @@ import { useRef } from 'react'
 export default function RSVP() {
   const { t, i18n } = useTranslation()
   const guestRefs = useRef([])
-  const url = process.env.REACT_APP_SHEETBEST_URL
   const [allPossibleGuests, setAllPossibleGuests] = useState([]) // Alle geladenen Gäste
   const [chosenGuests, setChosenGuests] = useState([]) // Alle geladenen Gäste
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -57,26 +56,12 @@ export default function RSVP() {
   useEffect(() => {
     const fetchGuests = async () => {
       try {
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-API-KEY': process.env.REACT_APP_SHEETBEST_API_KEY,
-          },
-        })
+        const response = await fetch('http://localhost:4000/guests') // oder dein Backend-URL
         const data = await response.json()
-
-        // Alle Gäste laden
-        const allNames = data.map((entry) => entry.Name).filter(Boolean)
-
-        // Gäste, die schon geantwortet haben (Participation ist ausgefüllt)
+        const allNames = data.map((g) => g.name).filter(Boolean)
         const respondedNames = data
-          .filter(
-            (entry) => entry.Participation && entry.Participation.trim() !== ''
-          )
-          .map((entry) => entry.Name)
-
-        // Nur Gäste, die noch NICHT geantwortet haben, verfügbar machen
+          .filter((g) => g.participation !== null)
+          .map((g) => g.name)
         const available = allNames.filter(
           (name) => !respondedNames.includes(name)
         )
@@ -87,7 +72,7 @@ export default function RSVP() {
     }
 
     fetchGuests()
-  }, [url])
+  }, [])
 
   const handleNameChange = (index, name) => {
     const updatedGuests = [...guests]
@@ -207,11 +192,11 @@ export default function RSVP() {
 
       for (const guest of guests) {
         const payload = {
-          Name: guest.name,
-          Participation: guest.participation ? 'Yes' : 'No',
-          Wishes: guest.requirements || '',
-          Email: guest.participation ? guest.email : '',
-          Drinks: guest.participation
+          name: guest.name,
+          participation: guest.participation === true,
+          requirements: guest.requirements || '',
+          email: guest.participation ? guest.email : '',
+          drinks: guest.participation
             ? guest.drinks
                 .map((drinkId) => {
                   const drink = drinkOptions.find((d) => d.id === drinkId)
@@ -221,17 +206,19 @@ export default function RSVP() {
             : '',
         }
 
-        const nameEncoded = encodeURIComponent(guest.name.trim())
-        const guestUrl = `${url}/Name/${nameEncoded}`
+        console.log('Payload für Gast:', payload)
 
-        const response = await fetch(guestUrl, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-API-KEY': process.env.REACT_APP_SHEETBEST_API_KEY,
-          },
-          body: JSON.stringify(payload),
-        })
+        const nameTrimmed = guest.name.trim() // Entfernen von unnötigen Leerzeichen
+        const nameEncoded = encodeURIComponent(nameTrimmed) // Kodieren des Namens für die URL
+
+        const response = await fetch(
+          `http://localhost:4000/guests/${nameEncoded}`,
+          {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          }
+        )
 
         if (!response.ok) {
           throw new Error(`Fehler bei ${guest.name}`)
@@ -254,8 +241,8 @@ export default function RSVP() {
         },
       ])
     } catch (error) {
-      console.error('Fehler beim Senden:', error)
-      alert('Es gab ein Problem beim Senden 😕')
+      console.error('Error while sending:', error)
+      alert('Error while sending has occured 😕')
     } finally {
       setIsSubmitting(false) // GANZ WICHTIG: egal ob Fehler oder Erfolg → Entsperren
     }
@@ -325,7 +312,7 @@ export default function RSVP() {
                       <input
                         type="radio"
                         name={`participation-${index}`}
-                        value="yes"
+                        value={true}
                         checked={guest.participation === true}
                         onFocus={() => scrollGuestIntoView(index)} // << HIER
                         onChange={() =>
@@ -340,7 +327,7 @@ export default function RSVP() {
                       <input
                         type="radio"
                         name={`participation-${index}`}
-                        value="no"
+                        value={false}
                         checked={guest.participation === false}
                         onFocus={() => scrollGuestIntoView(index)}
                         onChange={() =>
@@ -496,7 +483,7 @@ export default function RSVP() {
                       </p>
                       <p className="mb-2">
                         <strong>{t('rsvp.question1')}:</strong>{' '}
-                        {guest.participation ? 'Yes' : 'No'}
+                        {guest.participation ? true : false}
                       </p>
 
                       {guest.participation && (
