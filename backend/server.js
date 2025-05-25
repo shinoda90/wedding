@@ -35,10 +35,8 @@ app.get('/guests', async (req, res) => {
 
 app.put('/guests/:name', async (req, res) => {
   try {
-    // Dekodiere den Namen in der URL (Gast%201 -> Gast 1)
     const guestName = decodeURIComponent(req.params.name)
 
-    // Suche nach dem Gast in der Datenbank
     const updated = await Guest.findOneAndUpdate(
       { name: guestName },
       req.body,

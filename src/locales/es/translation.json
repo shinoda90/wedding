@@ -49,7 +49,7 @@
     "person": "Persona",
     "question1": "Vas a venir?*",
     "question2": "¿Solicitudes de bebidas?*",
-    "question3": "Email (para Updates)*",
+    "question3": "Email (para Updates)",
     "question4": "¿Preferencias especiales o alergias?",
     "answer11": "Si",
     "answer12": "No",
@@ -71,7 +71,7 @@
   },
   "info": {
     "intro1": "Tenemos la gran suerte de haber encontrado este amor tan profundo, y queremos seguir escribiendo nuestra historia con ustedes en ella. Estamos muy emocionados de celebrar este capítulo especial con las personas que más amamos.",
-    "intro2": "„El amor es lo más cercano que tenemos a la magia.“ – Anónimo",
+    "intro2": "\"El amor es lo más cercano que tenemos a la magia.\" – Anónimo",
     "title1": "¿Cuándo?",
     "descr1": "27 de diciembre de 2025 a las 04:30",
     "title2": "¿Dónde?",
@@ -101,5 +101,17 @@
     "time6": "Diciembre 2024",
     "title6": "Sí para siempre",
     "descr6": "El 31 de diciembre de 2024, bajo la magia del último atardecer del año, Michel y Dani dijeron sí para siempre. Se comprometieron, rodeados de amor, recuerdos y sueños aún por escribir. Ahora quieren compartir esa alegría con ustedes, porque toda gran historia de amor merece ser celebrada, no solo por dos personas, sino por todos los corazones que la vieron crecer."
+  },
+  "guide": {
+    "plan1": "Llegaremos a El Salvador el 20 de diciembre y utilizaremos los primeros días para ultimar los preparativos de la boda.",
+    "plan2": "El 24 y 25 de diciembre celebraremos la Navidad con nuestra familia. Invitamos cordialmente a los invitados de Europa y EE. UU. a unirse a nosotros en este momento especial.",
+    "plan3": "El 26 de diciembre iremos juntos al lago (Lago de Coatepeque) y nos quedaremos allí hasta el 29 de diciembre. Planeamos alquilar una casa grande para todos los invitados internacionales durante estos días.",
+    "plan4": "Además, tenemos nuestro propio complejo de casas directamente junto al lago, donde todos están invitados durante el día para comer y pasar tiempo juntos.",
+    "plan5": "También puede ser posible pasar la noche en nuestra propiedad, en una habitación o en una tienda de campaña. Si estás interesado, por favor contáctanos directamente.",
+    "plan6": "A partir del 29 de diciembre, planeamos ir a la playa y alquilar una casa grande para todos los que quieran unirse.",
+    "plan7": "Allí celebraremos juntos la Nochevieja y planeamos quedarnos en la playa hasta el 3 de enero.",
+    "plan8": "Para todos los que quieran quedarse más tiempo, estaremos encantados de ayudar con la planificación individual. Nosotros planeamos regresar el 6 de enero.",
+    "plan9": "Por favor, infórmanos si estás interesado en participar en una o más partes de este viaje. Cuanto antes sepamos quién viene, mejor podremos organizar todo y mantenerte informado con más detalles.",
+    "plan10": "Por supuesto, también puedes planear tu propio viaje y unirte solo a algunas partes – ¡todo es opcional!"
   }
 }

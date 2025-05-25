@@ -174,8 +174,7 @@ export default function RSVP() {
 
     const hasParticipationInfo =
       g.participation !== undefined &&
-      (g.participation === false ||
-        (g.email.match(/^\S+@\S+\.\S+$/) && g.drinks.length > 0))
+      (g.participation === false || g.drinks.length > 0)
 
     return isNameValid && isNotSubmitted && hasParticipationInfo
   })
@@ -483,7 +482,7 @@ export default function RSVP() {
                       </p>
                       <p className="mb-2">
                         <strong>{t('rsvp.question1')}:</strong>{' '}
-                        {guest.participation ? true : false}
+                        {guest.participation ? 'Yes' : 'No'}
                       </p>
 
                       {guest.participation && (
@@ -492,13 +491,19 @@ export default function RSVP() {
                             <strong>{t('rsvp.question2')}:</strong>{' '}
                             {guest.drinks.join(', ')}
                           </p>
-                          <p className="mb-2">
-                            <strong>{t('contact.email')}:</strong> {guest.email}
-                          </p>
-                          <p className="mb-2">
-                            <strong>{t('rsvp.question4')}:</strong>{' '}
-                            {guest.requirements}
-                          </p>
+                          {guest.email && (
+                            <p className="mb-2">
+                              <strong>{t('rsvp.question3')}:</strong>{' '}
+                              {guest.email}
+                            </p>
+                          )}
+
+                          {guest.requirements && (
+                            <p className="mb-2">
+                              <strong>{t('rsvp.question4')}:</strong>{' '}
+                              {guest.requirements}
+                            </p>
+                          )}
                         </>
                       )}
                     </div>

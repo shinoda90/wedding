@@ -49,7 +49,7 @@
     "person": "Person",
     "question1": "Will you come?*",
     "question2": "Alcohol wishes?*",
-    "question3": "Email (for Updates)*",
+    "question3": "Email (for Updates)",
     "question4": "Special wishes or allergies?",
     "answer11": "Yes",
     "answer12": "No",
@@ -71,7 +71,7 @@
   },
   "info": {
     "intro1": "We are so lucky to have found our profound love for each other, and would love to keep writing our story with you on it. We're so thrilled to be celebrating this special chapter with the people we love the most. Thank you for being part of our journey — your love and support mean everything to us. We can't wait to say 'I do' surrounded by our favorite people. ",
-    "intro2": "„Love is the closest thing we have to magic.“ - Anonymus",
+    "intro2": "\"Love is the closest thing we have to magic.\" - Anonymus",
     "title1": "When?",
     "descr1": "27 December 2025 at 04:30",
     "title2": "Where?",
@@ -85,21 +85,33 @@
   "history": {
     "time1": "2018 December",
     "title1": "When Two Paths Crossed",
-    "descr1": "It was the winter of 2018 in Hamburg, Germany—cold winds outside, but something warm was already beginning to stir. Michel and Dani were both working on Airbus projects when Dani, sitting quietly on a bus, caught sight of a sweet-faced stranger. “Oh, that rubito is very cute,” she thought, smiling to herself. She had no idea that this simple moment would change everything.\nJust one week later, fate knocked—quite literally. On a regular workday, Dani heard someone at her office door. When she opened it, there he was: Michel. Her heart skipped a beat. She was so taken by surprise, so overwhelmed by a sudden wave of warmth, that she hugged him right then and there—completely forgetting that spontaneous hugs aren't exactly part of German office etiquette.\nA few days later, a Christmas market after-work event brought everyone together. The lights were glowing, laughter echoed around mulled wine, and something magical began to bloom. And just like that, a love story began.",
+    "descr1": "It was the winter of 2018 in Hamburg, Germany—cold winds outside, but something warm was already beginning to stir. Michel and Dani were both working on Airbus projects when Dani, sitting quietly on a bus, caught sight of a sweet-faced stranger. “Oh, that rubito is very cute,” she thought, smiling to herself. She had no idea that this simple moment would change everything. Just one week later, fate knocked—quite literally. On a regular workday, Dani heard someone at her office door. When she opened it, there he was: Michel. Her heart skipped a beat. She was so taken by surprise, so overwhelmed by a sudden wave of warmth, that she hugged him right then and there—completely forgetting that spontaneous hugs aren't exactly part of German office etiquette. A few days later, a Christmas market after-work event brought everyone together. The lights were glowing, laughter echoed around mulled wine, and something magical began to bloom. And just like that, a love story began.",
     "time2": "2019",
     "title2": "Becoming Us",
     "descr2": "This was the year of loving each other, laughter, travel, and countless adventures. They discovered new places and, more importantly, discovered each other in deeper ways with every step.",
-    "time3": "44440",
+    "time3": "2021 September",
     "title3": "Jamie Finds Us",
-    "descr3": "On September 12th, during a road trip through the breathtaking coastlines of Croatia, the universe gave them an unexpected gift. In the middle of nowhere, at a small roadside café, a scruffy little dog stood alone. He looked at them with eyes full of hope. Without hesitation, they scooped him into their arms—and into their hearts.\nThey named him Jamie. From that day on, their duo became a trio, and life felt even fuller.",
+    "descr3": "On September 12th, during a road trip through the breathtaking coastlines of Croatia, the universe gave them an unexpected gift. In the middle of nowhere, at a small roadside café, a scruffy little dog stood alone. He looked at them with eyes full of hope. Without hesitation, they scooped him into their arms—and into their hearts. They named him Jamie. From that day on, their duo became a trio, and life felt even fuller.",
     "time4": "2022 January",
     "title4": "Taking a Leap for Love",
-    "descr4": "When Michel found the job of his dreams—tucked away in the quiet town of Backnang—there was no hesitation. No doubts. Dani looked at him with love and simply said, “Let’s go.”\nThey packed up their lives and moved together, knowing that home wasn’t a place—it was being together.",
+    "descr4": "When Michel found the job of his dreams—tucked away in the quiet town of Backnang—there was no hesitation. No doubts. Dani looked at him with love and simply said, “Let’s go.” They packed up their lives and moved together, knowing that home wasn’t a place—it was being together.",
     "time5": "2023 July",
     "title5": "A New Chapter in Switzerland",
     "descr5": "By July 2023, their hearts were craving mountains, lakes, and a deeper connection with nature. That dream led them to Switzerland, where they felt at home the moment they arrived. A new chapter, filled with alpine air, peaceful mornings, and the sense that they were exactly where they were meant to be.",
     "time6": "2024 December",
     "title6": "Yes to Forever",
-    "descr6": "On December 31st, 2024, under the magic of the year’s final sunset, Michel and Dani said yes to forever. They got engaged, surrounded by love, memories, and dreams yet to be written.\nAnd now, they want to share that joy with you. Because every great love story deserves to be celebrated—not just by two people, but by the hearts who witnessed it grow"
+    "descr6": "On December 31st, 2024, under the magic of the year’s final sunset, Michel and Dani said yes to forever. They got engaged, surrounded by love, memories, and dreams yet to be written. And now, they want to share that joy with you. Because every great love story deserves to be celebrated—not just by two people, but by the hearts who witnessed it grow"
+  },
+  "guide": {
+    "plan1": "We will arrive in El Salvador on December 20 and use the first few days to finalize preparations for the wedding.",
+    "plan2": "On December 24 and 25, we will celebrate Christmas with our family. Guests from Europe and the US are warmly invited to join us during this special time.",
+    "plan3": "On December 26, we will go together to the lake (Lago de Coatepeque) and stay there until December 29. We plan to rent a large house for all international guests for these days.",
+    "plan4": "Additionally, we have our own house complex directly by the lake, where everyone is welcome to come during the day to eat and spend time together.",
+    "plan5": "It may also be possible to stay overnight on our property – in a room or with a tent. If you are interested, please contact us directly.",
+    "plan6": "From December 29, we plan to go to the beach and rent a large beach house for everyone who wants to join.",
+    "plan7": "We will celebrate New Year's Eve together there and expect to stay at the beach until January 3.",
+    "plan8": "For everyone who wants to stay longer, we are happy to help with individual planning. We ourselves plan to return on January 6.",
+    "plan9": "Please let us know if you're interested in joining one or more parts of this journey. The sooner we know who is coming, the better we can plan and keep you updated with more details.",
+    "plan10": "Of course, you can also plan your own trip and just join for parts of the journey – everything is optional!"
   }
 }
