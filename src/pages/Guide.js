@@ -67,6 +67,100 @@ const lake = [
   },
 ]
 
+const salvador = [
+  {
+    link: 'https://www.airbnb.com/rooms/969005556773045175?adults=1&check_in=2025-12-26&check_out=2025-12-28',
+    img: 'airbnb 12',
+    price: 61,
+    persons: 3,
+    rooms: 1,
+  },
+  {
+    link: 'https://www.airbnb.com/rooms/1374986178908405491?adults=1&check_in=2025-12-26&check_out=2025-12-28',
+    img: 'airbnb 13',
+    price: 80,
+    persons: 6,
+    rooms: 3,
+  },
+  {
+    link: 'https://www.airbnb.com/rooms/1349579329610755342?adults=1&check_in=2025-12-26&check_out=2025-12-28',
+    img: 'airbnb 14',
+    price: 78,
+    persons: 4,
+    rooms: 1,
+  },
+  {
+    link: 'https://www.airbnb.com/rooms/1308810574509495959?adults=1&check_in=2025-12-26&check_out=2025-12-28',
+    img: 'airbnb 15',
+    price: 100,
+    persons: 6,
+    rooms: 3,
+  },
+  {
+    link: 'https://www.airbnb.com/rooms/1172043605907778198?adults=1&check_in=2025-12-26&check_out=2025-12-28',
+    img: 'airbnb 16',
+    price: 75,
+    persons: 6,
+    rooms: 3,
+  },
+  {
+    link: 'https://www.airbnb.com/rooms/1362517707461073205?adults=1&check_in=2025-12-26&check_out=2025-12-28',
+    img: 'airbnb 17',
+    price: 90,
+    persons: 4,
+    rooms: 2,
+  },
+  {
+    link: 'https://www.airbnb.com/rooms/1304678298466667871?adults=1&check_in=2025-12-26&check_out=2025-12-28',
+    img: 'airbnb 18',
+    price: 50,
+    persons: 2,
+    rooms: 1,
+  },
+  {
+    link: 'https://www.airbnb.com/rooms/953985349903046222?adults=1&check_in=2025-12-26&check_out=2025-12-28',
+    img: 'airbnb 19',
+    price: 100,
+    persons: 6,
+    rooms: 3,
+  },
+  {
+    link: 'https://www.airbnb.com/rooms/1133774204602998891?adults=1&check_in=2025-12-26&check_out=2025-12-28',
+    img: 'airbnb 20',
+    price: 120,
+    persons: 6,
+    rooms: 3,
+  },
+  {
+    link: 'https://www.booking.com/hotel/sv/hyatt-centric-las-cascadas-san-salvador.es.html?checkin=2025-12-21&checkout=2025-12-28',
+    img: 'airbnb 21',
+    price: 160,
+    persons: 2,
+    rooms: 1,
+  },
+  {
+    link: 'https://www.booking.com/hotel/sv/sheraton-presidente-san-salvador.es.html?checkin=2025-12-21&checkout=2025-12-22',
+    img: 'airbnb 22',
+    price: 137,
+    persons: 2,
+    rooms: 1,
+  },
+  {
+    link: 'https://www.booking.com/hotel/sv/courtyard-by-marriott-san-salvador.es.html?checkin=2025-12-21&checkout=2025-12-22',
+    img: 'airbnb 23',
+    price: 109,
+    persons: 4,
+    rooms: 1,
+  },
+  {
+    link: 'https://www.booking.com/hotel/sv/cinco-b-amp-b.es.html?checkin=2025-12-21&checkout=2025-12-22',
+    img: 'airbnb 24',
+    price: 77,
+    persons: 2,
+    rooms: 1,
+  },
+]
+
 const mustSees = [
   {
     name: 'Suchitoto',
@@ -131,7 +225,7 @@ const mustSees = [
     name: 'Bahía de Jiquilisco',
     description:
       'Größte Küstenbucht El Salvadors mit Mangroven, Delfinen und Kajakmöglichkeiten.',
-    image: '/images/mustsees/bahia_de_jiquilisco.webp',
+    image: '/images/mustsees/Bahia-de-Jiquilisco.webp',
   },
 ]
 
@@ -155,24 +249,6 @@ const accommodations = [
   // Weitere Unterkünfte hier
 ]
 
-const mustSee = [
-  {
-    name: 'Vulkan Poás',
-    address: 'Parque Nacional Volcán Poás',
-    image: 'https://example.com/poas.jpg',
-    description:
-      'Ein beeindruckender aktiver Vulkan mit einer der größten Krateröffnungen der Welt. Früh am Morgen besuchen!',
-  },
-  {
-    name: 'La Paz Waterfall Gardens',
-    address: 'Vara Blanca, Heredia',
-    image: 'https://example.com/lapaz.jpg',
-    description:
-      'Naturpark mit Wasserfällen, Wildtieren und einem Schmetterlingsgarten – ideal für Familien und Fotofans.',
-  },
-  // Weitere Sehenswürdigkeiten hier
-]
-
 export default function Guide() {
   const { t } = useTranslation()
 
@@ -194,7 +270,12 @@ export default function Guide() {
       <Title title={t('navbar.guide')} />
 
       <section className="mb-8">
-        <h2 className="text-xl font-bold mb-4">Hotels - Lago de Coatepeque</h2>
+        <div className="text-4xl font-bold my-8 text-center font-slogan">
+          Accodomations for your Trip
+        </div>
+        <div className="text-2xl font-bold my-6 mt-10 text-center text-neutral">
+          Lago de Coatepeque
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {lake.map((a, i) => (
             <div
@@ -205,7 +286,41 @@ export default function Guide() {
                 {' '}
                 {/* feste Höhe für Bildcontainer */}
                 <img
-                  src={`/image/hotels/${a.img}.webp`}
+                  src={`/images/hotels/${a.img}.webp`}
+                  alt={a.img}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-2 right-2 bg-white/90 text-sm rounded p-2 shadow-lg text-right">
+                  <p className="font-semibold text-gray-800">{a.price} €</p>
+                  <p>{a.rooms} Zimmer</p>
+                  <p>{a.persons} Personen</p>
+                  <a
+                    href={a.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline"
+                  >
+                    Link
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="text-2xl font-bold my-6 mt-16 text-center text-neutral">
+          San Salvador
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {salvador.map((a, i) => (
+            <div
+              key={i}
+              className="border rounded shadow overflow-hidden relative"
+            >
+              <div className="relative h-64">
+                {' '}
+                {/* feste Höhe für Bildcontainer */}
+                <img
+                  src={`/images/hotels/${a.img}.webp`}
                   alt={a.img}
                   className="w-full h-full object-cover"
                 />
@@ -228,25 +343,32 @@ export default function Guide() {
         </div>
       </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-bold mb-2">Must-See Orte</h2>
-        {mustSees.map((place, i) => (
-          <div key={i} className="mb-4 border p-3 rounded shadow">
-            <img
-              src={place.image}
-              alt={place.name}
-              className="mb-2 w-full rounded"
-            />
-            <h3 className="text-lg font-semibold">{place.name}</h3>
-            <p>{place.description}</p>
-          </div>
-        ))}
+      <section className="mb-8 ">
+        <div className="text-4xl font-bold my-8 text-center font-slogan mt-16">
+          Must See Orte
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+          {mustSees.map((place, i) => (
+            <div
+              key={i}
+              className="border p-3 rounded shadow bg-white text-neutral"
+            >
+              <img
+                src={place.image}
+                alt={place.name}
+                className="mb-2 w-full h-48 object-cover rounded"
+              />
+              <h3 className="text-lg font-semibold">{place.name}</h3>
+              <p>{place.description}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section class="mb-8">
-        <h2 class="text-xl font-bold mb-2">
-          Reisetipp: Mietwagen in El Salvador
-        </h2>
+        <div className="text-4xl font-bold my-8 text-center font-slogan mt-16">
+          Mietwagen in El Salvador
+        </div>
         <p class="mb-2">
           Für eine flexible und bequeme Reise durch El Salvador empfehlen wir
           euch,
@@ -303,7 +425,9 @@ export default function Guide() {
       </section>
 
       <section className="mb-8">
-        <h2 className="text-xl font-bold mb-2">Unser gemeinsamer Reiseplan</h2>
+        <div className="text-4xl font-bold my-8 text-center font-slogan mt-16">
+          Unser gemeinsamer Reiseplan
+        </div>
         {guidePlans.map((plan, index) => (
           <p className="mb-2" key={index}>
             {plan}

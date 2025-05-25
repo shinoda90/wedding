@@ -28,18 +28,17 @@ export default function History() {
           {icons.map((iconSrc, index) => (
             <li key={index} className="flex items-start gap-2 relative">
               {/* Vertikale Linie */}
-              {index !== icons.length - 1 && ( // nicht beim letzten Eintrag
-                <div className="absolute left-4 top-0 bottom-[-2rem] flex justify-center">
-                  <div className="w-0.5 bg-secondary h-full"></div>
-                </div>
-              )}
+
+              <div className="absolute left-5 top-0 bottom-[-2rem] flex justify-center">
+                <div className="w-0.5 bg-secondary h-full"></div>
+              </div>
 
               {/* Icon linke Spalte */}
-              <div className="w-8 flex-shrink-0 flex justify-center relative z-10">
+              <div className="w-10 flex-shrink-0 flex justify-center relative z-10">
                 <img
                   src={iconSrc}
                   alt={`icon-${index}`}
-                  className=" h-8 rounded-full shadow-md -mt-1 top-0 p-1 bg-white"
+                  className=" h-10 rounded-full shadow-md -mt-2 top-0 p-1 bg-white"
                 />
               </div>
 

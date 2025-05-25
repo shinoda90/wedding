@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 export default function SectionWrapper({ id, title, children }) {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.4,
+    threshold: 0.1,
   })
 
   useEffect(() => {
