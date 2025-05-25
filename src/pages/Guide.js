@@ -1,6 +1,11 @@
 import Title from '../Components/Title'
 import { useTranslation } from 'react-i18next'
 
+import arriveIcon from '../../src/icons/scheduleIcon1.svg'
+import churchIcon from '../../src/icons/scheduleIcon2.svg'
+import cakeIcon from '../../src/icons/scheduleIcon3.svg'
+import gamesIcon from '../../src/icons/scheduleIcon4.svg'
+
 const lake = [
   {
     link: 'https://www.airbnb.com/rooms/1242101891143887033?check_in=2025-12-27&check_out=2025-12-28&location=El%20Salvador&search_mode=regular_search&source_impression_id=p3_1744550969_P3SgLSvhrgkOa8yH&previous_page_section_name=1001&federated_search_id=8a09925d-70dc-4149-9d7b-90aef2859612',
@@ -252,18 +257,7 @@ const accommodations = [
 export default function Guide() {
   const { t } = useTranslation()
 
-  const guidePlans = [
-    t('guide.plan1'),
-    t('guide.plan2'),
-    t('guide.plan3'),
-    t('guide.plan4'),
-    t('guide.plan5'),
-    t('guide.plan6'),
-    t('guide.plan7'),
-    t('guide.plan8'),
-    t('guide.plan9'),
-    t('guide.plan10'),
-  ]
+  const icons = [arriveIcon, churchIcon, cakeIcon, gamesIcon]
 
   return (
     <div className="pt-10 px-4 max-w-6xl mx-auto">
@@ -271,7 +265,7 @@ export default function Guide() {
 
       <section className="mb-8">
         <div className="text-4xl font-bold my-8 text-center font-slogan">
-          Accodomations for your Trip
+          {t('guide.title1')}
         </div>
         <div className="text-2xl font-bold my-6 mt-10 text-center text-neutral">
           Lago de Coatepeque
@@ -292,8 +286,12 @@ export default function Guide() {
                 />
                 <div className="absolute top-2 right-2 bg-white/90 text-sm rounded p-2 shadow-lg text-right">
                   <p className="font-semibold text-gray-800">{a.price} €</p>
-                  <p>{a.rooms} Zimmer</p>
-                  <p>{a.persons} Personen</p>
+                  <p>
+                    {a.rooms} {t('guide.rooms')}
+                  </p>
+                  <p>
+                    {a.persons} {t('guide.persons')}
+                  </p>
                   <a
                     href={a.link}
                     target="_blank"
@@ -326,15 +324,19 @@ export default function Guide() {
                 />
                 <div className="absolute top-2 right-2 bg-white/90 text-sm rounded p-2 shadow-lg text-right">
                   <p className="font-semibold text-gray-800">{a.price} €</p>
-                  <p>{a.rooms} Zimmer</p>
-                  <p>{a.persons} Personen</p>
+                  <p>
+                    {a.rooms} {t('guide.rooms')}
+                  </p>
+                  <p>
+                    {a.persons} {t('guide.persons')}
+                  </p>
                   <a
                     href={a.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-500 underline"
                   >
-                    See Online
+                    Link
                   </a>
                 </div>
               </div>
@@ -345,7 +347,7 @@ export default function Guide() {
 
       <section className="mb-8 ">
         <div className="text-4xl font-bold my-8 text-center font-slogan mt-16">
-          Must See Orte
+          {t('guide.title2')}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
           {mustSees.map((place, i) => (
@@ -367,7 +369,7 @@ export default function Guide() {
 
       <section class="mb-8">
         <div className="text-4xl font-bold my-8 text-center font-slogan mt-16">
-          Mietwagen in El Salvador
+          {t('guide.title3')}
         </div>
         <p class="mb-2">
           Für eine flexible und bequeme Reise durch El Salvador empfehlen wir
@@ -426,13 +428,121 @@ export default function Guide() {
 
       <section className="mb-8">
         <div className="text-4xl font-bold my-8 text-center font-slogan mt-16">
-          Unser gemeinsamer Reiseplan
+          {t('guide.title4')}
         </div>
-        {guidePlans.map((plan, index) => (
-          <p className="mb-2" key={index}>
-            {plan}
-          </p>
-        ))}
+
+        <>
+          {/* Mobile Version */}
+          <div className="block md:hidden pl-2 pr-8 mt-8 -mx-4">
+            <ul className="flex flex-col gap-8">
+              {icons.map((iconSrc, index) => (
+                <li key={index} className="flex items-start gap-2 relative">
+                  {/* Vertikale Linie */}
+
+                  <div className="absolute left-5 top-0 bottom-[-2rem] flex justify-center">
+                    <div className="w-0.5 bg-secondary h-full"></div>
+                  </div>
+
+                  {/* Icon linke Spalte */}
+                  <div className="w-10 flex-shrink-0 flex justify-center relative z-10">
+                    <img
+                      src={iconSrc}
+                      alt={`icon-${index}`}
+                      className=" h-10 rounded-full shadow-md -mt-2 top-0 p-1 bg-white"
+                    />
+                  </div>
+
+                  {/* Text rechte Spalte */}
+                  <div>
+                    <time className="block font-tl-time mb-1">
+                      {t(`guide.time${index + 1}`)}
+                    </time>
+                    <div className="text-lg font-tl-title">
+                      {t(`guide.location${index + 1}`)}
+                    </div>
+                    <p className="font-tl-text">
+                      {t(`guide.plan${index + 1}`)}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Desktop Version */}
+          <div className="hidden md:block mt-12 max-w-[1000px] mx-auto mb-12">
+            <ul className="grid grid-cols-[1fr_auto_1fr] gap-x-2 gap-y-6">
+              {icons.map((iconSrc, index) => (
+                <li key={index} className="contents">
+                  {/* Linker Text oder leer */}
+                  {index % 2 === 0 ? (
+                    <div className="flex justify-end text-end pr-4">
+                      <div>
+                        <time className="block font-tl-time mb-1">
+                          {t(`guide.time${index + 1}`)}
+                        </time>
+                        <div className="text-lg font-tl-title">
+                          {t(`guide.location${index + 1}`)}
+                        </div>
+                        <p className="font-tl-text text-justify">
+                          {t(`guide.plan${index + 1}`)}
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
+
+                  <div className="w-12 relative flex justify-center">
+                    {/* Vertikale Linie */}
+
+                    <div className="absolute top-0 -bottom-4 left-1/2 -translate-x-1/2 w-0.5 bg-secondary"></div>
+
+                    {/* Icon */}
+                    {/* Icon */}
+                    <img
+                      src={iconSrc}
+                      alt={`icon-${index}`}
+                      className="absolute h-12 rounded-full shadow-md -mt-3 top-0 p-1 bg-white"
+                    />
+                  </div>
+
+                  {/* Rechter Text oder leer */}
+                  {index % 2 !== 0 ? (
+                    <div className="flex justify-start text-start pl-4">
+                      <div>
+                        <time className="block font-tl-time mb-1">
+                          {t(`guide.time${index + 1}`)}
+                        </time>
+                        <div className="text-lg font-tl-title">
+                          {t(`guide.location${index + 1}`)}
+                        </div>
+                        <p className="font-tl-text text-justify">
+                          {t(`guide.plan${index + 1}`)}
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="max-w-[800px] mx-auto grid md:grid-cols-3 gap-6 mt-12 mb-12 px-4 text-white">
+            {[5, 6, 7].map((n) => (
+              <div
+                key={n}
+                className="rounded-2xl bg-neutral shadow-md p-6 flex flex-col items-start justify-start gap-2 border border-navbar"
+              >
+                <div className="text-lg font-semibold">
+                  {t(`guide.location${n}`)}
+                </div>
+                <p className="text-sm text-justify">{t(`guide.plan${n}`)}</p>
+              </div>
+            ))}
+          </div>
+        </>
       </section>
     </div>
   )
