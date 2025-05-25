@@ -1,21 +1,22 @@
 import { useTranslation } from 'react-i18next'
-import { ReactComponent as ArriveIcon } from '../icons/scheduleIcon1.svg'
-import { ReactComponent as ChurchIcon } from '../icons/scheduleIcon2.svg'
-import { ReactComponent as CakeIcon } from '../icons/scheduleIcon3.svg'
-import { ReactComponent as GamesIcon } from '../icons/scheduleIcon4.svg'
-import { ReactComponent as FoodIcon } from '../icons/scheduleIcon5.svg'
-import { ReactComponent as PartyIcon } from '../icons/scheduleIcon6.svg'
+
+import arriveIcon from '../icons/scheduleIcon1.svg'
+import churchIcon from '../icons/scheduleIcon2.svg'
+import cakeIcon from '../icons/scheduleIcon3.svg'
+import gamesIcon from '../icons/scheduleIcon4.svg'
+import foodIcon from '../icons/scheduleIcon5.svg'
+import partyIcon from '../icons/scheduleIcon6.svg'
 
 export default function Timeline() {
   const { t } = useTranslation()
 
   const icons = [
-    ArriveIcon,
-    ChurchIcon,
-    CakeIcon,
-    GamesIcon,
-    FoodIcon,
-    PartyIcon,
+    arriveIcon,
+    churchIcon,
+    cakeIcon,
+    gamesIcon,
+    foodIcon,
+    partyIcon,
   ]
 
   return (
@@ -23,7 +24,7 @@ export default function Timeline() {
       {/* Mobile Version */}
       <div className="block md:hidden pl-2 pr-4 mt-8 mb-8">
         <ul className="flex flex-col gap-8">
-          {icons.map((Icon, index) => (
+          {icons.map((iconSrc, index) => (
             <li key={index} className="flex items-start gap-4 relative">
               {/* Vertikale Linie */}
               {index !== icons.length - 1 && ( // nicht beim letzten Eintrag
@@ -34,9 +35,11 @@ export default function Timeline() {
 
               {/* Icon linke Spalte */}
               <div className="w-10 flex-shrink-0 flex justify-center relative z-10">
-                <div className="bg-neutral p-2 rounded-full shadow-md -mt-2">
-                  <Icon className="w-6 h-6 text-secondary" />
-                </div>
+                <img
+                  src={iconSrc}
+                  alt={`icon-${index}`}
+                  className=" h-8 rounded-full shadow-md -mt-1 top-0 p-1 bg-white"
+                />
               </div>
 
               {/* Text rechte Spalte */}
@@ -59,7 +62,7 @@ export default function Timeline() {
       {/* Desktop Version */}
       <div className="hidden md:block mt-12 max-w-[1000px] mx-auto mb-12">
         <ul className="grid grid-cols-[1fr_auto_1fr] gap-x-2 gap-y-6">
-          {icons.map((Icon, index) => (
+          {icons.map((iconSrc, index) => (
             <li key={index} className="contents">
               {/* Linker Text oder leer */}
               {index % 2 === 0 ? (
@@ -80,14 +83,16 @@ export default function Timeline() {
                 <div></div>
               )}
 
-              <div className="w-10 relative flex justify-center">
+              <div className="w-16 relative flex justify-center">
                 {/* Vertikale Linie */}
                 <div className="absolute top-0 -bottom-4 left-1/2 -translate-x-1/2 w-0.5 bg-secondary"></div>
 
                 {/* Icon */}
-                <div className="absolute top-0 bg-neutral p-2 rounded-full shadow-md -mt-3">
-                  <Icon className="w-8 h-8 text-secondary" />
-                </div>
+                <img
+                  src={iconSrc}
+                  alt={`icon-${index}`}
+                  className="absolute h-14 rounded-full shadow-md -mt-3 top-0 p-1 bg-white"
+                />
               </div>
 
               {/* Rechter Text oder leer */}
