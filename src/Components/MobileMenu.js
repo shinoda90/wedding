@@ -60,11 +60,11 @@ export default function MobileMenu({ isOpen, onClose, setIsContactOpen }) {
           className="w-full h-full object-cover pointer-events-none"
         />
         {/* Orange Overlay */}
-        <div className="absolute inset-0 bg-secondary opacity-80"></div>
+        <div className="absolute inset-0 bg-navbar opacity-80"></div>
       </div>
 
       {/* Menüeinträge */}
-      <nav className="flex flex-col gap-5 text-xl relative z-40 font-bold">
+      <nav className="flex flex-col gap-5 text-xl relative z-40 font-bold text-secondary">
         {firstMenuItems.map((item, index) => (
           <MobileMenuEntry
             key={index}

@@ -53,10 +53,10 @@ export default function Navbar() {
         {/* Burger Button rechts */}
         <BurgerIcon
           onClick={handleToggle}
-          className="fixed top-4 right-4 bg-neutral/60 backdrop-blur-sm p-2 rounded-xl w-12 h-12 fill-secondary shadow-md z-50"
+          className="fixed top-4 right-4  backdrop-blur-sm p-2 rounded-xl w-12 h-12 fill-neutral shadow-md z-50"
         />
       </div>
-      <div className="navbar lg:fixed bg-neutral h-16 shadow-sm hidden lg:flex top-0 w-full z-50 uppercase font-navbar">
+      <div className="navbar lg:fixed bg-navbar h-16 shadow-sm hidden lg:flex top-0 w-full z-50 uppercase font-navbar">
         {/* Desktop Navbar (mit Logo in der Mitte) */}
         <div className="hidden lg:flex items-center justify-between space-x-8 w-full">
           {/* Box 1 (nimmt den linken Platz ein) */}

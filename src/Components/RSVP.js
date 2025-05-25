@@ -289,7 +289,7 @@ export default function RSVP() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="bg-secondary border-primary rounded-box border p-4 space-y-4 relative w-[90%] md:w-[48%]"
+                className="bg-neutral border-primary rounded-box border p-4 space-y-4 relative w-[90%] md:w-[48%] text-white"
               >
                 <h3 className="text-lg font-semibold mb-2">
                   {t('rsvp.person')} {index + 1}
@@ -317,7 +317,7 @@ export default function RSVP() {
                         onChange={() =>
                           handleGuestChange(index, 'participation', true)
                         }
-                        className="radio radio-neutral bg-white"
+                        className="radio radio-secondary bg-white"
                       />
                       <span>{t('rsvp.answer11')}</span>
                     </label>
@@ -332,7 +332,7 @@ export default function RSVP() {
                         onChange={() =>
                           handleGuestChange(index, 'participation', false)
                         }
-                        className="radio radio-neutral bg-white"
+                        className="radio radio-secondary bg-white"
                       />
                       <span>{t('rsvp.answer12')}</span>
                     </label>
@@ -354,7 +354,7 @@ export default function RSVP() {
                             <input
                               type="checkbox"
                               className="h-5 w-5 cursor-pointer rounded-md border-2 border-neutral bg-white 
-        checked:bg-accent checked:border-neutral checked:text-primary 
+        checked:bg-secondary checked:border-neutral checked:text-white 
         focus:outline-none transition-all duration-200 
         appearance-none relative
         after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 
@@ -371,12 +371,12 @@ export default function RSVP() {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <span className="font-medium whitespace-nowrap">
+                      <span className="font-medium whitespace-nowrap ">
                         {t('rsvp.question3')}
                       </span>
                       <input
                         type="email"
-                        className="input input-bordered w-full"
+                        className="input input-bordered w-full text-navbar"
                         placeholder={t('rsvp.placeholder3')}
                         value={guest.email}
                         onFocus={() => scrollGuestIntoView(index)} // << HIER
@@ -389,7 +389,7 @@ export default function RSVP() {
                       <span className="font-medium">{t('rsvp.question4')}</span>
                       <input
                         type="text"
-                        className="input input-bordered"
+                        className="input input-bordered text-navbar"
                         placeholder={t('rsvp.placeholder4')}
                         value={guest.requirements}
                         onFocus={() => scrollGuestIntoView(index)} // << HIER
@@ -410,7 +410,7 @@ export default function RSVP() {
                     <button
                       type="button"
                       onClick={addGuest}
-                      className="btn btn-xs bg-accent"
+                      className="btn btn-xs bg-secondary"
                     >
                       <AddPersonIcon />
                     </button>
@@ -419,7 +419,7 @@ export default function RSVP() {
                     <button
                       type="button"
                       onClick={() => removeGuest(index)}
-                      className="btn btn-xs bg-warning"
+                      className="btn btn-xs bg-white"
                     >
                       <DeletePersonIcon />
                     </button>
@@ -433,7 +433,7 @@ export default function RSVP() {
           <button
             type="submit"
             id="submit-button"
-            className="btn btn-neutral  pointer-events-auto w-[90%] md:w-[48%]"
+            className="btn btn-secondary text-navbar  pointer-events-auto w-[90%] md:w-[48%]"
             disabled={!allValid || isSubmitting}
           >
             {isSubmitting
@@ -471,7 +471,7 @@ export default function RSVP() {
                   submittedGuests.map((guest, i) => (
                     <div
                       key={i}
-                      className="border border-neutral rounded-lg p-4 text-left bg-secondary"
+                      className="border border-navbar rounded-lg p-4 text-left bg-neutral text-white"
                     >
                       <h3 className="text-lg font-semibold mb-4">
                         {t('rsvp.person')} {i + 1}
@@ -516,7 +516,7 @@ export default function RSVP() {
                 <div className="mt-6">
                   <button
                     onClick={() => setShowPopup(false)}
-                    className="px-6 py-2 bg-secondary rounded hover:bg-neutral-focus text-white transition duration-300 ease-in-out"
+                    className="px-6 py-2 bg-secondary rounded hover:bg-neutral-focus text-white transition duration-300 ease-in-out w-full"
                   >
                     OK
                   </button>

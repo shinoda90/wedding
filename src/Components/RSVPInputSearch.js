@@ -45,13 +45,13 @@ export default function RSVPInputSearch({
     .filter((guest) => !submittedNames.includes(guest))
 
   return (
-    <div className="relative w-full" ref={wrapperRef}>
+    <div className="relative w-full text-navbar" ref={wrapperRef}>
       {isValid && value.trim() !== '' && (
-        <CheckIcon className="w-6 h-6 fill-current text-accent absolute left-2 top-1/2 transform -translate-y-1/2 flex items-center pointer-events-none" />
+        <CheckIcon className="w-6 h-6 fill-current absolute left-2 top-1/2 transform -translate-y-1/2 flex items-center pointer-events-none" />
       )}
       <input
         type="text"
-        className="input input-bordered w-full pl-10" // Mehr padding links!
+        className="input input-bordered w-full pl-10"
         placeholder={t('rsvp.placeholder1')}
         value={value}
         onChange={(e) => {
@@ -68,17 +68,17 @@ export default function RSVPInputSearch({
           onClick={() => onChange('')}
           className="absolute right-3 top-1/2 transform -translate-y-1/2"
         >
-          <CloseIcon className="fill-neutral hover:fill-warning " />
+          <CloseIcon className="fill-secondary hover:fill-navbar" />
         </button>
       )}
       {/* Warnhinweis nur anzeigen, wenn der Name nicht in der Liste der verfügbaren Gäste ist */}
       {!isValid && value.trim() !== '' && (
-        <div className="absolute left-0 top-full w-full h-5 text-left text-warning text-sm">
+        <div className="absolute left-0 top-full w-full h-5 text-left text-secondary text-sm">
           {t('rsvp.warning')}
         </div>
       )}
       {showOptions && (!isValid || filteredGuests.length > 0) && (
-        <ul className="absolute z-10 max-h-60 w-full overflow-auto rounded-md bg-primary py-1 shadow-lg ring-1 ring-black ring-opacity-5">
+        <ul className="absolute z-10 max-h-60 w-full overflow-auto rounded-md bg-primary py-1 shadow-lg ring-1 ring-black ring-opacity-5 text-navbar">
           {filteredGuests.length > 0
             ? filteredGuests.map((guest, idx) => (
                 <li
@@ -91,7 +91,7 @@ export default function RSVPInputSearch({
               ))
             : !isValid &&
               value.trim() !== '' && (
-                <div className="text-center text-warning p-2">
+                <div className="text-center text-secondary p-2">
                   {t('rsvp.warning')}
                 </div>
               )}

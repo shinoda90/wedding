@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next'
-import { ReactComponent as ArriveIcon } from '../icons/pigeon.svg'
-import { ReactComponent as ChurchIcon } from '../icons/church.svg'
-import { ReactComponent as CakeIcon } from '../icons/cup_cake.svg'
-import { ReactComponent as GamesIcon } from '../icons/crown.svg'
-import { ReactComponent as FoodIcon } from '../icons/plate.svg'
-import { ReactComponent as PartyIcon } from '../icons/party.svg'
+import { ReactComponent as ArriveIcon } from '../icons/scheduleIcon1.svg'
+import { ReactComponent as ChurchIcon } from '../icons/scheduleIcon2.svg'
+import { ReactComponent as CakeIcon } from '../icons/scheduleIcon3.svg'
+import { ReactComponent as GamesIcon } from '../icons/scheduleIcon4.svg'
+import { ReactComponent as FoodIcon } from '../icons/scheduleIcon5.svg'
+import { ReactComponent as PartyIcon } from '../icons/scheduleIcon6.svg'
 
 export default function Timeline() {
   const { t } = useTranslation()

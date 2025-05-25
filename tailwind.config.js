@@ -19,6 +19,9 @@ module.exports = {
         slideUp: 'slideUp 0.5s ease-in forwards',
       },
       colors: {
+        navbar: '#546b57',
+        secondary: '#dca483',
+        neutral: '#808a6c',
         base: {
           100: '#3d4451',
         },
@@ -36,11 +39,11 @@ module.exports = {
           // Optional noch mehr anpassen:
           // Definiert die Farbwerte für das DaisyUI Theme
           primary: '#e7dfd8',
-          secondary: '#f5be89',
+          secondary: '#dca483',
           accent: '#37cdbe',
-          neutral: '#708195',
+          neutral: '#808a6c',
           info: '#3abff8',
-          navbar: '#708195',
+          navbar: '#546b57',
           success: '#f3dbb9',
           warning: '#D84040',
           error: '#f87272',

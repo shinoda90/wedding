@@ -1,22 +1,22 @@
 import { useTranslation } from 'react-i18next'
-import { ReactComponent as ArriveIcon } from '../icons/pigeon.svg'
-import { ReactComponent as ChurchIcon } from '../icons/church.svg'
-import { ReactComponent as CakeIcon } from '../icons/cup_cake.svg'
-import { ReactComponent as GamesIcon } from '../icons/crown.svg'
-import { ReactComponent as FoodIcon } from '../icons/plate.svg'
-import { ReactComponent as PartyIcon } from '../icons/party.svg'
+import arriveIcon from '../icons/historyIcon1.svg'
+import churchIcon from '../icons/historyIcon2.svg'
+import cakeIcon from '../icons/historyIcon3.svg'
+import gamesIcon from '../icons/historyIcon4.svg'
+import foodIcon from '../icons/historyIcon5.svg'
+import partyIcon from '../icons/historyIcon6.svg'
 import Title from '../Components/Title'
 
-export default function History({ title }) {
+export default function History() {
   const { t } = useTranslation()
 
   const icons = [
-    ArriveIcon,
-    ChurchIcon,
-    CakeIcon,
-    GamesIcon,
-    FoodIcon,
-    PartyIcon,
+    arriveIcon,
+    churchIcon,
+    cakeIcon,
+    gamesIcon,
+    foodIcon,
+    partyIcon,
   ]
 
   return (
@@ -25,7 +25,7 @@ export default function History({ title }) {
       {/* Mobile Version */}
       <div className="block md:hidden pl-2 pr-8 mt-8">
         <ul className="flex flex-col gap-8">
-          {icons.map((Icon, index) => (
+          {icons.map((iconSrc, index) => (
             <li key={index} className="flex items-start gap-2 relative">
               {/* Vertikale Linie */}
               {index !== icons.length - 1 && ( // nicht beim letzten Eintrag
@@ -36,9 +36,11 @@ export default function History({ title }) {
 
               {/* Icon linke Spalte */}
               <div className="w-8 flex-shrink-0 flex justify-center relative z-10">
-                <div className="bg-gray-200 p-2 rounded-full shadow-md -mt-2">
-                  <Icon className="w-6 h-6 text-secondary" />
-                </div>
+                <img
+                  src={iconSrc}
+                  alt={`icon-${index}`}
+                  className=" h-8 rounded-full shadow-md -mt-1 top-0 p-1 bg-white"
+                />
               </div>
 
               {/* Text rechte Spalte */}
@@ -61,7 +63,7 @@ export default function History({ title }) {
       {/* Desktop Version */}
       <div className="hidden md:block">
         <ul className="grid grid-cols-[1fr_auto_1fr] gap-x-2 gap-y-4">
-          {icons.map((Icon, index) => (
+          {icons.map((iconSrc, index) => (
             <li key={index} className="contents">
               {/* Linker Text oder leer */}
               {index % 2 === 0 ? (
@@ -82,14 +84,17 @@ export default function History({ title }) {
                 <div></div>
               )}
 
-              <div className="w-10 relative flex justify-center">
+              <div className="w-16 relative flex justify-center">
                 {/* Vertikale Linie */}
                 <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-0.5 bg-secondary"></div>
 
                 {/* Icon */}
-                <div className="absolute top-0 bg-gray-200 p-2 rounded-full shadow-md -mt-3">
-                  <Icon className="w-8 h-8 text-secondary" />
-                </div>
+
+                <img
+                  src={iconSrc}
+                  alt={`icon-${index}`}
+                  className="absolute h-14 rounded-full shadow-md -mt-3 top-0 p-1 bg-white"
+                />
               </div>
 
               {/* Rechter Text oder leer */}
