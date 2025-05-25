@@ -22,6 +22,11 @@ export default function History() {
   return (
     <div className="pt-10 max-w-6xl m-auto pb-20">
       <Title title={t('navbar.history')} />
+      <img
+        src="/images/flowers.png"
+        alt="Flowers"
+        className="block md:hidden absolute top-10 left-[-0%] h-12 pointer-events-none z-0"
+      />
       {/* Mobile Version */}
       <div className="block md:hidden pl-2 pr-8 mt-8">
         <ul className="flex flex-col gap-8">

@@ -234,198 +234,47 @@ const mustSees = [
   },
 ]
 
-const accommodations = [
-  {
-    name: 'Hotel Boutique X',
-    link: 'https://hotelboutiquex.com',
-    people: 2,
-    rooms: 1,
-    address: 'Calle Falsa 123, San José',
-    image: 'https://example.com/hotel-x.jpg',
-  },
-  {
-    name: 'Villa Alegría',
-    link: 'https://villaalegria.com',
-    people: 4,
-    rooms: 2,
-    address: 'Ruta del Sol 45, Alajuela',
-    image: 'https://example.com/villa-alegria.jpg',
-  },
-  // Weitere Unterkünfte hier
-]
-
 export default function Guide() {
   const { t } = useTranslation()
+  const rentalCards = [
+    {
+      title: t('guide.rental1'),
+      description: t('guide.rentalDescr1'),
+    },
+    {
+      title: t('guide.rental2'),
+      description: t('guide.rentalDescr2'),
+    },
+    {
+      title: t('guide.rental3'),
+      description: t('guide.rentalDescr3'),
+    },
+    {
+      title: t('guide.rental4'),
+      description: t('guide.rentalDescr4'),
+      links: [
+        {
+          href: 'https://www.billiger-mietwagen.de',
+          label: 'billiger-mietwagen.de',
+        },
+        {
+          href: 'https://www.kayak.com',
+          label: 'kayak.com',
+        },
+      ],
+    },
+  ]
 
   const icons = [arriveIcon, churchIcon, cakeIcon, gamesIcon]
 
   return (
     <div className="pt-10 px-4 max-w-6xl mx-auto">
       <Title title={t('navbar.guide')} />
-
-      <section className="mb-8">
-        <div className="text-4xl font-bold my-8 text-center font-slogan">
-          {t('guide.title1')}
-        </div>
-        <div className="text-2xl font-bold my-6 mt-10 text-center text-neutral">
-          Lago de Coatepeque
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {lake.map((a, i) => (
-            <div
-              key={i}
-              className="border rounded shadow overflow-hidden relative"
-            >
-              <div className="relative h-64">
-                {' '}
-                {/* feste Höhe für Bildcontainer */}
-                <img
-                  src={`/images/hotels/${a.img}.webp`}
-                  alt={a.img}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-2 right-2 bg-white/90 text-sm rounded p-2 shadow-lg text-right">
-                  <p className="font-semibold text-gray-800">{a.price} €</p>
-                  <p>
-                    {a.rooms} {t('guide.rooms')}
-                  </p>
-                  <p>
-                    {a.persons} {t('guide.persons')}
-                  </p>
-                  <a
-                    href={a.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 underline"
-                  >
-                    Link
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="text-2xl font-bold my-6 mt-16 text-center text-neutral">
-          San Salvador
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {salvador.map((a, i) => (
-            <div
-              key={i}
-              className="border rounded shadow overflow-hidden relative"
-            >
-              <div className="relative h-64">
-                {' '}
-                {/* feste Höhe für Bildcontainer */}
-                <img
-                  src={`/images/hotels/${a.img}.webp`}
-                  alt={a.img}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-2 right-2 bg-white/90 text-sm rounded p-2 shadow-lg text-right">
-                  <p className="font-semibold text-gray-800">{a.price} €</p>
-                  <p>
-                    {a.rooms} {t('guide.rooms')}
-                  </p>
-                  <p>
-                    {a.persons} {t('guide.persons')}
-                  </p>
-                  <a
-                    href={a.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 underline"
-                  >
-                    Link
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mb-8 ">
-        <div className="text-4xl font-bold my-8 text-center font-slogan mt-16">
-          {t('guide.title2')}
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
-          {mustSees.map((place, i) => (
-            <div
-              key={i}
-              className="border p-3 rounded shadow bg-white text-neutral"
-            >
-              <img
-                src={place.image}
-                alt={place.name}
-                className="mb-2 w-full h-48 object-cover rounded"
-              />
-              <h3 className="text-lg font-semibold">{place.name}</h3>
-              <p>{place.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="mb-8">
-        <div className="text-4xl font-bold my-8 text-center font-slogan mt-16">
-          {t('guide.title3')}
-        </div>
-        <p class="mb-2">
-          Für eine flexible und bequeme Reise durch El Salvador empfehlen wir
-          euch,
-          <strong> einen Mietwagen direkt am Flughafen San Salvador </strong>
-          zu buchen. So könnt ihr direkt nach der Landung losstarten – ganz ohne
-          Umwege.
-        </p>
-        <ul class="list-disc list-inside mb-2">
-          <li>
-            <strong>Mietwagen am Flughafen buchen:</strong> Das spart Zeit und
-            erleichtert die An- und Abreise.
-          </li>
-          <li>
-            <strong>4x4 empfohlen:</strong> Einige Straßen – besonders zu
-            Stränden, Vulkanen oder abgelegeneren Orten – sind nur mit
-            Allradantrieb komfortabel befahrbar.
-          </li>
-          <li>
-            <strong>Gute Versicherung wichtig:</strong> Achtet auf eine
-            umfassende Versicherungsdeckung (zum Beispiel Vollkasko ohne
-            Selbstbeteiligung), um im Ernstfall abgesichert zu sein.
-          </li>
-          <li>
-            <strong>Empfohlene Buchungsportale:</strong>
-            <ul class="list-disc list-inside ml-4">
-              <li>
-                <a
-                  href="https://www.billiger-mietwagen.de"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-blue-500 underline"
-                >
-                  billiger-mietwagen.de
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.kayak.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-blue-500 underline"
-                >
-                  kayak.com
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <p>
-          Beide Plattformen bieten einen guten Überblick über Preise,
-          Versicherungen und Fahrzeugtypen – oft günstiger als direkt bei den
-          Anbietern.
-        </p>
-      </section>
-
+      <img
+        src="/images/flowers.png"
+        alt="Flowers"
+        className="block md:hidden absolute top-16 left-[-0%] h-12 pointer-events-none z-0"
+      />
       <section className="mb-8">
         <div className="text-4xl font-bold my-8 text-center font-slogan mt-16">
           {t('guide.title4')}
@@ -543,6 +392,156 @@ export default function Guide() {
             ))}
           </div>
         </>
+      </section>
+      <section className="mb-8 ">
+        <div className="text-4xl font-bold my-8 text-center font-slogan mt-16">
+          {t('guide.title2')}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+          {mustSees.map((place, i) => (
+            <div
+              key={i}
+              className="border p-3 rounded shadow bg-white text-neutral"
+            >
+              <img
+                src={place.image}
+                alt={place.name}
+                className="mb-2 w-full h-48 object-cover rounded"
+              />
+              <h3 className="text-lg font-semibold">{place.name}</h3>
+              <p>{place.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-8">
+        <div className="text-4xl font-bold my-8 text-center font-slogan">
+          {t('guide.title1')}
+        </div>
+        <div className="text-2xl font-bold my-6 mt-10 text-center text-neutral">
+          Lago de Coatepeque
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {lake.map((a, i) => (
+            <div
+              key={i}
+              className="border rounded shadow overflow-hidden relative"
+            >
+              <div className="relative h-64">
+                {' '}
+                {/* feste Höhe für Bildcontainer */}
+                <img
+                  src={`/images/hotels/${a.img}.webp`}
+                  alt={a.img}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-2 right-2 bg-white/90 text-sm rounded p-2 shadow-lg text-right">
+                  <p className="font-semibold text-gray-800">{a.price} €</p>
+                  <p>
+                    {a.rooms} {t('guide.rooms')}
+                  </p>
+                  <p>
+                    {a.persons} {t('guide.persons')}
+                  </p>
+                  <a
+                    href={a.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline"
+                  >
+                    Link
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="text-2xl font-bold my-6 mt-16 text-center text-neutral">
+          San Salvador
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {salvador.map((a, i) => (
+            <div
+              key={i}
+              className="border rounded shadow overflow-hidden relative"
+            >
+              <div className="relative h-64">
+                {' '}
+                {/* feste Höhe für Bildcontainer */}
+                <img
+                  src={`/images/hotels/${a.img}.webp`}
+                  alt={a.img}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-2 right-2 bg-white/90 text-sm rounded p-2 shadow-lg text-right">
+                  <p className="font-semibold text-gray-800">{a.price} €</p>
+                  <p>
+                    {a.rooms} {t('guide.rooms')}
+                  </p>
+                  <p>
+                    {a.persons} {t('guide.persons')}
+                  </p>
+                  <a
+                    href={a.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline"
+                  >
+                    Link
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-16 px-4 max-w-5xl mx-auto">
+        {/* Titel */}
+        <div className="text-4xl font-bold text-center font-slogan mb-12 mt-20">
+          {t('guide.title3')}
+        </div>
+
+        {/* Intro-Text */}
+        <p className="mb-8 text-lg leading-relaxed text-center">
+          {t('guide.intro')}
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {rentalCards.map((card, index) => (
+            <div
+              key={index}
+              className="bg-neutral text-white shadow-md rounded-2xl p-6 border border-navbar"
+            >
+              <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
+              <p className="text-base leading-relaxed mb-4">
+                {card.description}
+              </p>
+              {card.links && (
+                <ul className="list-disc list-inside space-y-2 text-secondary">
+                  {card.links.map((link, i) => (
+                    <li key={i}>
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-white"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Abschlusssatz */}
+        <p className="mt-10 text-lg leading-relaxed text-center">
+          {t('guide.extro')}
+        </p>
       </section>
     </div>
   )
