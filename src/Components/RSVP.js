@@ -13,6 +13,7 @@ export default function RSVP() {
   const [allPossibleGuests, setAllPossibleGuests] = useState([]) // Alle geladenen Gäste
   const [chosenGuests, setChosenGuests] = useState([]) // Alle geladenen Gäste
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [agreed, setAgreed] = useState(false)
 
   const [guests, setGuests] = useState([
     {
@@ -166,18 +167,20 @@ export default function RSVP() {
     }, 50) // kleiner Delay reicht
   }
 
-  const allValid = guests.every((g) => {
-    const isNameValid = g.name && allPossibleGuests.includes(g.name)
-    const isNotSubmitted = !submittedGuests.some(
-      (submitted) => submitted.name === g.name
-    )
+  const allValid =
+    agreed && // <- Checkbox muss aktiv sein
+    guests.every((g) => {
+      const isNameValid = g.name && allPossibleGuests.includes(g.name)
+      const isNotSubmitted = !submittedGuests.some(
+        (submitted) => submitted.name === g.name
+      )
 
-    const hasParticipationInfo =
-      g.participation !== undefined &&
-      (g.participation === false || g.drinks.length > 0)
+      const hasParticipationInfo =
+        g.participation !== undefined &&
+        (g.participation === false || g.drinks.length > 0)
 
-    return isNameValid && isNotSubmitted && hasParticipationInfo
-  })
+      return isNameValid && isNotSubmitted && hasParticipationInfo
+    })
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -429,19 +432,43 @@ export default function RSVP() {
             </AnimatePresence>
           ))}
         </div>
-        <div className="z-50 flex justify-center pointer-events-none mt-5">
-          <button
-            type="submit"
-            id="submit-button"
-            className="btn btn-secondary text-navbar  pointer-events-auto w-[90%] md:w-[48%]"
-            disabled={!allValid || isSubmitting}
-          >
-            {isSubmitting
-              ? t('button.loading')
-              : allValid
-                ? t('button.submit')
-                : t('button.warning')}
-          </button>
+        <div className="flex flex-col items-center gap-4 mt-6">
+          <label className="flex items-center gap-4 cursor-pointer w-[90%] md:w-[48%]">
+            <input
+              type="checkbox"
+              checked={agreed}
+              onChange={() => setAgreed(!agreed)}
+              className="h-5 w-5 mt-1 shrink-0 cursor-pointer rounded-md border-2 border-neutral bg-white 
+    checked:bg-secondary checked:border-neutral checked:text-white 
+    focus:outline-none transition-all duration-200 
+    appearance-none relative
+    after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 
+    after:text-primary after:text-sm
+    checked:after:content-['✓']"
+            />
+            <span className="text-neutral text-sm text-justify leading-relaxed">
+              Ich bin einverstanden, dass meine Angaben zur Planung der Hochzeit
+              gespeichert und am 15.12.2025 gelöscht werden. Die Daten werden
+              sicher in einer geschützten internen Datenbank gespeichert und
+              sind nur autorisierten Personen zugänglich. Eine Weitergabe an
+              Dritte erfolgt nicht.
+            </span>
+          </label>
+
+          <div className="z-50 w-full flex justify-center pointer-events-none">
+            <button
+              type="submit"
+              id="submit-button"
+              className="btn btn-secondary text-navbar pointer-events-auto w-[90%] md:w-[48%]"
+              disabled={!allValid || isSubmitting}
+            >
+              {isSubmitting
+                ? t('button.loading')
+                : allValid
+                  ? t('button.submit')
+                  : t('button.warning')}
+            </button>
+          </div>
         </div>
       </form>
 

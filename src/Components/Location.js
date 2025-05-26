@@ -3,6 +3,15 @@ import Carousel from './Carousel'
 export default function Location() {
   return (
     <>
+      <div className="text-4xl font-bold mt-2 text-center font-slogan">
+        Cardedeu,
+      </div>
+      <div className="text-2xl font-bold text-center font-slogan">
+        Lago de Coatepeque
+      </div>
+      <div className="text-lg font-bold mb-10 mt-10 text-center text-neutral">
+        Cardedeu Hotel, Calle Los Planes KM 2, Coatepeque, El Salvador
+      </div>
       <Carousel />
       {/* dein iFrame */}
       <iframe
