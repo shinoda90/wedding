@@ -447,11 +447,7 @@ export default function RSVP() {
     checked:after:content-['✓']"
             />
             <span className="text-neutral text-sm text-justify leading-relaxed">
-              Ich bin einverstanden, dass meine Angaben zur Planung der Hochzeit
-              gespeichert und am 15.12.2025 gelöscht werden. Die Daten werden
-              sicher in einer geschützten internen Datenbank gespeichert und
-              sind nur autorisierten Personen zugänglich. Eine Weitergabe an
-              Dritte erfolgt nicht.
+              {t('rsvp.data')}
             </span>
           </label>
 

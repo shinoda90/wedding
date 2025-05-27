@@ -61,7 +61,8 @@
     "placeholder3": "p.ej. dani@michel.com",
     "placeholder4": "¡Cuéntanos lo que deberíamos saber!",
     "add": "Agregar persona",
-    "delete": "Eliminar persona"
+    "delete": "Eliminar persona",
+    "data": "Acepto que mi información sea almacenada para la planificación de la boda y eliminada el 15 de diciembre de 2025. Los datos se guardarán de forma segura en una base de datos interna protegida y solo tendrán acceso personas autorizadas. No se compartirán con terceros."
   },
   "home": { "date": "Diciembre 27, 2025" },
   "button": {
@@ -119,17 +120,18 @@
     "title4": "Nuestro itinerario de viaje compartido",
     "rooms": "Habitaciones",
     "persons": "Personas",
+    "night": "noche",
     "plan1": "Viajamos a El Salvador el 20 de diciembre y aprovecharemos los primeros días para ultimar los preparativos de la boda.",
     "plan2": "El 24 y 25 de diciembre celebraremos la Navidad junto con nuestra familia. Los invitados de Europa y Estados Unidos están cordialmente invitados a unirse y compartir este momento especial con nosotros.",
-    "plan3": "El 26 de diciembre iremos juntos al lago (Lago de Coatepeque) y nos quedaremos allí hasta el 29 de diciembre. Planeamos alquilar una casa grande para todos los invitados internacionales. Además, tenemos nuestro propio complejo de casas directamente en el lago, donde todos están invitados a comer y pasar",
-    "plan4": "A partir del 29 de diciembre queremos ir a la playa y alquilar una casa grande en la playa para todos los que quieran unirse. Allí celebraremos juntos el Año Nuevo y planeamos quedarnos hasta el 3 de enero.",
+    "plan3": "El 26 de diciembre iremos juntos al lago (Lago de Coatepeque) y nos quedaremos allí hasta el 30 de diciembre. Planeamos alquilar una casa grande para todos los invitados internacionales. Además, tenemos nuestro propio complejo de casas directamente en el lago, donde todos están invitados a venir. Proponemos hacer una barbacoa de resaca el 28 por el día, así sufrimos juntos los efectos del alcohol y pasamos un día tranquilo en el lago. El 29 podemos subir el volcán de Santa Ana o el volcán de Izalco, que quedan alrededor del lago y nos regresamos a dormir a la casa del lago.",
+    "plan4": "A partir del 30 de diciembre queremos ir a la playa y alquilar una casa grande en la playa para todos los que quieran unirse. Allí celebraremos juntos el Año Nuevo y planeamos quedarnos hasta el 3 de enero.",
     "plan5": "Para quienes quieran quedarse más tiempo, con gusto ayudamos con la planificación individual. Nosotros planeamos regresar el 6 de enero.",
     "plan6": "Por favor, avísennos si están interesados en participar en una o más partes de este viaje. Cuanto antes sepamos quién viene, mejor podremos organizarnos y compartir más detalles.",
     "plan7": "Por supuesto, también pueden planear su propio viaje y acompañarnos solo en algunas etapas. ¡Todo es posible, nada es obligatorio!",
     "time1": "20 de dic al 23 de dic",
     "time2": "24 de dic al 25 de dic",
-    "time3": "26 de dic al 29 de dic",
-    "time4": "29 de dic al 03 de ene",
+    "time3": "26 de dic al 30 de dic",
+    "time4": "30 de dic al 03 de ene",
     "location1": "San Salvador",
     "location2": "San Salvador",
     "location3": "Lago de Coatepeque",
@@ -146,6 +148,18 @@
     "rentalDescr2": "Se puede llegar a todos los lugares importantes sin un 4x4. Pero si te gusta la aventura y explorar fuera de las rutas habituales, es una buena opción.",
     "rentalDescr3": "Asegúrate de tener una cobertura completa (por ejemplo, todo riesgo sin franquicia) para una máxima protección.",
     "rentalDescr4": "Ambas plataformas ofrecen una buena visión general de precios, seguros y tipos de vehículos, a menudo más barato que reservar directamente.",
-    "extro": "Si tienen alguna pregunta, no duden en contactarnos en cualquier momento."
+    "extro": "Si tienen alguna pregunta, no duden en contactarnos en cualquier momento.",
+    "mustSee1": "Ciudad colonial con arte, cultura y vistas al lago Suchitlán.",
+    "mustSee2": "Pueblos de montaña con café, comida callejera y cascadas.",
+    "mustSee3": "Caminata a un volcán activo con un lago cráter turquesa.",
+    "mustSee4": "Lugar de surf con atardeceres y playa de arena negra.",
+    "mustSee5": "Sitio Patrimonio Mundial de la UNESCO: pueblo precolombino conservado.",
+    "mustSee6": "La ruina maya más grande de El Salvador con una pirámide impresionante.",
+    "mustSee7": "Senderismo con vistas a tres volcanes en una naturaleza exuberante.",
+    "mustSee8": "Playa tranquila para surf y parte de la iniciativa Bitcoin Beach.",
+    "mustSee9": "Lago cráter turquesa, perfecto para nadar y relajarse.",
+    "mustSee10": "Capital con museos, arte urbano y arquitectura moderna.",
+    "mustSee11": "Mirador con formaciones rocosas espectaculares y vistas del país.",
+    "mustSee12": "La bahía costera más grande de El Salvador con manglares, delfines y posibilidad de hacer kayak."
   }
 }

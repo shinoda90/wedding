@@ -34,26 +34,28 @@ app.get('/guests', async (req, res) => {
 })
 
 app.put('/guests/:name', async (req, res) => {
+  const guestName = decodeURIComponent(req.params.name)
+  const updatedData = req.body
+
   try {
-    const guestName = decodeURIComponent(req.params.name)
+    // Beispiel mit einer MongoDB oder JSON-Datei
+    const guest = guests.find((g) => g.name === guestName)
+    if (!guest) return res.status(404).send({ error: 'Guest not found' })
 
-    const updated = await Guest.findOneAndUpdate(
-      { name: guestName },
-      req.body,
-      { new: true, upsert: true }
-    )
+    // Beispiel: Felder aktualisieren
+    guest.participation = updatedData.participation
+    guest.email = updatedData.email
+    guest.requirements = updatedData.requirements
+    guest.drinks = updatedData.drinks
 
-    // Wenn kein Gast gefunden wurde
-    if (!updated) {
-      return res.status(404).json({ message: 'Gast nicht gefunden' })
-    }
+    // speichern je nach Backend (z. B. writeFileSync, DB updateOne etc.)
+    await saveGuestsToFileOrDB(guests)
 
-    res.json(updated)
-  } catch (error) {
-    console.error('Fehler beim Aktualisieren:', error)
-    res.status(500).json({ error: 'Fehler beim Aktualisieren des Gastes' })
+    res.send({ success: true })
+  } catch (err) {
+    console.error(err)
+    res.status(500).send({ error: 'Update failed' })
   }
 })
-
 const port = process.env.PORT || 4000
 app.listen(port, () => console.log(`Server läuft auf Port ${port}`))

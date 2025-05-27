@@ -123,6 +123,28 @@ export default function History() {
           ))}
         </ul>
       </div>
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 mt-10">
+        {Array.from({ length: 12 }, (_, i) => {
+          const index = i + 1
+          return (
+            <div
+              key={index}
+              className="rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow"
+            >
+              <img
+                src={`/images/history/history${index}.webp`}
+                alt={`history${index}`}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-lg font-semibold mb-1">
+                  {t(`titel${index}`)}
+                </h3>
+              </div>
+            </div>
+          )
+        })}
+      </section>
     </div>
   )
 }

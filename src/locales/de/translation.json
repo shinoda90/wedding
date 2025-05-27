@@ -61,7 +61,8 @@
     "placeholder3": "z.b. dani@michel.com",
     "placeholder4": "Teile uns mit was wir wissen sollten!",
     "add": "Person hinzufügen",
-    "delete": "Person entfernen"
+    "delete": "Person entfernen",
+    "data": "Ich bin einverstanden, dass meine Angaben zur Planung der Hochzeit gespeichert und am 15.12.2025 gelöscht werden. Die Daten werden sicher in einer geschützten internen Datenbank gespeichert und sind nur autorisierten Personen zugänglich. Eine Weitergabe an Dritte erfolgt nicht."
   },
   "home": { "date": "27. Dezember 2025" },
   "button": {
@@ -119,17 +120,18 @@
     "title4": "Unser gemeinsamer Reiseplan",
     "rooms": "Zimmer",
     "persons": "Personen",
+    "night": "Nacht",
     "plan1": "Wir reisen am 20. Dezember nach El Salvador und nutzen die ersten Tage, um letzte Vorbereitungen für die Hochzeit zu treffen.",
     "plan2": "Am 24. und 25. Dezember feiern wir gemeinsam mit unserer Familie Weihnachten. Gäste aus Europa und den USA sind herzlich eingeladen, daran teilzunehmen und mit uns diese besondere Zeit zu verbringen.",
-    "plan3": "Am 26. Dezember fahren wir gemeinsam an den See (Lago de Coatepeque) und bleiben dort bis zum 29. Dezember. Für diese Tage planen wir, ein großes Haus für alle internationalen Gäste zu mieten. Zusätzlich haben wir einen eigenen Häuserkomplex direkt am See, wo tagsüber alle eingeladen sind, gemeinsam zu essen und Zeit miteinander zu verbringen. Es besteht eventuell auch die Möglichkeit, direkt bei uns auf dem Gelände zu übernachten – in einem Zimmer oder mit dem Zelt. Meldet euch bitte bei Interesse direkt bei uns.",
-    "plan4": "Ab dem 29. Dezember möchten wir ans Meer fahren und dort ein großes Strandhaus für alle mieten, die Lust haben mitzukommen. Hier verbringen wir dann gemeinsam Silvester und bleiben voraussichtlich bis zum 03. Januar am Strand.",
+    "plan3": "Am 26. Dezember fahren wir gemeinsam zum See (Lago de Coatepeque) und bleiben dort bis zum 30. Dezember. Wir planen, für alle internationalen Gäste ein großes Haus anzumieten. Darüber hinaus verfügen wir über eine eigene Hausanlage direkt am See, in der jeder herzlich willkommen ist. Unser Vorschlag: Am 28.  veranstalten wir ein Katergrillen, um gemeinsam den Alkohol ausklingen zu lassen und einen entspannten Tag am See zu verbringen. Am 29. können wir den Vulkan Santa Ana oder den Vulkan Izalco besteigen, die rund um den See liegen, und kehren dann zum Schlafen in das Haus am See zurück.",
+    "plan4": "Ab dem 30. Dezember möchten wir ans Meer fahren und dort ein großes Strandhaus für alle mieten, die Lust haben mitzukommen. Hier verbringen wir dann gemeinsam Silvester und bleiben voraussichtlich bis zum 03. Januar am Strand.",
     "plan5": "Für alle, die noch länger bleiben möchten, helfen wir gerne bei der individuellen Planung. Wir selbst planen, am 06. Januar zurückzureisen.",
     "plan6": "Bitte gebt uns Bescheid, wenn ihr Interesse habt, an einem oder mehreren Teilen dieser Reise teilzunehmen. Je eher wir wissen, wer dabei ist, desto besser können wir organisieren und euch mit weiteren Details versorgen.",
     "plan7": "Natürlich könnt ihr auch eure eigene Reise gestalten und nur bei einzelnen Stationen dabei sein. Alles kann, nichts muss!",
     "time1": "20. Dez bis 23. Dez",
     "time2": "24. Dez bis 25. Dez",
-    "time3": "26. Dez bis 29. Dez",
-    "time4": "29. Dez bis 03. Jan",
+    "time3": "26. Dez bis 30. Dez",
+    "time4": "30. Dez bis 03. Jan",
     "location1": "San Salvador",
     "location2": "San Salvador",
     "location3": "Lago de Coatepeque",
@@ -146,6 +148,18 @@
     "rentalDescr2": "Man erreicht alle wichtigen Orte auch ohne 4x4. Wer allerdings das Abenteuer liebt und gerne auch abseits der Straßen unterwegs ist, sollte sich dafür entscheiden.",
     "rentalDescr3": "Achtet auf eine umfassende Deckung (z.B. Vollkasko ohne Selbstbeteiligung) für volle Sicherheit.",
     "rentalDescr4": "Beide Plattformen bieten einen guten Überblick über Preise, Versicherungen und Fahrzeugtypen. Oft günstiger als direkt bei den Anbietern.",
-    "extro": "Bei Fragen könnt ihr euch jederzeit an uns wenden."
+    "extro": "Bei Fragen könnt ihr euch jederzeit an uns wenden.",
+    "mustSee1": "Kolonialstadt mit Kunst, Kultur und Blick auf den Suchitlán-See.",
+    "mustSee2": "Bergdörfer mit Kaffee, Street Food und Wasserfällen.",
+    "mustSee3": "Wanderung zu einem aktiven Vulkan mit türkisfarbenem Kratersee.",
+    "mustSee4": "Surf-Ort mit Sonnenuntergängen und schwarzem Sandstrand.",
+    "mustSee5": "UNESCO-Weltkulturerbe: erhaltenes präkolumbianisches Dorf.",
+    "mustSee6": "Größte Maya-Ruine El Salvadors mit eindrucksvoller Pyramide.",
+    "mustSee7": "Wandern mit Ausblick auf drei Vulkane in üppiger Natur.",
+    "mustSee8": "Ruhiger Surfspot und Teil der Bitcoin Beach-Initiative.",
+    "mustSee9": "Türkisblauer Kratersee, perfekt zum Schwimmen und Entspannen.",
+    "mustSee10": "Hauptstadt mit Museen, Street Art und moderner Architektur.",
+    "mustSee11": "Aussichtspunkt mit spektakulären Felsformationen und Blick über das Land.",
+    "mustSee12": "Größte Küstenbucht El Salvadors mit Mangroven, Delfinen und Kajakmöglichkeiten."
   }
 }

@@ -61,7 +61,8 @@
     "placeholder3": "e.g. dani@michel.com",
     "placeholder4": "Tell us what we should know!",
     "add": "Add person",
-    "delete": "Remove person"
+    "delete": "Remove person",
+    "data": "I agree that my information will be stored for wedding planning purposes and deleted on 15 December 2025. The data will be securely stored in a protected internal database and will only be accessible to authorized persons. It will not be shared with third parties."
   },
   "home": { "date": "December 27, 2025" },
   "button": {
@@ -119,17 +120,18 @@
     "title4": "Our shared travel itinerary",
     "rooms": "Rooms",
     "persons": "People",
+    "night": "night",
     "plan1": "We are traveling to El Salvador on December 20 and will use the first few days to finalize preparations for the wedding.",
     "plan2": "On December 24 and 25, we will celebrate Christmas together with our family. Guests from Europe and the US are warmly invited to join and spend this special time with us.",
-    "plan3": "On December 26, we will go together to the lake (Lago de Coatepeque) and stay there until December 29. We plan to rent a large house for all international guests. Additionally, we have our own housing complex right at the lake where everyone is welcome to eat and spend time together during the day. There might also be the possibility to sleep on-site – in a room or in a tent. Please contact us directly if you're interested.",
-    "plan4": "Starting December 29, we want to go to the beach and rent a large beach house for everyone who wants to join. We will celebrate New Year's Eve together there and plan to stay until January 3.",
+    "plan3": "On December 26th, we'll go to the lake (Lake Coatepeque) together and stay there until December 30th. We plan to rent a large house for all the international guests. We also have our own resort right on the lake, where everyone is welcome. We're suggesting a hangover barbecue on the 28th for the day, so we can soak up the effects of the alcohol together and have a relaxing day at the lake. On the 29th, we can climb the Santa Ana or Izalco volcanoes, which are located near the lake, and then return to the lake house to sleep.",
+    "plan4": "Starting December 30, we want to go to the beach and rent a large beach house for everyone who wants to join. We will celebrate New Year's Eve together there and plan to stay until January 3.",
     "plan5": "For anyone who wants to stay longer, we’re happy to help with individual planning. We ourselves plan to return on January 6.",
     "plan6": "Please let us know if you’re interested in joining one or more parts of this trip. The sooner we know who’s coming, the better we can organize and provide further details.",
     "plan7": "Of course, you can also plan your own trip and join us for just some parts. Everything is possible, nothing is mandatory!",
     "time1": "Dec 20 to Dec 23",
     "time2": "Dec 24 to Dec 25",
-    "time3": "Dec 26 to Dec 29",
-    "time4": "Dec 29 to Jan 03",
+    "time3": "Dec 26 to Dec 30",
+    "time4": "Dec 30 to Jan 03",
     "location1": "San Salvador",
     "location2": "San Salvador",
     "location3": "Lake Coatepeque",
@@ -146,6 +148,18 @@
     "rentalDescr2": "All key destinations are accessible without a 4x4. However, if you love adventure and want to go off the beaten path, it's a good choice.",
     "rentalDescr3": "Make sure to have full coverage (e.g. fully comprehensive with no deductible) for maximum protection.",
     "rentalDescr4": "Both platforms offer a good overview of prices, insurance options, and vehicle types – often cheaper than booking directly.",
-    "extro": "Feel free to reach out to us anytime if you have any questions."
+    "extro": "Feel free to reach out to us anytime if you have any questions.",
+    "mustSee1": "Colonial town with art, culture, and views of Lake Suchitlán.",
+    "mustSee2": "Mountain villages with coffee, street food, and waterfalls.",
+    "mustSee3": "Hike to an active volcano with a turquoise crater lake.",
+    "mustSee4": "Surf spot with sunsets and black sand beach.",
+    "mustSee5": "UNESCO World Heritage Site: preserved pre-Columbian village.",
+    "mustSee6": "Largest Mayan ruin in El Salvador with an impressive pyramid.",
+    "mustSee7": "Hiking with views of three volcanoes in lush nature.",
+    "mustSee8": "Peaceful surf spot and part of the Bitcoin Beach initiative.",
+    "mustSee9": "Turquoise crater lake, perfect for swimming and relaxing.",
+    "mustSee10": "Capital city with museums, street art, and modern architecture.",
+    "mustSee11": "Viewpoint with spectacular rock formations and views over the land.",
+    "mustSee12": "Largest coastal bay in El Salvador with mangroves, dolphins, and kayaking."
   }
 }
