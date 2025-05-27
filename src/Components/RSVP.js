@@ -128,7 +128,7 @@ export default function RSVP() {
           const offsetTop =
             lastGuestRef.getBoundingClientRect().top + window.scrollY
           const isDesktop = window.innerWidth >= 768
-          const scrollOffset = isDesktop ? 80 : 10
+          const scrollOffset = isDesktop ? 80 : 80
           window.scrollTo({
             top: offsetTop - scrollOffset,
             behavior: 'smooth',
@@ -157,7 +157,7 @@ export default function RSVP() {
       const guestRef = guestRefs.current[index]
       if (guestRef) {
         const isDesktop = window.innerWidth >= 768
-        const scrollOffset = isDesktop ? 80 : 10
+        const scrollOffset = isDesktop ? 80 : 80
         const offsetTop = guestRef.getBoundingClientRect().top + window.scrollY
         window.scrollTo({
           top: offsetTop - scrollOffset,
@@ -265,7 +265,7 @@ export default function RSVP() {
           const offsetTop =
             guestRef.getBoundingClientRect().top + window.scrollY
           window.scrollTo({
-            top: offsetTop - 10,
+            top: offsetTop - 80,
             behavior: 'smooth',
           })
         }

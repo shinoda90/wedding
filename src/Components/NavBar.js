@@ -44,18 +44,22 @@ export default function Navbar() {
   return (
     <>
       {/* Mobile Header - nur Logo + Burger Button, absolut positioniert */}
-      <div className="lg:hidden uppercase">
-        {/* Logo */}
-        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50">
-          <img src={Logo} alt="Logo" className="h-[48px] object-contain" />
+      <div className="w-full px-4 py-2 flex items-center justify-between bg-navbar shadow-md uppercase z-50 fixed top-0 left-0 h-[64px]">
+        {/* Platzhalter für die linke Seite, damit Logo zentriert bleibt */}
+        <div className="w-10 h-10" />
+
+        {/* Logo zentriert */}
+        <div className="absolute left-1/2 transform -translate-x-1/2">
+          <img src={Logo} alt="Logo" className="h-10 object-contain" />
         </div>
 
         {/* Burger Button rechts */}
         <BurgerIcon
           onClick={handleToggle}
-          className="fixed top-4 right-4  backdrop-blur-sm p-2 rounded-xl w-12 h-12 fill-neutral shadow-md z-50"
+          className="p-2 rounded-xl w-12 h-12 fill-secondary block lg:hidden"
         />
       </div>
+
       <div className="navbar lg:fixed bg-navbar h-16 shadow-sm hidden lg:flex top-0 w-full z-50 uppercase font-navbar">
         {/* Desktop Navbar (mit Logo in der Mitte) */}
         <div className="hidden lg:flex items-center justify-between space-x-8 w-full">
