@@ -10,6 +10,7 @@
     "i18next": "^21.6.16",
     "i18next-browser-languagedetector": "^6.1.2",
     "luxon": "^3.6.1",
+    "mongodb": "^6.16.0",
     "node-fetch": "^2.7.0",
     "postcss": "^8.4.21",
     "react": "^18.2.0",
