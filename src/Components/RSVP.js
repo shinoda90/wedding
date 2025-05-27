@@ -57,7 +57,7 @@ export default function RSVP() {
   useEffect(() => {
     const fetchGuests = async () => {
       try {
-        const response = await fetch('http://localhost:4000/guests') // oder dein Backend-URL
+        const response = await fetch('/api/guests')
         const data = await response.json()
         const allNames = data.map((g) => g.name).filter(Boolean)
         const respondedNames = data
@@ -213,15 +213,11 @@ export default function RSVP() {
         const nameTrimmed = guest.name.trim() // Entfernen von unnötigen Leerzeichen
         const nameEncoded = encodeURIComponent(nameTrimmed) // Kodieren des Namens für die URL
 
-        const response = await fetch(
-          `http://localhost:4000/guests/${nameEncoded}`,
-          {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-          }
-        )
-
+        const response = await fetch(`/api/guests/${nameEncoded}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
         if (!response.ok) {
           throw new Error(`Fehler bei ${guest.name}`)
         }
