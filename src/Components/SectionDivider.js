@@ -3,11 +3,10 @@ import Logo from '../image/Logo_new.png'
 export default function SectionDivider() {
   return (
     <div className="relative my-12 flex items-center justify-center">
-      {/* Kürzere Linie links */}
-      <div className="w-1/5 border-t border-neutral" />
+      <div className="w-1/4 border-t border-neutral" />
 
       {/* Kleineres, leicht nach links versetztes Logo */}
-      <div className="mx-4">
+      <div className="mx-8">
         <img
           src={Logo}
           alt="Logo"
@@ -16,8 +15,7 @@ export default function SectionDivider() {
         />
       </div>
 
-      {/* Kürzere Linie rechts */}
-      <div className="w-1/5 border-t border-neutral" />
+      <div className="w-1/4 border-t border-neutral" />
     </div>
   )
 }
