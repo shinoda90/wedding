@@ -25,7 +25,7 @@ export default function History() {
       <img
         src="/images/flowers.png"
         alt="Flowers"
-        className="block md:hidden absolute top-10 left-[-0%] h-12 pointer-events-none z-0"
+        className="block md:hidden absolute top-16 left-[-0%] h-12 pointer-events-none z-0"
       />
       {/* Mobile Version */}
       <div className="block md:hidden pl-2 pr-8 mt-8">
