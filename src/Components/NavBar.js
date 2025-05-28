@@ -1,5 +1,5 @@
 import Listitem from './Listitem'
-import Logo from '../image/logo_peach.png'
+import Logo from '../image/Logo_new.png'
 import { useState, useEffect } from 'react'
 import i18n from 'i18next'
 import { useTranslation } from 'react-i18next'

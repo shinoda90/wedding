@@ -1,4 +1,4 @@
-import Logo from '../image/logo_peach.png'
+import Logo from '../image/Logo_new.png'
 
 export default function SectionDivider() {
   return (
