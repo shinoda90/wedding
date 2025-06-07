@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import React from 'react'
 import arriveIcon from '../icons/historyIcon1.svg'
 import churchIcon from '../icons/historyIcon2.svg'
 import cakeIcon from '../icons/historyIcon3.svg'
@@ -124,24 +125,38 @@ export default function History() {
         </ul>
       </div>
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 mt-10">
-        {Array.from({ length: 12 }, (_, i) => {
+        {Array.from({ length: 93 }, (_, i) => {
           const index = i + 1
+          const filename = t(`history.pictureTime${index + 1}`)
+          const year = filename.split('-')[0] // Extrahiere Jahr z. B. "2023" aus "2023-07-16"
+
+          // Jahr vom vorherigen Bild holen (außer beim ersten Bild)
+          const prevFilename =
+            index > 1 ? t(`history.pictureTime${index}`) : null
+          const prevYear = prevFilename?.split('-')[0]
+
+          const showYearDivider = year !== prevYear
+
           return (
-            <div
-              key={index}
-              className="rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow"
-            >
-              <img
-                src={`/images/history/history${index}.webp`}
-                alt={`history${index}`}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold mb-1">
-                  {t(`titel${index}`)}
-                </h3>
+            <React.Fragment key={index}>
+              {showYearDivider && (
+                <div className="text-4xl font-bold my-8 text-center font-slogan mt-16 col-span-full">
+                  {year}
+                </div>
+              )}
+              <div className="rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow">
+                <img
+                  src={`/images/history/${filename}.webp`}
+                  alt={filename}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold mb-1">
+                    {t(`history.pictureTitle${index + 1}`)}
+                  </h3>
+                </div>
               </div>
-            </div>
+            </React.Fragment>
           )
         })}
       </section>
