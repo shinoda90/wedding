@@ -226,6 +226,16 @@ export default function RSVP() {
                 })
                 .join(', ')
             : '',
+          transport: guest.participation
+            ? guest.transport
+                .map((transportId) => {
+                  const transport = transportOptions.find(
+                    (d) => d.id === transportId
+                  )
+                  return transport ? transport.label : transportId
+                })
+                .join(', ')
+            : '',
         }
 
         const nameTrimmed = guest.name.trim() // Entfernen von unnötigen Leerzeichen
