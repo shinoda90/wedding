@@ -23,7 +23,7 @@ export default function RSVP() {
       drinks: [],
       participation: undefined,
       requirements: '',
-      transport: '',
+      transport: [],
     },
   ])
 
@@ -137,7 +137,7 @@ export default function RSVP() {
           drinks: [],
           participation: undefined,
           requirements: '',
-          transport: '',
+          transport: [],
         },
       ]
 
@@ -218,24 +218,8 @@ export default function RSVP() {
           participation: guest.participation === true,
           requirements: guest.requirements || '',
           email: guest.participation ? guest.email : '',
-          drinks: guest.participation
-            ? guest.drinks
-                .map((drinkId) => {
-                  const drink = drinkOptions.find((d) => d.id === drinkId)
-                  return drink ? drink.label : drinkId
-                })
-                .join(', ')
-            : '',
-          transport: guest.participation
-            ? guest.transport
-                .map((transportId) => {
-                  const transport = transportOptions.find(
-                    (d) => d.id === transportId
-                  )
-                  return transport ? transport.label : transportId
-                })
-                .join(', ')
-            : '',
+          drinks: guest.participation ? guest.drinks.join(',') : '',
+          transport: guest.participation ? guest.transport.join(',') : '',
         }
 
         const nameTrimmed = guest.name.trim() // Entfernen von unnötigen Leerzeichen
@@ -264,7 +248,7 @@ export default function RSVP() {
           drinks: [],
           participation: undefined,
           requirements: '',
-          transport: '',
+          transport: [],
         },
       ])
     } catch (error) {
