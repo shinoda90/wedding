@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 export default function Info() {
   const { t } = useTranslation()
 
-  const infoSections = [1, 2, 3, 4] // Abschnittsnummern
+  const infoSections = [1, 2, 3, 4, 5] // Abschnittsnummern
 
   return (
     <div className="text-center px-4 py-0 space-y-6 max-w-[800px] mx-auto">

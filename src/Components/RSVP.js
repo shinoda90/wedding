@@ -23,6 +23,7 @@ export default function RSVP() {
       drinks: [],
       participation: undefined,
       requirements: '',
+      transport: '',
     },
   ])
 
@@ -37,6 +38,15 @@ export default function RSVP() {
       { id: 'beer', label: t('rsvp.answer22') },
       { id: 'aperol', label: 'Aperol' },
       { id: 'gin', label: 'Gin' },
+    ],
+    [i18n.language]
+  )
+
+  const transportOptions = useMemo(
+    () => [
+      { id: 'go', label: 'San Salvador - Lago' },
+      { id: 'return', label: 'Lago - San Salvador' },
+      { id: 'no', label: t('rsvp.answer12') },
     ],
     [i18n.language]
   )
@@ -107,6 +117,15 @@ export default function RSVP() {
     setGuests(updatedGuests)
   }
 
+  const toggleTransport = (index, transportId) => {
+    const updatedGuests = [...guests]
+    const selectedDrinks = updatedGuests[index].transport || []
+    updatedGuests[index].transport = selectedDrinks.includes(transportId)
+      ? selectedDrinks.filter((d) => d !== transportId)
+      : [...selectedDrinks, transportId]
+    setGuests(updatedGuests)
+  }
+
   const addGuest = () => {
     setGuests((prevGuests) => {
       const updatedGuests = [
@@ -118,6 +137,7 @@ export default function RSVP() {
           drinks: [],
           participation: undefined,
           requirements: '',
+          transport: '',
         },
       ]
 
@@ -208,8 +228,6 @@ export default function RSVP() {
             : '',
         }
 
-        console.log('Payload für Gast:', payload)
-
         const nameTrimmed = guest.name.trim() // Entfernen von unnötigen Leerzeichen
         const nameEncoded = encodeURIComponent(nameTrimmed) // Kodieren des Namens für die URL
 
@@ -236,6 +254,7 @@ export default function RSVP() {
           drinks: [],
           participation: undefined,
           requirements: '',
+          transport: '',
         },
       ])
     } catch (error) {
@@ -344,7 +363,7 @@ export default function RSVP() {
                       <label className="font-medium">
                         {t('rsvp.question2')}
                       </label>
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 gap-y-6 mt-2">
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 gap-y-4 mt-2 mb-4">
                         {drinkOptions.map((drink) => (
                           <label
                             key={drink.id}
@@ -364,6 +383,32 @@ export default function RSVP() {
                               onChange={() => toggleDrink(index, drink.id)}
                             />
                             <span className="text-base">{drink.label}</span>
+                          </label>
+                        ))}
+                      </div>
+                      <label className="font-medium">
+                        {t('rsvp.question5')}
+                      </label>
+                      <div className="grid grid-cols-1 gap-4 gap-y-2 mt-2">
+                        {transportOptions.map((trans) => (
+                          <label
+                            key={trans.id}
+                            className="flex items-center gap-2 cursor-pointer"
+                          >
+                            <input
+                              type="checkbox"
+                              className="h-5 w-5 cursor-pointer rounded-md border-2 border-neutral bg-white 
+        checked:bg-secondary checked:border-neutral checked:text-white 
+        focus:outline-none transition-all duration-200 
+        appearance-none relative
+        after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 
+        after:text-primary after:text-sm
+        checked:after:content-['✓']"
+                              checked={guest.transport.includes(trans.id)}
+                              onFocus={() => scrollGuestIntoView(index)}
+                              onChange={() => toggleTransport(index, trans.id)}
+                            />
+                            <span className="text-base">{trans.label}</span>
                           </label>
                         ))}
                       </div>
