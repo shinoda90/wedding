@@ -125,7 +125,7 @@ export default function History() {
         </ul>
       </div>
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 mt-10">
-        {Array.from({ length: 93 }, (_, i) => {
+        {Array.from({ length: 96 }, (_, i) => {
           const index = i + 1
           const filename = t(`history.pictureTime${index + 1}`)
           const year = filename.split('-')[0] // Extrahiere Jahr z. B. "2023" aus "2023-07-16"
@@ -148,7 +148,7 @@ export default function History() {
                 <img
                   src={`/images/history/${filename}.webp`}
                   alt={filename}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-56 object-cover"
                 />
                 <div className="p-4">
                   <h3 className="text-lg font-semibold mb-1">
