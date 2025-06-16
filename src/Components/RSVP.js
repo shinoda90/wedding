@@ -39,7 +39,7 @@ export default function RSVP() {
       { id: 'tequila', label: 'Tequila' },
       { id: 'whiskey', label: 'Whiskey' },
       { id: 'vodka', label: 'Vodka' },
-      { id: 'no alcohol', label: 'No Alcohol' },
+      { id: 'no alcohol', label: 'No Alc' },
     ],
     [i18n.language]
   )
