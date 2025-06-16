@@ -32,12 +32,14 @@ export default function RSVP() {
 
   const drinkOptions = useMemo(
     () => [
-      { id: 'whiskey', label: 'Whiskey' },
-      { id: 'vodka', label: 'Vodka' },
       { id: 'wine', label: t('rsvp.answer21') },
       { id: 'beer', label: t('rsvp.answer22') },
       { id: 'aperol', label: 'Aperol' },
       { id: 'gin', label: 'Gin' },
+      { id: 'tequila', label: 'Tequila' },
+      { id: 'whiskey', label: 'Whiskey' },
+      { id: 'vodka', label: 'Vodka' },
+      { id: 'no alcohol', label: 'No Alcohol' },
     ],
     [i18n.language]
   )
@@ -325,7 +327,7 @@ export default function RSVP() {
                         name={`participation-${index}`}
                         value={true}
                         checked={guest.participation === true}
-                        onFocus={() => scrollGuestIntoView(index)} // << HIER
+                        onFocus={() => scrollGuestIntoView(index)}
                         onChange={() =>
                           handleGuestChange(index, 'participation', true)
                         }
@@ -373,7 +375,6 @@ export default function RSVP() {
         after:text-primary after:text-sm
         checked:after:content-['✓']"
                               checked={guest.drinks.includes(drink.id)}
-                              onFocus={() => scrollGuestIntoView(index)}
                               onChange={() => toggleDrink(index, drink.id)}
                             />
                             <span className="text-base">{drink.label}</span>
@@ -399,7 +400,6 @@ export default function RSVP() {
         after:text-primary after:text-sm
         checked:after:content-['✓']"
                               checked={guest.transport.includes(trans.id)}
-                              onFocus={() => scrollGuestIntoView(index)}
                               onChange={() => toggleTransport(index, trans.id)}
                             />
                             <span className="text-base">{trans.label}</span>
@@ -417,7 +417,6 @@ export default function RSVP() {
                         className="input input-bordered w-full text-navbar"
                         placeholder={t('rsvp.placeholder3')}
                         value={guest.email}
-                        onFocus={() => scrollGuestIntoView(index)} // << HIER
                         onChange={(e) =>
                           handleGuestChange(index, 'email', e.target.value)
                         }
@@ -430,7 +429,6 @@ export default function RSVP() {
                         className="input input-bordered text-navbar"
                         placeholder={t('rsvp.placeholder4')}
                         value={guest.requirements}
-                        onFocus={() => scrollGuestIntoView(index)} // << HIER
                         onChange={(e) =>
                           handleGuestChange(
                             index,
@@ -540,14 +538,22 @@ export default function RSVP() {
                       </p>
                       <p className="mb-2">
                         <strong>{t('rsvp.question1')}:</strong>{' '}
-                        {guest.participation ? 'Yes' : 'No'}
+                        {guest.participation
+                          ? t('rsvp.answer11')
+                          : t('rsvp.answer12')}
                       </p>
 
                       {guest.participation && (
                         <>
                           <p className="mb-2">
                             <strong>{t('rsvp.question2')}:</strong>{' '}
-                            {guest.drinks.join(', ')}
+                            {(guest.drinks || [])
+                              .map(
+                                (id) =>
+                                  drinkOptions.find((d) => d.id === id)
+                                    ?.label || id
+                              )
+                              .join(', ')}
                           </p>
                           {guest.email && (
                             <p className="mb-2">
