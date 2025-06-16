@@ -13,7 +13,7 @@ export default function SectionWrapper({ id, title, children }) {
   }, [inView])
 
   return (
-    <section id={id} className="scroll-mt-6 lg:scroll-mt-24 mx-auto">
+    <section id={id} className="scroll-mt-24 mx-auto">
       <div
         ref={ref}
         className={`transition-all duration-700 ${
