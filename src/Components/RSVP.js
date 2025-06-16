@@ -39,7 +39,7 @@ export default function RSVP() {
       { id: 'tequila', label: 'Tequila' },
       { id: 'whiskey', label: 'Whiskey' },
       { id: 'vodka', label: 'Vodka' },
-      { id: 'no alcohol', label: 'No Alc' },
+      { id: 'no alcohol', label: t('rsvp.answer23') },
     ],
     [i18n.language]
   )
@@ -48,7 +48,7 @@ export default function RSVP() {
     () => [
       { id: 'go', label: 'San Salvador - Lago' },
       { id: 'return', label: 'Lago - San Salvador' },
-      { id: 'no', label: t('rsvp.answer12') },
+      { id: 'no', label: t('rsvp.answer24') },
     ],
     [i18n.language]
   )
@@ -113,18 +113,66 @@ export default function RSVP() {
   const toggleDrink = (index, drinkId) => {
     const updatedGuests = [...guests]
     const selectedDrinks = updatedGuests[index].drinks || []
-    updatedGuests[index].drinks = selectedDrinks.includes(drinkId)
-      ? selectedDrinks.filter((d) => d !== drinkId)
-      : [...selectedDrinks, drinkId]
+    const isNoAlcohol = drinkId === 'no alcohol'
+    const isSelected = selectedDrinks.includes(drinkId)
+
+    let newDrinks
+
+    if (isNoAlcohol) {
+      if (isSelected) {
+        // Entferne 'no alcohol'
+        newDrinks = selectedDrinks.filter((d) => d !== 'no alcohol')
+      } else {
+        // Nur 'no alcohol' aktivieren, alles andere deaktivieren
+        newDrinks = ['no alcohol']
+      }
+    } else {
+      if (isSelected) {
+        // Entferne das angeklickte Getränk
+        newDrinks = selectedDrinks.filter((d) => d !== drinkId)
+      } else {
+        // Füge Getränk hinzu, entferne 'no alcohol' falls vorhanden
+        newDrinks = [
+          ...selectedDrinks.filter((d) => d !== 'no alcohol'),
+          drinkId,
+        ]
+      }
+    }
+
+    updatedGuests[index].drinks = newDrinks
     setGuests(updatedGuests)
   }
 
   const toggleTransport = (index, transportId) => {
     const updatedGuests = [...guests]
-    const selectedDrinks = updatedGuests[index].transport || []
-    updatedGuests[index].transport = selectedDrinks.includes(transportId)
-      ? selectedDrinks.filter((d) => d !== transportId)
-      : [...selectedDrinks, transportId]
+    const selectedTransports = updatedGuests[index].transport || []
+    const isNoTransport = transportId === 'no'
+    const isSelected = selectedTransports.includes(transportId)
+
+    let newTransport
+
+    if (isNoTransport) {
+      if (isSelected) {
+        // Entferne 'no'
+        newTransport = selectedTransports.filter((t) => t !== 'no')
+      } else {
+        // Nur 'no' aktivieren, alle anderen deaktivieren
+        newTransport = ['no']
+      }
+    } else {
+      if (isSelected) {
+        // Entferne das angeklickte Transportmittel
+        newTransport = selectedTransports.filter((t) => t !== transportId)
+      } else {
+        // Füge Transport hinzu, entferne 'no' falls vorhanden
+        newTransport = [
+          ...selectedTransports.filter((t) => t !== 'no'),
+          transportId,
+        ]
+      }
+    }
+
+    updatedGuests[index].transport = newTransport
     setGuests(updatedGuests)
   }
 
@@ -360,26 +408,31 @@ export default function RSVP() {
                         {t('rsvp.question2')}
                       </label>
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 gap-y-4 mt-2 mb-4">
-                        {drinkOptions.map((drink) => (
-                          <label
-                            key={drink.id}
-                            className="flex items-center gap-2 cursor-pointer"
-                          >
-                            <input
-                              type="checkbox"
-                              className="h-5 w-5 cursor-pointer rounded-md border-2 border-neutral bg-white 
-        checked:bg-secondary checked:border-neutral checked:text-white 
-        focus:outline-none transition-all duration-200 
-        appearance-none relative
-        after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 
-        after:text-primary after:text-sm
-        checked:after:content-['✓']"
-                              checked={guest.drinks.includes(drink.id)}
-                              onChange={() => toggleDrink(index, drink.id)}
-                            />
-                            <span className="text-base">{drink.label}</span>
-                          </label>
-                        ))}
+                        {drinkOptions.map((drink, i) => {
+                          const isLast = i === drinkOptions.length - 1
+                          return (
+                            <label
+                              key={drink.id}
+                              className={`flex items-center gap-2 cursor-pointer ${
+                                isLast ? 'col-span-2 md:col-span-3' : ''
+                              }`}
+                            >
+                              <input
+                                type="checkbox"
+                                className="h-5 w-5 cursor-pointer rounded-md border-2 border-neutral bg-white 
+            checked:bg-secondary checked:border-neutral checked:text-white 
+            focus:outline-none transition-all duration-200 
+            appearance-none relative
+            after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 
+            after:text-primary after:text-sm
+            checked:after:content-['✓']"
+                                checked={guest.drinks.includes(drink.id)}
+                                onChange={() => toggleDrink(index, drink.id)}
+                              />
+                              <span className="text-base">{drink.label}</span>
+                            </label>
+                          )
+                        })}
                       </div>
                       <label className="font-medium">
                         {t('rsvp.question5')}

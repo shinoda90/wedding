@@ -51,11 +51,13 @@
     "question2": "¿Preferencias de bebida? (Nos ayuda mucho)*",
     "question3": "Email (para Updates)",
     "question4": "¿Preferencias especiales o alergias?",
-    "question5": "¿Necesitas transporte el día de la boda (ver información arriba)?",
+    "question5": "¿Necesitas transporte el día de la boda (ver el area de información arriba)?",
     "answer11": "Si",
     "answer12": "No",
     "answer21": "Vino",
     "answer22": "Cerveza",
+    "answer23": "No tomo bebidas con alcohol",
+    "answer24": "No necesito transporte",
     "feedback": "¡Gracias por tus comentarios! 🎉",
     "warning": "¡Nombre no en la lista de invitados!",
     "placeholder1": "Buscar o seleccionar un nombre",
@@ -202,6 +204,7 @@
     "pictureTime95": "2025-05-10",
     "pictureTime96": "2025-05-30",
     "pictureTime97": "2025-06-09",
+    "pictureTime98": "2025-06-13",
     "pictureTitle1": "2019 abril - Alemania, Berlín - Amor a la capital y diploma de currywurst con Nils y Mareike.",
     "pictureTitle2": "2019 abril - Roadtrip por Noruega: glaciares para enamorarse – nuestro viaje por la era del hielo.",
     "pictureTitle3": "2019 mayo - Alemania, Hamburgo - Montaña rusa de emociones (y de verdad también en el parque de atracciones).",
@@ -298,7 +301,8 @@
     "pictureTitle94": "2025 Marzo - EE. UU., Filadelfia - Orgullosos finalistas del medio maratón. Como recompensa, un Philly Cheese Steak.",
     "pictureTitle95": "2025 Mayo - Alemania, Hamburgo - ¡El cumpleaños del puerto con Nils es siempre imprescindible!",
     "pictureTitle96": "2025 Mayo - Italia, Lago de Como - La pizza es parte esencial de Italia.",
-    "pictureTitle97": "2025 Junio - Suiza, Lauterbrunnen - Paisajes impresionantes con una mamá impresionante."
+    "pictureTitle97": "2025 Junio - Suiza, Lauterbrunnen - Paisajes impresionantes con una mamá impresionante.",
+    "pictureTitle98": "2025 Junio - Francia, Estrasburgo - Tuvimos a Tia Cindy, Nicole, Jacques y mamá solo para nosotros."
   },
   "guide": {
     "plan1": "Llegaremos a El Salvador el 20 de diciembre y utilizaremos los primeros días para ultimar los preparativos de la boda.",
