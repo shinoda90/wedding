@@ -47,7 +47,7 @@ export default function Navbar() {
       <div className="w-full px-4 py-2 flex items-center justify-between bg-navbar shadow-md uppercase z-50 fixed top-0 left-0 h-[64px]">
         {/* Select links, nur auf mobile (hidden ab lg) */}
         <select
-          className="select select-sm border-primary bg-primary block lg:hidden"
+          className="select select-sm border-primary bg-neutral text-primary block lg:hidden"
           onChange={(e) => changeLanguage(e.target.value)}
           value={i18n.language}
           aria-label="Select Language"
