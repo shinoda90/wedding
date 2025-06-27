@@ -71,7 +71,9 @@
   "button": {
     "submit": "Enviar",
     "warning": "¡Faltan datos! Por favor completa.",
-    "loading": "¡No huyas!"
+    "loading": "¡No huyas!",
+    "google": "¡Agregar al calendario de Google!",
+    "apple": "¡Agregar al calendario de Apple!"
   },
   "info": {
     "intro1": "Tenemos la gran suerte de haber encontrado este amor tan profundo, y queremos seguir escribiendo nuestra historia con ustedes en ella. Estamos muy emocionados de celebrar este capítulo especial con las personas que más amamos.",

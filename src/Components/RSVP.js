@@ -632,12 +632,12 @@ export default function RSVP() {
                   <button
                     onClick={() => {
                       const event = {
-                        title: 'Hochzeit von Anna & Ben',
-                        details:
-                          'Feier beginnt um 14:00 Uhr. Adresse: Schlosspark 1, 12345 Stadt',
-                        location: 'Schlosspark 1, 12345 Stadt',
-                        start: '20250712T120000Z', // UTC-Zeit
-                        end: '20250712T180000Z',
+                        title: t('calendar.title'),
+                        details: t('calendar.description'),
+                        location:
+                          'Cardedeu Hotel, Calle Los Planes KM 2, Coatepeque, El Salvador',
+                        start: '20251227T200000Z', // 27.12.2025, 14:00 Uhr El Salvador (UTC-6)
+                        end: '20251228T080000Z', // 28.12.2025, 02:00 Uhr El Salvador (UTC-6)
                       }
 
                       const url =
@@ -651,19 +651,22 @@ export default function RSVP() {
                     }}
                     className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
                   >
-                    📅 {t('calendar.add_google')}
+                    📅 {t('button.google')}
                   </button>
 
                   <button
                     onClick={() => {
                       const icsContent =
-                        `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\n` +
-                        `SUMMARY:Hochzeit von Anna & Ben\n` +
-                        `DTSTART:20250712T120000Z\n` +
-                        `DTEND:20250712T180000Z\n` +
-                        `LOCATION:Schlosspark 1, 12345 Stadt\n` +
-                        `DESCRIPTION:Feier beginnt um 14:00 Uhr. Adresse: Schlosspark 1, 12345 Stadt\n` +
-                        `END:VEVENT\nEND:VCALENDAR`
+                        `BEGIN:VCALENDAR\n` +
+                        `VERSION:2.0\n` +
+                        `BEGIN:VEVENT\n` +
+                        `SUMMARY:${t('calendar.title')}\n` +
+                        `DTSTART:20251227T200000Z\n` + // 27. Dez 2025, 14:00 Uhr El Salvador
+                        `DTEND:20251228T080000Z\n` + // 28. Dez 2025, 02:00 Uhr El Salvador
+                        `LOCATION:Cardedeu Hotel, Calle Los Planes KM 2, Coatepeque, El Salvador\n` +
+                        `DESCRIPTION:${t('calendar.description')}\n` +
+                        `END:VEVENT\n` +
+                        `END:VCALENDAR`
 
                       const blob = new Blob([icsContent], {
                         type: 'text/calendar',
@@ -677,7 +680,7 @@ export default function RSVP() {
                     }}
                     className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
                   >
-                    🍎 {t('calendar.add_apple')}
+                    🍎 {t('button.apple')}
                   </button>
                 </div>
               )}

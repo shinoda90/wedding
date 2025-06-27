@@ -71,7 +71,9 @@
   "button": {
     "submit": "Submit",
     "warning": "Missing some info – please fill in!",
-    "loading": "Don't run away!"
+    "loading": "Don't run away!",
+    "google": "Add to Google Calendar!",
+    "apple": "Add to Apple Calendar!"
   },
   "info": {
     "intro1": "We are so lucky to have found our profound love for each other, and would love to keep writing our story with you on it. We're so thrilled to be celebrating this special chapter with the people we love the most. Thank you for being part of our journey — your love and support mean everything to us. We can't wait to say 'I do' surrounded by our favorite people. ",
