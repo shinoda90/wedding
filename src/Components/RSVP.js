@@ -29,6 +29,9 @@ export default function RSVP() {
 
   const [showPopup, setShowPopup] = useState(false)
   const [submittedGuests, setSubmittedGuests] = useState([])
+  const hasAnyGuestAgreed = useMemo(() => {
+    return submittedGuests.some((guest) => guest.participation === true)
+  }, [submittedGuests])
 
   const drinkOptions = useMemo(
     () => [
@@ -627,7 +630,7 @@ export default function RSVP() {
                   ))
                 )}
               </div>
-              {!isSubmitting && (
+              {!isSubmitting && hasAnyGuestAgreed && (
                 <div className="mt-4 space-y-2">
                   <button
                     onClick={() => {
