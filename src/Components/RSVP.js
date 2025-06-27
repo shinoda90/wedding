@@ -657,16 +657,14 @@ export default function RSVP() {
                   <button
                     onClick={() => {
                       const icsContent =
-                        `BEGIN:VCALENDAR\n` +
-                        `VERSION:2.0\n` +
-                        `BEGIN:VEVENT\n` +
+                        `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\n` +
                         `SUMMARY:${t('calendar.title')}\n` +
-                        `DTSTART:20251227T200000Z\n` + // 27. Dez 2025, 14:00 Uhr El Salvador
-                        `DTEND:20251228T080000Z\n` + // 28. Dez 2025, 02:00 Uhr El Salvador
+                        `DTSTART:20251227T200000Z\n` + // 14:00 Uhr El Salvador
+                        `DTEND:20251228T080000Z\n` + // 02:00 Uhr El Salvador
                         `LOCATION:Cardedeu Hotel, Calle Los Planes KM 2, Coatepeque, El Salvador\n` +
                         `DESCRIPTION:${t('calendar.description')}\n` +
-                        `END:VEVENT\n` +
-                        `END:VCALENDAR`
+                        `BEGIN:VALARM\nTRIGGER:-P1D\nACTION:DISPLAY\nDESCRIPTION:Erinnerung\nEND:VALARM\n` +
+                        `END:VEVENT\nEND:VCALENDAR`
 
                       const blob = new Blob([icsContent], {
                         type: 'text/calendar',
