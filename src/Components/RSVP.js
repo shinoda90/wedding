@@ -627,7 +627,60 @@ export default function RSVP() {
                   ))
                 )}
               </div>
+              {!isSubmitting && (
+                <div className="mt-4 space-y-2">
+                  <button
+                    onClick={() => {
+                      const event = {
+                        title: 'Hochzeit von Anna & Ben',
+                        details:
+                          'Feier beginnt um 14:00 Uhr. Adresse: Schlosspark 1, 12345 Stadt',
+                        location: 'Schlosspark 1, 12345 Stadt',
+                        start: '20250712T120000Z', // UTC-Zeit
+                        end: '20250712T180000Z',
+                      }
 
+                      const url =
+                        `https://www.google.com/calendar/render?action=TEMPLATE` +
+                        `&text=${encodeURIComponent(event.title)}` +
+                        `&details=${encodeURIComponent(event.details)}` +
+                        `&location=${encodeURIComponent(event.location)}` +
+                        `&dates=${event.start}/${event.end}`
+
+                      window.open(url, '_blank')
+                    }}
+                    className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
+                  >
+                    📅 {t('calendar.add_google')}
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      const icsContent =
+                        `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\n` +
+                        `SUMMARY:Hochzeit von Anna & Ben\n` +
+                        `DTSTART:20250712T120000Z\n` +
+                        `DTEND:20250712T180000Z\n` +
+                        `LOCATION:Schlosspark 1, 12345 Stadt\n` +
+                        `DESCRIPTION:Feier beginnt um 14:00 Uhr. Adresse: Schlosspark 1, 12345 Stadt\n` +
+                        `END:VEVENT\nEND:VCALENDAR`
+
+                      const blob = new Blob([icsContent], {
+                        type: 'text/calendar',
+                      })
+                      const link = document.createElement('a')
+                      link.href = URL.createObjectURL(blob)
+                      link.download = 'hochzeit.ics'
+                      document.body.appendChild(link)
+                      link.click()
+                      document.body.removeChild(link)
+                    }}
+                    className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                  >
+                    🍎 {t('calendar.add_apple')}
+                  </button>
+                </div>
+              )}
               {/* OK-Button nur wenn nicht am Laden */}
               {!isSubmitting && (
                 <div className="mt-6">
