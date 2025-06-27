@@ -121,7 +121,7 @@ export default function Navbar() {
             </ul>
           </div>
         </div>
-        <div className="absolute hidden right-6 lg:flex items-center space-x-4">
+        <div className="absolute left-6 lg:right-6 lg:flex items-center space-x-4">
           <select
             className="select select-sm border-primary bg-primary"
             onChange={(e) => changeLanguage(e.target.value)}
