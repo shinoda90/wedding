@@ -370,7 +370,9 @@ export default function RSVP() {
                 />
 
                 <div className="pt-2">
-                  <label className="font-semibold">{t('rsvp.question1')}</label>
+                  <label className="font-medium text-secondary">
+                    {t('rsvp.question1')}
+                  </label>
                   <div className="flex gap-4 mt-1">
                     <label className="flex items-center gap-2">
                       <input
@@ -407,7 +409,7 @@ export default function RSVP() {
                 {guest.participation === true && (
                   <>
                     <div>
-                      <label className="font-semibold">
+                      <label className="font-medium text-secondary">
                         {t('rsvp.question2')}
                       </label>
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 gap-y-4 mt-2 mb-4">
@@ -437,7 +439,7 @@ export default function RSVP() {
                           )
                         })}
                       </div>
-                      <label className="font-semibold">
+                      <label className="font-medium text-secondary">
                         {t('rsvp.question5')}
                       </label>
                       <div className="grid grid-cols-1 gap-4 gap-y-2 mt-2">
@@ -465,7 +467,7 @@ export default function RSVP() {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <span className="font-semibold whitespace-nowrap ">
+                      <span className="font-medium text-secondary whitespace-nowrap ">
                         {t('rsvp.question3')}
                       </span>
                       <input
@@ -479,7 +481,7 @@ export default function RSVP() {
                       />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <span className="font-semibold">
+                      <span className="font-medium text-secondary">
                         {t('rsvp.question4')}
                       </span>
                       <input
