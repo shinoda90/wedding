@@ -686,7 +686,10 @@ export default function RSVP() {
               {!isSubmitting && (
                 <div className="mt-6">
                   <button
-                    onClick={() => setShowPopup(false)}
+                    onClick={() => {
+                      setShowPopup(false)
+                      window.location.reload()
+                    }}
                     className="px-6 py-2 bg-secondary rounded hover:bg-neutral-focus text-white transition duration-300 ease-in-out w-full"
                   >
                     OK
