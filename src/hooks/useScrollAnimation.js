@@ -1,36 +1,36 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react'
 
 const useScrollAnimation = (isJumping) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const elementRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false)
+  const elementRef = useRef(null)
 
   useEffect(() => {
     if (isJumping) {
-      setIsVisible(true); // Beim Sprung direkt sichtbar machen
-      return;
+      setIsVisible(true) // Beim Sprung direkt sichtbar machen
+      return
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          setIsVisible(true)
         }
       },
-      { threshold: 0.2 }
-    );
+      { threshold: 0.1 }
+    )
 
     if (elementRef.current) {
-      observer.observe(elementRef.current);
+      observer.observe(elementRef.current)
     }
 
     return () => {
       if (elementRef.current) {
-        observer.unobserve(elementRef.current);
+        observer.unobserve(elementRef.current)
       }
-    };
-  }, [isJumping]);
+    }
+  }, [isJumping])
 
-  return [isVisible, elementRef];
-};
+  return [isVisible, elementRef]
+}
 
-export default useScrollAnimation;
+export default useScrollAnimation
