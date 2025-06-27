@@ -124,6 +124,15 @@ export default function History() {
           ))}
         </ul>
       </div>
+      {/* Titel & Intro vor Bildergalerie */}
+      <div className="text-center mt-16 px-4">
+        <h2 className="text-3xl font-bold font-slogan mb-4">
+          {t('history.album')}
+        </h2>
+        <p className="text-lg font-light font-tl-text max-w-3xl mx-auto">
+          {t('history.intro')}
+        </p>
+      </div>
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 mt-10">
         {Array.from({ length: 97 }, (_, i) => {
           const index = i + 1

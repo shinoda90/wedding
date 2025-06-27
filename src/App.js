@@ -9,7 +9,7 @@ import Home from './pages/Home'
 import NavBar from './Components/NavBar'
 import History from './pages/History'
 import { useEffect } from 'react'
-import menuImage from './image/background_mobile_menu.webp' // richtig importieren!
+import menuImage from './image/background_mobile_menu.webp'
 import Footer from './Components/Footer'
 
 function ScrollToHash() {
