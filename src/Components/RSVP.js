@@ -370,7 +370,7 @@ export default function RSVP() {
                 />
 
                 <div className="pt-2">
-                  <label className="font-medium">{t('rsvp.question1')}</label>
+                  <label className="font-semibold">{t('rsvp.question1')}</label>
                   <div className="flex gap-4 mt-1">
                     <label className="flex items-center gap-2">
                       <input
@@ -407,7 +407,7 @@ export default function RSVP() {
                 {guest.participation === true && (
                   <>
                     <div>
-                      <label className="font-medium">
+                      <label className="font-semibold">
                         {t('rsvp.question2')}
                       </label>
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 gap-y-4 mt-2 mb-4">
@@ -437,7 +437,7 @@ export default function RSVP() {
                           )
                         })}
                       </div>
-                      <label className="font-medium">
+                      <label className="font-semibold">
                         {t('rsvp.question5')}
                       </label>
                       <div className="grid grid-cols-1 gap-4 gap-y-2 mt-2">
@@ -465,7 +465,7 @@ export default function RSVP() {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <span className="font-medium whitespace-nowrap ">
+                      <span className="font-semibold whitespace-nowrap ">
                         {t('rsvp.question3')}
                       </span>
                       <input
@@ -479,7 +479,9 @@ export default function RSVP() {
                       />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <span className="font-medium">{t('rsvp.question4')}</span>
+                      <span className="font-semibold">
+                        {t('rsvp.question4')}
+                      </span>
                       <input
                         type="text"
                         className="input input-bordered text-navbar"
@@ -652,7 +654,7 @@ export default function RSVP() {
 
                       window.open(url, '_blank')
                     }}
-                    className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
+                    className="w-full bg-white text-secondary py-2 rounded hover:bg-secondary hover:text-white transition"
                   >
                     📅 {t('button.google')}
                   </button>
@@ -679,7 +681,7 @@ export default function RSVP() {
                       link.click()
                       document.body.removeChild(link)
                     }}
-                    className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                    className="w-full bg-white text-secondary py-2 rounded hover:bg-secondary hover:text-white transition"
                   >
                     🍎 {t('button.apple')}
                   </button>
