@@ -45,12 +45,23 @@ export default function Navbar() {
     <>
       {/* Mobile Header - nur Logo + Burger Button, absolut positioniert */}
       <div className="w-full px-4 py-2 flex items-center justify-between bg-navbar shadow-md uppercase z-50 fixed top-0 left-0 h-[64px]">
-        {/* Platzhalter für die linke Seite, damit Logo zentriert bleibt */}
-        <div className="w-10 h-10" />
+        {/* Select links, nur auf mobile (hidden ab lg) */}
+        <select
+          className="select select-sm border-primary bg-primary block lg:hidden"
+          onChange={(e) => changeLanguage(e.target.value)}
+          value={i18n.language}
+          aria-label="Select Language"
+        >
+          <option value="en">EN</option>
+          <option value="de">DE</option>
+          <option value="es">ES</option>
+        </select>
 
         {/* Logo zentriert */}
         <div className="absolute left-1/2 transform -translate-x-1/2">
-          <img src={Logo} alt="Logo" className="h-10 object-contain" />
+          <a href="/#home" aria-label="Home">
+            <img src={Logo} alt="Logo" className="h-10 object-contain" />
+          </a>
         </div>
 
         {/* Burger Button rechts */}
@@ -121,7 +132,7 @@ export default function Navbar() {
             </ul>
           </div>
         </div>
-        <div className="absolute left-6 lg:right-6 lg:flex items-center space-x-4">
+        <div className="absolute hidden right-6 lg:flex items-center space-x-4">
           <select
             className="select select-sm border-primary bg-primary"
             onChange={(e) => changeLanguage(e.target.value)}
