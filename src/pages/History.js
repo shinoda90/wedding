@@ -133,7 +133,7 @@ export default function History() {
           {t('history.intro')}
         </p>
       </div>
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 mt-10">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 mt-2">
         {Array.from({ length: 97 }, (_, i) => {
           const index = i + 1
           const filename = t(`history.pictureTime${index + 1}`)
@@ -149,7 +149,7 @@ export default function History() {
           return (
             <React.Fragment key={index}>
               {showYearDivider && (
-                <div className="text-4xl font-bold my-8 text-center font-slogan mt-16 col-span-full">
+                <div className="text-4xl font-bold my-8 text-center font-slogan mt-10 col-span-full">
                   {year}
                 </div>
               )}
