@@ -9,6 +9,8 @@ export default async function handler(req, res) {
     try {
       await client.connect()
       const db = client.db(dbName)
+      const collection = db.collection('guests') // <-- DIESE ZEILE HINZUFÜGEN!
+
       const guests = await collection
         .find({
           participation: { $ne: true, $ne: false },
@@ -33,6 +35,42 @@ export default async function handler(req, res) {
     } catch (error) {
       console.error('Fehler beim Hinzufügen:', error)
       res.status(500).json({ message: 'Fehler beim Hinzufügen des Gasts' })
+    } finally {
+      await client.close()
+    }
+  } else if (req.method === 'PUT') {
+    // ... dein PUT Block ist hier korrekt implementiert ...
+    const guestName = decodeURIComponent(req.query.name)
+    const updatedData = req.body
+
+    try {
+      await client.connect()
+      const db = client.db(dbName)
+      const collection = db.collection('guests') // <-- HIER IST SIE KORREKT
+
+      const result = await collection.updateOne(
+        { name: guestName },
+        {
+          $set: {
+            participation: updatedData.participation,
+            email: updatedData.email,
+            requirements: updatedData.requirements,
+            drinks: updatedData.drinks,
+            transport: updatedData.transport,
+          },
+        }
+      )
+
+      if (result.matchedCount === 0) {
+        return res.status(404).json({ error: 'Guest not found' })
+      }
+
+      res
+        .status(200)
+        .json({ success: true, message: 'Gast erfolgreich aktualisiert' })
+    } catch (error) {
+      console.error('Fehler beim Aktualisieren des Gasts:', error)
+      res.status(500).json({ error: 'Update failed', details: error.message })
     } finally {
       await client.close()
     }
