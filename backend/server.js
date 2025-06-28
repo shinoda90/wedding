@@ -25,7 +25,9 @@ const Guest = mongoose.model('Guest', guestSchema, 'guests')
 
 app.get('/guests', async (req, res) => {
   try {
-    const guests = await Guest.find({ participation: null }) // nur Gäste mit participation = null
+    const guests = await Guest.find({
+      participation: { $nin: [true, false] },
+    })
     res.json(guests)
   } catch (err) {
     console.error('Fehler beim Abrufen der Gäste:', err)
