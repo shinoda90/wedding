@@ -9,11 +9,15 @@ export default async function handler(req, res) {
     try {
       await client.connect()
       const db = client.db(dbName)
-      const collection = db.collection('guests') // <-- DIESE ZEILE HINZUFÜGEN!
+      const collection = db.collection('guests') // Diese Zeile ist wichtig und muss drin sein!
+      // NEUER FILTER: Hier explizit nach null ODER nicht-existierenden Feldern suchen
 
       const guests = await collection
         .find({
-          participation: { $ne: true, $ne: false },
+          $or: [
+            { participation: null }, // Dokumente, wo participation explizit null ist
+            { participation: { $exists: false } }, // Dokumente, wo participation gar nicht existiert
+          ],
         })
         .toArray()
       res.status(200).json(guests)
