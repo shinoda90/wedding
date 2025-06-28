@@ -9,7 +9,11 @@ export default async function handler(req, res) {
     try {
       await client.connect()
       const db = client.db(dbName)
-      const guests = await db.collection('guests').find().toArray()
+      const guests = await collection
+        .find({
+          participation: { $ne: true, $ne: false },
+        })
+        .toArray()
       res.status(200).json(guests)
     } catch (error) {
       console.error('Fehler beim Abrufen:', error)
