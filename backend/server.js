@@ -28,9 +28,25 @@ const Guest = mongoose.model('Guest', guestSchema, 'guests')
 
 app.get('/guests', async (req, res) => {
   try {
+    const allGuests = await Guest.find({})
+    allGuests.forEach((g) =>
+      console.log(
+        `${g.name} => participation:`,
+        g.participation,
+        '| type:',
+        typeof g.participation
+      )
+    )
+
     const guests = await Guest.find({
       participation: { $nin: [true, false] },
     })
+
+    console.log(
+      'Gefilterte Gäste:',
+      guests.map((g) => g.name)
+    )
+
     res.json(guests)
   } catch (err) {
     console.error('Fehler beim Abrufen der Gäste:', err)
