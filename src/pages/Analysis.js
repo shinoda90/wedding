@@ -260,7 +260,7 @@ export default function Analysis() {
 
   if (!isAuthenticated) {
     return (
-      <div className="pt-30 max-w-lg m-auto pb-20 px-4 text-center">
+      <div className="pt-32 max-w-lg m-auto pb-20 px-4 text-center">
         <h2 className="text-2xl font-bold mb-4 text-neutral">
           Zugriff zur Gästeanalyse
         </h2>
@@ -296,7 +296,7 @@ export default function Analysis() {
 
   if (loading) {
     return (
-      <div className="pt-30 max-w-6xl m-auto pb-20 text-center">
+      <div className="pt-32 max-w-6xl m-auto pb-20 text-center">
         <p className="text-xl text-neutral">Gäste werden geladen...</p>
       </div>
     )
@@ -304,7 +304,7 @@ export default function Analysis() {
 
   if (error) {
     return (
-      <div className="pt-30 max-w-6xl m-auto pb-20 text-center">
+      <div className="pt-32 max-w-6xl m-auto pb-20 text-center">
         <p className="text-xl text-red-500">{error}</p>
       </div>
     )
@@ -312,7 +312,7 @@ export default function Analysis() {
 
   if (guests.length === 0 && !loading) {
     return (
-      <div className="pt-30 max-w-6xl m-auto pb-20 text-center">
+      <div className="pt-32 max-w-6xl m-auto pb-20 text-center">
         <p className="text-xl text-neutral">Keine Gäste gefunden.</p>
       </div>
     )
