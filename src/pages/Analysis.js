@@ -5,10 +5,8 @@ export default function Analysis() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
-  // <<< NEU: Authentifizierungs-Zustand und Passworteingabe
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [passwordInput, setPasswordInput] = useState('')
-  // ENDE NEU >>>
 
   const [filterCriteria, setFilterCriteria] = useState({
     name: '',
@@ -30,21 +28,20 @@ export default function Analysis() {
   ]
 
   useEffect(() => {
-    // Daten nur abrufen, wenn authentifiziert
     if (isAuthenticated) {
       const fetchGuests = async () => {
-        setLoading(true) // Ladezustand setzen, wenn Abruf beginnt
-        setError(null) // Fehler zurücksetzen
+        setLoading(true)
+        setError(null)
 
         try {
-          const response = await fetch('http://localhost:4000/analysis', {
+          const response = await fetch('api/analysis', {
             headers: {
-              'X-Auth-Password': passwordInput, // <<< Passwort im Header senden
+              'X-Auth-Password': passwordInput,
             },
           })
 
           if (response.status === 401 || response.status === 403) {
-            setIsAuthenticated(false) // Authentifizierung fehlgeschlagen
+            setIsAuthenticated(false)
             throw new Error(
               'Zugriff verweigert: Falsches Passwort oder nicht autorisiert.'
             )
@@ -66,11 +63,8 @@ export default function Analysis() {
 
       fetchGuests()
     }
-  }, [isAuthenticated]) // Daten abrufen, wenn sich Authentifizierungsstatus ändert
+  }, [isAuthenticated, passwordInput])
 
-  // Alle Sortier-bezogenen useMemo-Hooks und handleSort Funktion entfernt
-  // ... (filteredGuests useMemo, calculatedDrinkCounts useMemo, calculatedParticipationCounts useMemo, calculatedTransportCounts useMemo bleiben wie zuvor)
-  // --- Start der useMemo-Hooks (unverändert vom vorherigen Stand) ---
   const filteredGuests = useMemo(() => {
     let currentFilteredGuests = guests
 
@@ -246,7 +240,6 @@ export default function Analysis() {
     })
     return counts
   }, [guests])
-  // --- Ende der useMemo-Hooks ---
 
   const handleFilterChange = (column, value) => {
     setFilterCriteria((prev) => ({
@@ -255,21 +248,16 @@ export default function Analysis() {
     }))
   }
 
-  // <<< NEU: Login-Funktion
   const handleLogin = (e) => {
     e.preventDefault()
     if (passwordInput.trim() !== '') {
-      // Das Backend ist für die Überprüfung des Passworts zuständig
-      // Wir setzen isAuthenticated hier nur, damit useEffect den fetch auslöst
       setIsAuthenticated(true)
-      setError(null) // Alte Fehlermeldungen entfernen
+      setError(null)
     } else {
       setError('Bitte geben Sie ein Passwort ein.')
     }
   }
-  // ENDE NEU >>>
 
-  // <<< GEÄNDERT: Bedingte Anzeige des Login-Formulars oder der Tabelle
   if (!isAuthenticated) {
     return (
       <div className="pt-10 max-w-lg m-auto pb-20 px-4 text-center">
@@ -306,8 +294,6 @@ export default function Analysis() {
     )
   }
 
-  // Rest der Komponente wird nur gerendert, wenn authentifiziert
-  // Diese Lade-/Fehlerzustände gelten jetzt nach der Authentifizierung
   if (loading) {
     return (
       <div className="pt-10 max-w-6xl m-auto pb-20 text-center">
@@ -317,7 +303,6 @@ export default function Analysis() {
   }
 
   if (error) {
-    // Dieser Error-State wird jetzt auch Fehler NACH der Authentifizierung anzeigen
     return (
       <div className="pt-10 max-w-6xl m-auto pb-20 text-center">
         <p className="text-xl text-red-500">{error}</p>
@@ -334,33 +319,29 @@ export default function Analysis() {
   }
 
   return (
-    <div className="pt-10 mx-10 m-auto pb-20 px-4">
-      {/* Titel-Komponente (wenn vorhanden und gewünscht) */}
-      {/* <Title title={"Gästeübersicht"} /> */}
-
+    <div className="pt-12 mx-5 m-auto pb-10">
       <div className="overflow-x-auto overflow-y-auto max-h-[calc(100vh-200px)] rounded-box shadow-lg mt-8 border border-primary">
-        <table className="table-fixed table w-full text-neutral-content bg-white">
-          {/* Kopfzeile */}
-          <thead className="sticky top-0 z-10 bg-primary">
-            <tr className="bg-primary text-black">
-              <th className="w-32 py-3 px-4 font-semibold text-left border-r border-gray-300">
+        <table className="table w-full text-neutral-content bg-white ">
+          <thead className="sticky top-0 z-10 ">
+            <tr className="bg-neutral">
+              <th className="py-3 px-4 text-lg font-bold text-white text-left border-r border-gray-300 w-[120px]">
                 Name
                 <input
                   type="text"
                   placeholder="Name filtern..."
                   value={filterCriteria.name}
                   onChange={(e) => handleFilterChange('name', e.target.value)}
-                  className="mt-1 block w-full p-1 border border-gray-300 rounded-md text-sm text-gray-700 bg-white"
+                  className={`mt-1 block w-full p-1 border border-gray-300 rounded-md text-sm text-gray-700 bg-white ${filterCriteria.name ? '!bg-blue-500 !text-white transition-colors duration-200' : ''}`}
                 />
               </th>
-              <th className="w-16 py-3 px-4 font-semibold text-left border-r border-gray-300">
+              <th className="py-3 px-4 text-lg font-bold text-white text-left border-r border-gray-300 min-w-[80px]">
                 Participation?
                 <select
                   value={filterCriteria.participation}
                   onChange={(e) =>
                     handleFilterChange('participation', e.target.value)
                   }
-                  className="mt-1 block w-full p-1 border border-gray-300 rounded-md text-sm text-gray-700 bg-white"
+                  className={`mt-1 block p-1 border border-gray-300 rounded-md text-sm text-gray-700 bg-white ${filterCriteria.participation !== 'all' ? '!bg-blue-500 !text-white transition-colors duration-200' : ''}`}
                 >
                   <option value="all">
                     All ({calculatedParticipationCounts.all})
@@ -376,15 +357,14 @@ export default function Analysis() {
                   </option>
                 </select>
               </th>
-              {/* Getränke-Spalten mit Filter-Funktion und Zählung */}
               {drinkColumns.map((drink, index) => (
                 <th
                   key={drink.id}
-                  className={`w-10 py-2 px-2 font-semibold text-center border-r border-gray-300`}
+                  className={`py-2 font-semibold text-center border-r border-gray-300 min-w-[40px]`}
                 >
                   <span
                     className={`
-                      inline-block px-3 py-1 rounded-md cursor-pointer select-none
+                      inline-block w-full py-1 px-2 rounded-md cursor-pointer select-none
                       transition-colors duration-200
                       bg-gray-100 text-black
                       hover:bg-blue-400 hover:text-white
@@ -403,14 +383,12 @@ export default function Analysis() {
                       )
                     }
                   >
-                    {drink.label}
+                    {drink.label} ({calculatedDrinkCounts[drink.id] || 0})
                   </span>
-                  <div className="text-xs font-normal text-black mt-1">
-                    {calculatedDrinkCounts[drink.id] || 0}
-                  </div>
+                  <div className="text-xs font-normal text-black mt-1"></div>
                 </th>
               ))}
-              <th className="w-32 py-3 px-4 font-semibold text-left border-r border-gray-300">
+              <th className="py-3 px-4 text-lg font-bold text-white text-left border-r border-gray-300 min-w-[150px]">
                 Requirements
                 <input
                   type="text"
@@ -419,17 +397,17 @@ export default function Analysis() {
                   onChange={(e) =>
                     handleFilterChange('requirements', e.target.value)
                   }
-                  className="mt-1 block w-full p-1 border border-gray-300 rounded-md text-sm text-gray-700 bg-white"
+                  className={`mt-1 block w-full p-1 border border-gray-300 rounded-md text-sm text-gray-700 bg-white ${filterCriteria.requirements ? '!bg-blue-500 !text-white transition-colors duration-200' : ''}`}
                 />
               </th>
-              <th className="w-16 py-3 px-4 font-semibold text-left">
+              <th className="py-3 px-4 text-lg font-bold text-left min-w-[160px] text-white">
                 Transport
                 <select
                   value={filterCriteria.transport}
                   onChange={(e) =>
                     handleFilterChange('transport', e.target.value)
                   }
-                  className="mt-1 block w-full p-1 border border-gray-300 rounded-md text-sm text-gray-700 bg-white"
+                  className={`mt-1 block w-full p-1 border border-gray-300 rounded-md text-sm text-gray-700 bg-white ${filterCriteria.transport !== 'all' ? '!bg-blue-500 !text-white transition-colors duration-200' : ''}`}
                 >
                   <option value="all">
                     All ({calculatedTransportCounts.all})
@@ -450,7 +428,6 @@ export default function Analysis() {
               </th>
             </tr>
           </thead>
-          {/* Tabelleninhalt */}
           <tbody>
             {filteredGuests.map((guest, index) => {
               let rawDrinks = guest.drinks
@@ -472,10 +449,10 @@ export default function Analysis() {
                   key={guest._id || index}
                   className={`${index % 2 === 0 ? 'bg-secondary' : 'bg-base-200'} border-b border-primary-content`}
                 >
-                  <td className="w-32 py-3 px-4 whitespace-nowrap border-r border-gray-200">
+                  <td className="py-3 px-4 whitespace-nowrap border-r border-gray-200 min-w-[120px]">
                     {guest.name || ''}
                   </td>
-                  <td className="w-16 py-3 px-4 border-r border-gray-200">
+                  <td className="py-3 px-4 border-r border-gray-200 min-w-[80px]">
                     {guest.participation === true && 'Yes'}
                     {guest.participation === false && 'No'}
                     {(guest.participation === null ||
@@ -487,16 +464,16 @@ export default function Analysis() {
                     return (
                       <td
                         key={drink.id}
-                        className="w-10 py-2 px-2 border-r border-gray-200 text-center"
+                        className="py-2 px-2 border-r border-gray-200 text-center min-w-[40px]"
                       >
                         {hasDrink ? 'x' : ''}
                       </td>
                     )
                   })}
-                  <td className="w-32 py-3 px-4 border-r border-gray-200">
+                  <td className="py-3 px-4 border-r border-gray-200 min-w-[150px]">
                     {guest.requirements || ''}
                   </td>
-                  <td className="w-16 py-3 px-4">
+                  <td className="py-3 px-4 min-w-[80px]">
                     {Array.isArray(guest.transport)
                       ? guest.transport.join(', ') || ''
                       : guest.transport || ''}
@@ -507,7 +484,6 @@ export default function Analysis() {
           </tbody>
         </table>
       </div>
-      {/* Wenn keine gefilterten Gäste vorhanden sind */}
       {filteredGuests.length === 0 && !loading && guests.length > 0 && (
         <p className="text-center text-xl text-neutral mt-4">
           Keine Gäste entsprechen den Filterkriterien.

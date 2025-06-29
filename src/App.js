@@ -32,19 +32,22 @@ function ScrollToHash() {
 
 function App() {
   return (
-    <div className="bg-primary text-neutral">
+    <div className="bg-primary text-neutral min-h-screen flex flex-col">
       <Router>
         {/* Bild unsichtbar laden */}
         <img src={menuImage} alt="" style={{ display: 'none' }} />
 
         <NavBar />
         <ScrollToHash />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/guide" element={<Guide />} />
-          <Route path="/ourhistory" element={<History />} />
-          <Route path="/analysis" element={<Analysis />} />
-        </Routes>
+        <main className="flex-grow">
+          <ScrollToHash />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/guide" element={<Guide />} />
+            <Route path="/ourhistory" element={<History />} />
+            <Route path="/analysis" element={<Analysis />} />
+          </Routes>
+        </main>
         <Footer />
       </Router>
     </div>
