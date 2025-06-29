@@ -2,7 +2,7 @@
 import { MongoClient } from 'mongodb'
 
 const uri = process.env.MONGODB_URI
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD // WICHTIG: ADMIN_PASSWORD in Vercel Umgebungsvariablen setzen!
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD
 
 const client = new MongoClient(uri)
 let cachedDb = null
@@ -33,11 +33,9 @@ export default async function handler(req, res) {
     const collection = dbConnection.collection('guests')
 
     if (req.method === 'GET') {
-      // Für Analyse: Alle Gäste abrufen (ungefiltert)
       const guests = await collection.find({}).toArray()
       res.status(200).json(guests)
     } else {
-      // Für /api/analysis sind nur GET-Anfragen erlaubt
       res.status(405).json({ message: 'Method not allowed for /api/analysis' })
     }
   } catch (error) {
