@@ -11,6 +11,7 @@ import History from './pages/History'
 import { useEffect } from 'react'
 import menuImage from './image/background_mobile_menu.webp'
 import Footer from './Components/Footer'
+import Analysis from './pages/Analysis'
 
 function ScrollToHash() {
   const location = useLocation()
@@ -42,6 +43,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/guide" element={<Guide />} />
           <Route path="/ourhistory" element={<History />} />
+          <Route path="/analysis" element={<Analysis />} />
         </Routes>
         <Footer />
       </Router>
